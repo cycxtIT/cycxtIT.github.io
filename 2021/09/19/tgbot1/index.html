@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="程源博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>【Telegram机器人】今天教大家如何用编程语言制作电报机器人 |  程源博客（IT类）</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/ico.svg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="程源博客（IT类）" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-tgbot1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【Telegram机器人】今天教大家如何用编程语言制作电报机器人
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/09/19/tgbot1/" class="article-date">
+  <time datetime="2021-09-19T06:11:18.000Z" itemprop="datePublished">2021-09-19</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>今天只讲Python编程语言搭建电报机器人而已，至于用Google Script搭建的教程<a target="_blank" rel="noopener" href="https://byn6.github.io/2021/07/20/tg-bc/">点击这里</a><br>至于如何搭建telegram机器人<a href="https://cycxtit.github.io/2021/09/07/groupmagrbot/">请参考这篇文章</a>的<code>步骤一</code><br><br></p>
+<h2>Python</h2>
+<hr>
+<h3>步骤一</h3>
+先到python官网安装python环境，在安装是记得吧PATH打开如图
+<img src="https://pic2.zhimg.com/80/v2-11ea2a5ea3f1c77ae0f535a3ea3e6f59_720w.jpg" width="600">  
+
+<p>接着安装Telepot：在电脑的终端（cmd）输入以下代码  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install telepot</span><br></pre></td></tr></table></figure>
+<h2>步骤二（可以跳过）</h2>
+安装Python ILDE，如`PyCharm` `Visual Studio Code` `Sublime Text`等  
+<h2>步骤三</h2>
+
+<p><strong>1.1 测试你的bot账户</strong></p>
+<p>你可以在python中输入如下语句来获取你的bot信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import telepot #将telepot这个模组导入到Python中来</span><br><span class="line">&gt;&gt;&gt; bot = telepot.Bot(&#x27;***** Your Token *****&#x27;) #将bot这个在程序中使用的variable和你的bot token联系起来，在之后的程序中，每当要命令bot的时候可以直接call bot的instance</span><br><span class="line">&gt;&gt;&gt; bot.getMe() #getMe()是一个获取bot信息的function</span><br><span class="line">&#123;&#x27;first_name&#x27;: &#x27;Jean&#x27;, &#x27;username&#x27;: &#x27;MonsieurMadeleine&#x27;, &#x27;id&#x27;: 24601&#125; #在这里你的bot的信息将以一个dictionary的形式被print出来</span><br></pre></td></tr></table></figure>
+<br>
+
+<p><strong>1.2 接收消息</strong><br>设计上，telegram bot是无法主动向用户发送消息的（主要的目的是防止spam)，所以你需要主动地通过指令以获取用户的信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from pprint import pprint</span><br><span class="line">&gt;&gt;&gt; response = bot.getUpdates()</span><br><span class="line">&gt;&gt;&gt; pprint(response)</span><br><span class="line">[&#123;&#x27;message&#x27;: &#123;&#x27;chat&#x27;: &#123;&#x27;first_name&#x27;: &#x27;Jean&#x27;,</span><br><span class="line">                       &#x27;id&#x27;: 24601,</span><br><span class="line">                       &#x27;type&#x27;: &#x27;private&#x27;&#125;,</span><br><span class="line">              &#x27;date&#x27;: 1564897562,</span><br><span class="line">              &#x27;from&#x27;: &#123;&#x27;first_name&#x27;: &#x27;Jean&#x27;, &#x27;id&#x27;: 24601&#125;,</span><br><span class="line">              &#x27;message_id&#x27;: 104152,</span><br><span class="line">              &#x27;text&#x27;: &#x27;I&#x27;m a stronger man by far!&#x27;&#125;,</span><br><span class="line">  &#x27;update_id&#x27;: 100000000&#125;]</span><br></pre></td></tr></table></figure>
+
+<p>pprint 指pretty print，是python自带的一个可以让打印出来的dictionary更美观的一个function</p>
+<p>getUpdates()是telegram中获取Update的方法，依据Telegram API，getUpdate会return一个以Update object组成的array。在python中，Update object是以dictionary的形式被表现出来的。</p>
+<p>每当有用户向你的bot发送一条消息/图片/指令的时候，你都可以通过getUpdate()的方式来获取这条消息。在这条消息中，message 的key包括chat(用户的名字，ID和聊天的种类（在telegram中，聊天的种类分为三种，private, group以及channel，我们更多地是handle private的信息)），date（消息发送的日期），from（发送者的信息），message_id（一个独特的，message_id可以specify某一条信息），而text就是用户所发送消息的文本。</p>
+<p>但是每次都使用getUpdate()来获取消息就太麻烦了，这意味着你需要连续不断地敲击运行按钮才能获取新用户发送给bot的消息，在这里telepot提供了一个非常方便的解决办法.  </p>
+<p><strong>1.3 持续地接受消息</strong><br>在telepot中，MessageLoop是一个非常方便的处理信息的方式，如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from telepot.loop import MessageLoop #导入MessageLoop</span><br><span class="line">&gt;&gt;&gt; def handle(msg): #在这里定义handle来告诉MessageLoop应该如何处理Message</span><br><span class="line">...     pprint(msg)  #simply print message</span><br><span class="line">...</span><br><span class="line">&gt;&gt;&gt; MessageLoop(bot, handle).run_as_thread()</span><br></pre></td></tr></table></figure>
+<p>MessageLoop需要两个argument，一个是你已经specify token的’bot’，而另一个就是告诉MessageLoop如何处理信息的’method’（在这里我们将它命名为handle，你可以将此method改成任意名字，只要在定义的时候，method只接收一个argument，那就是’msg’）。</p>
+<p>‘run_as_thread’在这里起到了，只要你启动了你的python file，那么这个MessageLoop就会永续不断地运行下去，除非遇到特殊情况（冲突或者恶性bug等等）</p>
+<p>1.4 快速的Glance Message<br>telegram中的message作为一个json object，其中包含很多重要的而且可能会在一次Bot与用户的交互中多次使用的信息，而每次通过message对应的key来访问这些信息实在是有够麻烦，对此telepot提供了glance这一功能来快速获取message中的某些重要信息。</p>
+<p>content_type, chat_type, chat_id = telepot.glance(msg)<br>在这条语句之后，telepot帮你快速查看了msg中的content type, chat type和chat id并且储存在了这三个variable中，在之后的代码里可以直接通过这些variable来访问相对应的信息。</p>
+<p>Tip:glance的功能不限于只获取这三种信息（content type, chat type和chat id）而是所有在message中存在的legal key中的信息都可以获取。  </p>
+<p><strong>1.5 向用户发送信息</strong><br>在telepot中，向用户发送信息这一功能是通过bot.sendMessage() 这一function实现的，sendMessage() take in 两个arguments，一个是你希望发送的用户的chat_id，另一个是你希望发送消息的文本。<br><code>bot.sendMessage(chat_id, text)</code><br>到这里你已经掌握了搭建一个bot的所有基本操作，让我们来尝试做一个非常简单的bot吧。<br><br></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">import telepot</span><br><span class="line">from telepot.loop import MessageLoop</span><br><span class="line"></span><br><span class="line">def handle(msg):</span><br><span class="line">    content_type, chat_type, chat_id = telepot.glance(msg)</span><br><span class="line">    print(content_type, chat_type, chat_id)</span><br><span class="line"></span><br><span class="line">    if msg[&#x27;text&#x27;] == &#x27;/start&#x27;:</span><br><span class="line">        bot.sendMessage(chat_id, &#x27;你好&#x27;)</span><br><span class="line">    elif msg[&#x27;text&#x27;] == &#x27;/test&#x27;:</span><br><span class="line">        bot.sendMessage(chat_id, &#x27;回应测试&#x27;)</span><br><span class="line"></span><br><span class="line">TOKEN = &#x27;Your Token&#x27;</span><br><span class="line"></span><br><span class="line">bot = telepot.Bot(TOKEN)</span><br><span class="line">MessageLoop(bot, handle).run_as_thread()</span><br><span class="line">print (&#x27;Listening ...&#x27;)</span><br><span class="line"></span><br><span class="line"># Keep the program running.</span><br><span class="line">while 1:</span><br><span class="line">    time.sleep(10)</span><br></pre></td></tr></table></figure>
+
+<p><em><em>记得把Your Token换成你机器人的token哦~</em></em>  </p>
+<h4>Inline Keybord</h4>
+
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import time</span><br><span class="line">import telepot</span><br><span class="line">from telepot.loop import MessageLoop</span><br><span class="line">from telepot.namedtuple import InlineKeyboardMarkup, InlineKeyboardButton</span><br><span class="line"></span><br><span class="line">def on_chat_message(msg):</span><br><span class="line">    content_type, chat_type, chat_id = telepot.glance(msg)</span><br><span class="line"></span><br><span class="line">    keyboard = InlineKeyboardMarkup(inline_keyboard=[</span><br><span class="line">                   [InlineKeyboardButton(text=&#x27;McFlurry&#x27;, callback_data=&#x27;McFlurry&#x27;)],</span><br><span class="line">                   [InlineKeyboardButton(text=&#x27;Nugget&#x27;, callback_data=&#x27;Nugget&#x27;)],</span><br><span class="line">                   [InlineKeyboardButton(text=&#x27;Coke&#x27;, callback_data=&#x27;Coke&#x27;)],</span><br><span class="line">                   [InlineKeyboardButton(text=&#x27;Coke&#x27;, callback_data=&#x27;Coke&#x27;)],</span><br><span class="line">               ])</span><br><span class="line"></span><br><span class="line">    bot.sendMessage(chat_id, &#x27;What would you like to order?&#x27;, reply_markup=keyboard)</span><br><span class="line"></span><br><span class="line">def on_callback_query(msg):</span><br><span class="line">    query_id, from_id, query_data = telepot.glance(msg, flavor=&#x27;callback_query&#x27;)</span><br><span class="line">    bot.answerCallbackQuery(query_id, text=&#x27;Sold out!&#x27;)</span><br><span class="line">    bot.answerCallbackQuery(query_id, text=&#x27;You have ordered&#x27;+query_data)</span><br><span class="line"></span><br><span class="line">TOKEN = &#x27;Your Token&#x27;</span><br><span class="line">bot = telepot.Bot(TOKEN)</span><br><span class="line">MessageLoop(bot, &#123;&#x27;chat&#x27;: on_chat_message,</span><br><span class="line">                  &#x27;callback_query&#x27;: on_callback_query&#125;).run_as_thread()</span><br><span class="line">print(&#x27;Listening ...&#x27;)</span><br><span class="line"></span><br><span class="line">while 1:</span><br><span class="line">    time.sleep(10)</span><br></pre></td></tr></table></figure>
+
+<p>效果：  </p>
+<img src="https://pic4.zhimg.com/80/v2-889116441bcf2ba2c0ec66b1eaa6f68f_720w.jpg" width="600">  
+
+<hr>
+
+<p>有什么问题可以在评论区问我或者电报联系我</p>
+<hr>
+文章部分来自于<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/30450761">知乎</a>和<a target="_blank" rel="noopener" href="https://google.com/">谷歌</a>
+<hr>
+至于nodejs的就明天写吧！ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cycxtit.github.io/2021/09/19/tgbot1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/" rel="tag">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Telegram/" rel="tag">Telegram</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Telegram%E6%9C%BA%E5%99%A8%E4%BA%BA/" rel="tag">Telegram机器人</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/09/20/microsoftpw/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            【资讯】微软砍掉了帐户密码，从此登录再也无需密码了
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/09/09/ngbt/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">【接上期的群管理机器人】 其他指令</div>
+      </a>
+    
+  </nav>
+
+   
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021
+        <i class="ri-heart-fill heart_icon"></i> 程源
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/1.jpg" alt="程源博客（IT类）"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/notice">公告</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/app">应用</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/future">展望</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

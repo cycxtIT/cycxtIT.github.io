@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta name="description" content="程源博客" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>【建网】Termux部署Hexo |  程源博客（IT类）</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/ico.svg" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="程源博客（IT类）" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
+      
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-tm-hexo"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  【建网】Termux部署Hexo
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/10/07/tm-hexo/" class="article-date">
+  <time datetime="2021-10-07T04:41:45.000Z" itemprop="datePublished">2021-10-07</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">8 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>今天呢，废话不多直接进入主题</p>
+<h2>第一步：安装</h2>
+
+<p>我们需要下载的软件有:Termux。</p>
+<p>你可能想问:什么？就一个吗？？</p>
+<p>没错，Termux作为我面前见过最nb的安卓应用，用它部署Hexo简直绰绰有余！</p>
+<p>点击这里安装最新版本的Termux:<a target="_blank" rel="noopener" href="https://f-droid.org/repo/com.termux_117.apk">https://f-droid.org/repo/com.termux_117.apk</a></p>
+<p><code>注意:谷歌商店的版本特别老，不要从那里安装</code></p>
+<p>好了，第一步完成！</p>
+<h2>第二步：安装框架等</h2>
+你可能又想问了:什么？不是就安装一个吗？？
+
+<p>没错，在手机上安装的软件只有Termux一个，</p>
+<p>而我们此时要在Termux里安装软件。</p>
+<p><code>好的！从现在开始，你需要把Termux想象成你电脑上的命令行！而这台电脑已经给你装好了基本的包管理器！听不懂没关系！</code></p>
+<p>接下来我们运行几个命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">pkg install nodejs //安装node.js</span><br><span class="line"></span><br><span class="line">pkg install git //安装git</span><br><span class="line"></span><br><span class="line">pkg install vim //安装vim命令行编辑器</span><br><span class="line"></span><br><span class="line">或者</span><br><span class="line"></span><br><span class="line">pkg install nano //安装nano命令行编辑器(如果你觉得vim不好用的话)</span><br><span class="line"></span><br><span class="line">pkg install openssh //安装ssh以连接到Github仓库</span><br></pre></td></tr></table></figure>
+<p><code>我个人呢比较推荐使用nano，因为nano比较容易操作</code></p>
+<h2>第三步：生成</h2>
+我们重启一次Termux(这样子可以在重启时打开默认的home文件夹，如果刚刚安装的时候你没乱打开文件夹也行)
+
+<p>顺便说一句:打开文件夹的方式是–<br><code>cd xxx(文件夹名)</code></p>
+<p>然后，使用如下指令，创建一个名为hexo的文件夹:</p>
+<p><code>mkdir hexo</code></p>
+<p>进入文件夹:</p>
+<p><code>cd hexo</code><br>使用Hexo的生成指令:<br>(这跟电脑一模一样好吧！下面知道步骤的人可以先行去操作了)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g //生成hexo的配置文件</span><br><span class="line"></span><br><span class="line">npm install hexo-deployer-git --save //git插件</span><br><span class="line"></span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p><code>当然，在手机上的Hexo指令和电脑上是一模一样的，比方说hexo s，就是在本地4000端口生成预览;hexo new xxx，就是生成链接为xxx的文章</code></p>
+<p>那么主题怎么安装呢？</p>
+<p>我们随便打开一个Hexo主题仓库:</p>
+<p><code>注意:使用浏览器的电脑模式</code><br><img src="https://static01.imgkr.com/temp/7b59339ed3b943c8ae0c2e6b4a60d221.jpg" width="500"></p>
+<p>如图所示，画圈圈的位置，我们复制一下ssh格式的链接;</p>
+<p>然后在打开themes文件夹(cd)，执行命令:</p>
+<p><code>git clone git@github.com:fluid-dev/hexo-theme-fluid.git</code></p>
+<p>OK，等待下载完成之后，你就会发现themes文件夹多了一个名为主题名的文件夹;</p>
+<p>怎么发现呢？</p>
+<p>使用指令dir就可以查看所在文件夹的所有文件和子文件夹了！</p>
+<p>关于编辑问题，跟电脑上如出一辙，什么主题_config.yml文件的配置，你肯定比我还懂。</p>
+<p>那么怎么编辑？</p>
+<h2>第四部：编辑</h2>
+如果你选择使用了vim编辑器，那么我在这里只告诉你几个简单的指令就行了:
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">vi 文件名 //打开一个文件</span><br><span class="line"></span><br><span class="line">i //打开之后直接输入字母i，进入编辑模式</span><br><span class="line"></span><br><span class="line">ESC //结束编辑的话，先按这个，Termux键盘上有</span><br><span class="line"></span><br><span class="line">:wq //:指的是输入什么指令，w指令是保存，q指令是退出</span><br></pre></td></tr></table></figure>
+
+<p>如果你选择了nano编辑器，那么我在这里也只告诉你几个简单的指令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nano 文件名 //打开一个文件，打开之后直接就能编辑了</span><br><span class="line"></span><br><span class="line">ctrl o //保存这个文件，保存之后要再回车一下</span><br><span class="line"></span><br><span class="line">ctrl x //退出编辑</span><br></pre></td></tr></table></figure>
+
+<p>重点来了！在电脑端的时候，我说明的是:在根目录的_config.yml里，repo是https形式，但是Github在八月几号的时候已经不允许https格式登陆了！所以我们在repo那一行的时候，要填写成ssh格式，就像上面那个主题的clone方式一样！！<br><img src="https://static01.imgkr.com/temp/1c212a124a2f4f248c6f32353dd2dd82.jpg" width="500"></p>
+<p>如果你没听懂，那么你可以加入我们的Telegram群组询问:群组：<a target="_blank" rel="noopener" href="https://t.me/hlx666">葫芦侠电报社群</a>;</p>
+<p>OK，编辑的过程比较漫长，所以我不细讲了，总之vim和nano都是会越用越顺手的。</p>
+<h2>第五步：SSH</h2>
+
+<p>开始之前我建议你先看一下这个视频，以了解通过git推送到仓库的大概思路:</p>
+<center><iframe src="//player.bilibili.com/player.html?aid=541656834&bvid=BV1fi4y1u7h7&cid=221722538&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" height="400" width="600" allowfullscreen="true"> </iframe></center>
+
+<p>当然，最后我发现其实并不是那么麻烦，</p>
+<p>你也不需要使用git指令推送仓库，最后一步还是用 <code>hexo g -d</code> 进行上传，</p>
+<p>那么怎么做呢？(视频的的重点是前几十秒，在账户添加ssh的时候)</p>
+<p>由于视频省略了前面的步骤啊，就是怎么生成公钥和私钥，</p>
+<p>生成方法可以百度(更清晰)，我在这里简单说明一下，</p>
+<p>执行代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//首先检测一下有没有账户:</span><br><span class="line"></span><br><span class="line">git config user.name</span><br><span class="line"></span><br><span class="line">git config user.email</span><br><span class="line"></span><br><span class="line">//如果没有的话，使用下面的命令添加:</span><br><span class="line"></span><br><span class="line">git config –global user.name ‘xxxxx’ //这里填你的Github信息 </span><br><span class="line"></span><br><span class="line">git config –global user.email ‘xxx@xx.com’ //这里是邮箱</span><br><span class="line"></span><br><span class="line">ssh-keygen -t rsa -C ‘上面的邮箱’ //生成ssh密钥</span><br><span class="line"></span><br><span class="line">//之后返回文件夹，打开文件夹，找到id_rsa.pub文件，复制进去就行了</span><br></pre></td></tr></table></figure>
+
+<p>如图，我已经成功了</p>
+<img src="https://static01.imgkr.com/temp/ffb4a4b6c04a450ba313c075dfb9d0b7.jpg" width="500">
+
+<p>之后，尽情编辑你的hexo吧！</p>
+<p>使用 <code>hexo s</code> 生成本地预览;使用 <code>hexo new xxx</code> 生成新文章，</p>
+<p>使用 <code>hexo g -d</code> 快速上传;</p>
+<p>如果你还是失败了，请先检查根目录_config.yml最后几行的repo格式，是否已经换成了ssh格式;此外，我省略了大部分此文件的编辑细节，如果有需要的话可以继续看</p>
+<h2>其他</h2>
+我也是怕自己忘记了，这里说明几个常用的文件指令:
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">rm -rf 文件名 //删除某文件</span><br><span class="line"></span><br><span class="line">dir //查看当前目录下所有目录</span><br><span class="line"></span><br><span class="line">dir -al //查看当前目录下所有目录(含隐藏目录)</span><br><span class="line"></span><br><span class="line">mkdir 文件名 //创建文件夹</span><br><span class="line"></span><br><span class="line">mv a b //如果a是文件，b是文件夹，则指的是把a移动到b</span><br><span class="line"></span><br><span class="line">mv a b //如果a和b都是文件，则指的是重命名a为b</span><br><span class="line"></span><br><span class="line">mv * ../ //这个非常强大，可以将当前目录下所有文件移动到上层目录。</span><br><span class="line"></span><br><span class="line">copy a b //把a复制到b</span><br></pre></td></tr></table></figure>
+
+<hr>
+
+<h2>写作部分</h2>
+使用Hexo框架，可以用Markdown进行文章的写作——
+
+<p>输入指令：</p>
+<p><code>hexo new 文章标题</code></p>
+<p>位置在source文件夹中的_posts文件夹中，名为“文章标题”的Markdown文件；</p>
+<p>我们使用记事本打开看看</p>
+<img src="https://thdbd666666.files.wordpress.com/2021/08/a8gcgcoj8gk31imkmgrg.png?w=651" width="500">
+
+<p>可以发现它已经很贴心地帮我们写好开头了（当然“data”和“tags”删除也没有关系）；</p>
+<p>接下来我们就可以用Markdown来创作了——</p>
+<img src="https://thdbd666666.files.wordpress.com/2021/08/3b37icmc2g40gv2c3sdg.png?w=1024" width="500">
+
+<p>这篇是我使用Markdown打出的一篇文章，那么它预览起来是什么样的呢？</p>
+<p>在命令提示框输入：<br><code>hexo s</code><br><img src="https://thdbd666666.files.wordpress.com/2021/08/ycgroij6p5kumbqfy.png?w=993" width="500"><br>发现：生成了一个网站（<a href="http://localhost:4000）">http://localhost:4000）</a> ，此时复制后浏览器打开即可——</p>
+<img src="https://thdbd666666.files.wordpress.com/2021/08/e59bbee78987-2.png?w=1024" width="500">
+
+<p>（ps：如果要关闭预览，在CMD里按Ctrl+C；）</p>
+<h2>美化（部分）</h2>
+先修改 _config.yml
+<img src="https://thdbd666666.files.wordpress.com/2021/08/okcl67554wieuipce1.png?w=450" width="500">
+
+<p>这里是一些基本的，比如说你的网站名（第六行）；</p>
+<p>描述（第八行）；</p>
+<p>作者（第十行）；</p>
+<p>语言（第十一行）；</p>
+<img src="https://thdbd666666.files.wordpress.com/2021/08/cf4ofg1klobxmmswh57.png?w=994" width="500">
+你的网站链接（注意：第十六行的URL一定要改成你将来要部署的网站！！！比如你要用GitHub Pages部署，就必须是那一节你部署过的网站链接！！！）；
+
+<img src="https://thdbd666666.files.wordpress.com/2021/08/g21fy403ycizqtyvjbwzq.png?w=1024" width="500">
+这里建议改成六的倍数（不只是吉利），这样的话会比较美观；
+<img src="https://thdbd666666.files.wordpress.com/2021/08/6kr97sgt4stih6inn.png?w=1024" width="500">
+
+<p>第一百行的主题名称改为之前让你复制的那个文件夹的名称（记得空格）；</p>
+<p>第一百零五行“type”改为“git”；</p>
+<p>第一百零六行加上“repo”，然后加上链接——</p>
+<img src="https://thdbd666666.files.wordpress.com/2021/08/tkwxgnehh006du4k.png?w=1024" width="500">
+
+<p>（注意：不是GitHub Pages的链接，是GitHub Pages的库的链接！！）</p>
+<p>第一百零七行加上“branch”，名字随便起一个；</p>
+<p>完成这些之后，我们可以再次用“hexo s”这个指令查看预览，发现已经更新主题了。</p>
+<h3>部署阶段</h3>
+整了这么多，你的网站也终究只在你的本地运行，那么怎么部署到GitHub Pages上呢——
+
+<p>首先，我们需要用指令下载一个插件，用于连接GitHub账户和Hexo：</p>
+<p><code>npm install hexo-deployer-git --save</code></p>
+<p>安装之后，如果想确认是否安装成功，可以输入这个指令：</p>
+<p><code>npm list hexo-deployer-git</code> </p>
+<img src="https://thdbd666666.files.wordpress.com/2021/08/hllnoo91pxw9if27p1.png?w=993" width="500">
+
+<p>出现了版本号，说明成功了；</p>
+<p>接下来，输入指令——</p>
+<p><code>hexo g -d</code></p>
+<p>如果失败，则输入以下指令，之后再输入上面的指令：</p>
+<p><code>git config --global credential.helper wincred</code></p>
+<p>此时可能会有弹窗显示让你输入什么API，这个时候选择浏览器打开，之后登录按照要求填写你的GitHub账号密码；</p>
+<p>之后，刷新一下你登录账号后的GitHub，会显示出现了一个新的分支（在上文，我的分支branch的名字是master）；此时，如果没有其他分支的话，应该是有两个分支——main和master；</p>
+<p>在设置中，删除原先的main分支，并把master分支的名字改为main；</p>
+<img src="https://thdbd666666.files.wordpress.com/2021/08/8qcwnxfkrvrj2x8gu6.png?w=1010" width="500">
+
+<p>懂了吧？</p>
+<p>注意：此时Hexo根目录的_config文件里，最下面的branch也要改为main；</p>
+<p>之后，就可以轻松地用Hexo在本地书写，在GitHub Pages上显示啦！</p>
+<p>其他更多Hexo书写技巧，以及指令，请到Hexo官网查看</p>
+<hr>
+
+<p>如果还是不明白的话可以加入我们的电报群：<a target="_blank" rel="noopener" href="https://t.me/hlx666">https://t.me/hlx666</a></p>
+<hr>
+
+<p>文章就到此结束了。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cycxtit.github.io/2021/10/07/tm-hexo/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/" rel="tag">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IT/" rel="tag">IT</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Termux/" rel="tag">Termux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BB%BA%E7%BD%91/" rel="tag">建网</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%89%8B%E6%9C%BA/" rel="tag">手机</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BD%91%E7%AB%99/" rel="tag">网站</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2021/10/13/yptj/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            云盘推荐 + 网站推荐
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2021/10/03/web/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">注册免费域名 + Github Pages套域名</div>
+      </a>
+    
+  </nav>
+
+   
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021
+        <i class="ri-heart-fill heart_icon"></i> 程源
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/1.jpg" alt="程源博客（IT类）"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/notice">公告</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/app">应用</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/future">展望</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+ 
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
