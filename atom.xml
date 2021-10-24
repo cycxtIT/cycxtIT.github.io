@@ -3,11 +3,11 @@
   <title>程源の博客</title>
   
   <subtitle>程源の博客</subtitle>
-  <link href="https://cycxtit.ga/atom.xml" rel="self"/>
+  <link href="https://cycxtit.github.io/atom.xml" rel="self"/>
   
-  <link href="https://cycxtit.ga/"/>
+  <link href="https://cycxtit.github.io/"/>
   <updated>2021-10-13T07:38:48.427Z</updated>
-  <id>https://cycxtit.ga/</id>
+  <id>https://cycxtit.github.io/</id>
   
   <author>
     <name>程源</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>云盘推荐 + 网站推荐</title>
-    <link href="https://cycxtit.ga/2021/10/13/yptj/"/>
-    <id>https://cycxtit.ga/2021/10/13/yptj/</id>
+    <link href="https://cycxtit.github.io/2021/10/13/yptj/"/>
+    <id>https://cycxtit.github.io/2021/10/13/yptj/</id>
     <published>2021-10-13T06:34:59.000Z</published>
     <updated>2021-10-13T07:38:48.427Z</updated>
     
@@ -42,18 +42,18 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="推荐" scheme="https://cycxtit.ga/tags/%E6%8E%A8%E8%8D%90/"/>
+    <category term="推荐" scheme="https://cycxtit.github.io/tags/%E6%8E%A8%E8%8D%90/"/>
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="云盘" scheme="https://cycxtit.ga/tags/%E4%BA%91%E7%9B%98/"/>
+    <category term="云盘" scheme="https://cycxtit.github.io/tags/%E4%BA%91%E7%9B%98/"/>
     
   </entry>
   
   <entry>
     <title>【建网】Termux部署Hexo</title>
-    <link href="https://cycxtit.ga/2021/10/07/tm-hexo/"/>
-    <id>https://cycxtit.ga/2021/10/07/tm-hexo/</id>
+    <link href="https://cycxtit.github.io/2021/10/07/tm-hexo/"/>
+    <id>https://cycxtit.github.io/2021/10/07/tm-hexo/</id>
     <published>2021-10-07T04:41:45.000Z</published>
     <updated>2021-10-13T06:20:56.969Z</updated>
     
@@ -75,24 +75,24 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="Termux" scheme="https://cycxtit.ga/tags/Termux/"/>
+    <category term="Termux" scheme="https://cycxtit.github.io/tags/Termux/"/>
     
-    <category term="手机" scheme="https://cycxtit.ga/tags/%E6%89%8B%E6%9C%BA/"/>
+    <category term="手机" scheme="https://cycxtit.github.io/tags/%E6%89%8B%E6%9C%BA/"/>
     
-    <category term="建网" scheme="https://cycxtit.ga/tags/%E5%BB%BA%E7%BD%91/"/>
+    <category term="建网" scheme="https://cycxtit.github.io/tags/%E5%BB%BA%E7%BD%91/"/>
     
-    <category term="Github" scheme="https://cycxtit.ga/tags/Github/"/>
+    <category term="Github" scheme="https://cycxtit.github.io/tags/Github/"/>
     
-    <category term="网站" scheme="https://cycxtit.ga/tags/%E7%BD%91%E7%AB%99/"/>
+    <category term="网站" scheme="https://cycxtit.github.io/tags/%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
   <entry>
     <title>注册免费域名 + Github Pages套域名</title>
-    <link href="https://cycxtit.ga/2021/10/03/web/"/>
-    <id>https://cycxtit.ga/2021/10/03/web/</id>
+    <link href="https://cycxtit.github.io/2021/10/03/web/"/>
+    <id>https://cycxtit.github.io/2021/10/03/web/</id>
     <published>2021-10-03T04:42:53.000Z</published>
     <updated>2021-10-03T07:05:57.494Z</updated>
     
@@ -108,18 +108,18 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="域名" scheme="https://cycxtit.ga/tags/%E5%9F%9F%E5%90%8D/"/>
+    <category term="域名" scheme="https://cycxtit.github.io/tags/%E5%9F%9F%E5%90%8D/"/>
     
-    <category term="博客" scheme="https://cycxtit.ga/tags/%E5%8D%9A%E5%AE%A2/"/>
+    <category term="博客" scheme="https://cycxtit.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
   <entry>
     <title>Windows快捷键</title>
-    <link href="https://cycxtit.ga/2021/09/26/kjj/"/>
-    <id>https://cycxtit.ga/2021/09/26/kjj/</id>
+    <link href="https://cycxtit.github.io/2021/09/26/kjj/"/>
+    <id>https://cycxtit.github.io/2021/09/26/kjj/</id>
     <published>2021-09-26T05:25:21.000Z</published>
     <updated>2021-09-26T05:29:22.491Z</updated>
     
@@ -136,22 +136,22 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="Windows" scheme="https://cycxtit.ga/tags/Windows/"/>
+    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="随手笔记" scheme="https://cycxtit.ga/tags/%E9%9A%8F%E6%89%8B%E7%AC%94%E8%AE%B0/"/>
+    <category term="随手笔记" scheme="https://cycxtit.github.io/tags/%E9%9A%8F%E6%89%8B%E7%AC%94%E8%AE%B0/"/>
     
-    <category term="微软" scheme="https://cycxtit.ga/tags/%E5%BE%AE%E8%BD%AF/"/>
+    <category term="微软" scheme="https://cycxtit.github.io/tags/%E5%BE%AE%E8%BD%AF/"/>
     
-    <category term="电脑" scheme="https://cycxtit.ga/tags/%E7%94%B5%E8%84%91/"/>
+    <category term="电脑" scheme="https://cycxtit.github.io/tags/%E7%94%B5%E8%84%91/"/>
     
   </entry>
   
   <entry>
     <title>【资讯】微软砍掉了帐户密码，从此登录再也无需密码了</title>
-    <link href="https://cycxtit.ga/2021/09/20/microsoftpw/"/>
-    <id>https://cycxtit.ga/2021/09/20/microsoftpw/</id>
+    <link href="https://cycxtit.github.io/2021/09/20/microsoftpw/"/>
+    <id>https://cycxtit.github.io/2021/09/20/microsoftpw/</id>
     <published>2021-09-20T04:33:19.000Z</published>
     <updated>2021-09-20T06:37:00.983Z</updated>
     
@@ -167,22 +167,22 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="Windows" scheme="https://cycxtit.ga/tags/Windows/"/>
+    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="微软" scheme="https://cycxtit.ga/tags/%E5%BE%AE%E8%BD%AF/"/>
+    <category term="微软" scheme="https://cycxtit.github.io/tags/%E5%BE%AE%E8%BD%AF/"/>
     
-    <category term="密码" scheme="https://cycxtit.ga/tags/%E5%AF%86%E7%A0%81/"/>
+    <category term="密码" scheme="https://cycxtit.github.io/tags/%E5%AF%86%E7%A0%81/"/>
     
-    <category term="资讯" scheme="https://cycxtit.ga/tags/%E8%B5%84%E8%AE%AF/"/>
+    <category term="资讯" scheme="https://cycxtit.github.io/tags/%E8%B5%84%E8%AE%AF/"/>
     
   </entry>
   
   <entry>
     <title>【Telegram机器人】今天教大家如何用编程语言制作电报机器人</title>
-    <link href="https://cycxtit.ga/2021/09/19/tgbot1/"/>
-    <id>https://cycxtit.ga/2021/09/19/tgbot1/</id>
+    <link href="https://cycxtit.github.io/2021/09/19/tgbot1/"/>
+    <id>https://cycxtit.github.io/2021/09/19/tgbot1/</id>
     <published>2021-09-19T06:11:18.000Z</published>
     <updated>2021-09-19T09:37:30.058Z</updated>
     
@@ -198,22 +198,22 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="Telegram" scheme="https://cycxtit.ga/tags/Telegram/"/>
+    <category term="Telegram" scheme="https://cycxtit.github.io/tags/Telegram/"/>
     
-    <category term="Telegram机器人" scheme="https://cycxtit.ga/tags/Telegram%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <category term="Telegram机器人" scheme="https://cycxtit.github.io/tags/Telegram%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="Python" scheme="https://cycxtit.ga/tags/Python/"/>
+    <category term="Python" scheme="https://cycxtit.github.io/tags/Python/"/>
     
-    <category term="编程" scheme="https://cycxtit.ga/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="编程" scheme="https://cycxtit.github.io/tags/%E7%BC%96%E7%A8%8B/"/>
     
   </entry>
   
   <entry>
     <title>【接上期的群管理机器人】 其他指令</title>
-    <link href="https://cycxtit.ga/2021/09/09/ngbt/"/>
-    <id>https://cycxtit.ga/2021/09/09/ngbt/</id>
+    <link href="https://cycxtit.github.io/2021/09/09/ngbt/"/>
+    <id>https://cycxtit.github.io/2021/09/09/ngbt/</id>
     <published>2021-09-09T08:15:51.000Z</published>
     <updated>2021-09-09T08:22:06.348Z</updated>
     
@@ -229,18 +229,18 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="Telegram" scheme="https://cycxtit.ga/tags/Telegram/"/>
+    <category term="Telegram" scheme="https://cycxtit.github.io/tags/Telegram/"/>
     
-    <category term="Telegram机器人" scheme="https://cycxtit.ga/tags/Telegram%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <category term="Telegram机器人" scheme="https://cycxtit.github.io/tags/Telegram%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
   </entry>
   
   <entry>
     <title>Windows远程代码执行漏洞修复（9.9.2021）</title>
-    <link href="https://cycxtit.ga/2021/09/09/micbug/"/>
-    <id>https://cycxtit.ga/2021/09/09/micbug/</id>
+    <link href="https://cycxtit.github.io/2021/09/09/micbug/"/>
+    <id>https://cycxtit.github.io/2021/09/09/micbug/</id>
     <published>2021-09-09T07:40:08.000Z</published>
     <updated>2021-09-09T07:47:34.328Z</updated>
     
@@ -256,20 +256,20 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="Windows" scheme="https://cycxtit.ga/tags/Windows/"/>
+    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="漏洞" scheme="https://cycxtit.ga/tags/%E6%BC%8F%E6%B4%9E/"/>
+    <category term="漏洞" scheme="https://cycxtit.github.io/tags/%E6%BC%8F%E6%B4%9E/"/>
     
-    <category term="微软" scheme="https://cycxtit.ga/tags/%E5%BE%AE%E8%BD%AF/"/>
+    <category term="微软" scheme="https://cycxtit.github.io/tags/%E5%BE%AE%E8%BD%AF/"/>
     
   </entry>
   
   <entry>
     <title>电脑越来越慢？电脑垃圾很多却不想下载流氓垃圾清理软件？此文章可能可以帮助到你！</title>
-    <link href="https://cycxtit.ga/2021/09/09/albs/"/>
-    <id>https://cycxtit.ga/2021/09/09/albs/</id>
+    <link href="https://cycxtit.github.io/2021/09/09/albs/"/>
+    <id>https://cycxtit.github.io/2021/09/09/albs/</id>
     <published>2021-09-09T05:22:59.000Z</published>
     <updated>2021-09-09T06:32:22.029Z</updated>
     
@@ -286,22 +286,22 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="软件" scheme="https://cycxtit.ga/tags/%E8%BD%AF%E4%BB%B6/"/>
+    <category term="软件" scheme="https://cycxtit.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
     
-    <category term="Windows" scheme="https://cycxtit.ga/tags/Windows/"/>
+    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
-    <category term="推荐" scheme="https://cycxtit.ga/tags/%E6%8E%A8%E8%8D%90/"/>
+    <category term="推荐" scheme="https://cycxtit.github.io/tags/%E6%8E%A8%E8%8D%90/"/>
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="工具" scheme="https://cycxtit.ga/tags/%E5%B7%A5%E5%85%B7/"/>
+    <category term="工具" scheme="https://cycxtit.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   
   <entry>
     <title>键盘记录仪</title>
-    <link href="https://cycxtit.ga/2021/09/09/pyhk-1/"/>
-    <id>https://cycxtit.ga/2021/09/09/pyhk-1/</id>
+    <link href="https://cycxtit.github.io/2021/09/09/pyhk-1/"/>
+    <id>https://cycxtit.github.io/2021/09/09/pyhk-1/</id>
     <published>2021-09-09T04:42:13.000Z</published>
     <updated>2021-09-09T05:18:53.634Z</updated>
     
@@ -317,22 +317,22 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="黑客" scheme="https://cycxtit.ga/tags/%E9%BB%91%E5%AE%A2/"/>
+    <category term="黑客" scheme="https://cycxtit.github.io/tags/%E9%BB%91%E5%AE%A2/"/>
     
-    <category term="Python" scheme="https://cycxtit.ga/tags/Python/"/>
+    <category term="Python" scheme="https://cycxtit.github.io/tags/Python/"/>
     
-    <category term="代码" scheme="https://cycxtit.ga/tags/%E4%BB%A3%E7%A0%81/"/>
+    <category term="代码" scheme="https://cycxtit.github.io/tags/%E4%BB%A3%E7%A0%81/"/>
     
-    <category term="Linux" scheme="https://cycxtit.ga/tags/Linux/"/>
+    <category term="Linux" scheme="https://cycxtit.github.io/tags/Linux/"/>
     
   </entry>
   
   <entry>
     <title>美国v2ray/vmess节点（8.9.2021）</title>
-    <link href="https://cycxtit.ga/2021/09/08/usv2/"/>
-    <id>https://cycxtit.ga/2021/09/08/usv2/</id>
+    <link href="https://cycxtit.github.io/2021/09/08/usv2/"/>
+    <id>https://cycxtit.github.io/2021/09/08/usv2/</id>
     <published>2021-09-08T06:34:15.000Z</published>
     <updated>2021-09-08T06:40:33.261Z</updated>
     
@@ -351,20 +351,20 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="节点" scheme="https://cycxtit.ga/tags/%E8%8A%82%E7%82%B9/"/>
+    <category term="节点" scheme="https://cycxtit.github.io/tags/%E8%8A%82%E7%82%B9/"/>
     
-    <category term="v2ray" scheme="https://cycxtit.ga/tags/v2ray/"/>
+    <category term="v2ray" scheme="https://cycxtit.github.io/tags/v2ray/"/>
     
-    <category term="vmess" scheme="https://cycxtit.ga/tags/vmess/"/>
+    <category term="vmess" scheme="https://cycxtit.github.io/tags/vmess/"/>
     
   </entry>
   
   <entry>
     <title>Telegram代理（8/9/2021）</title>
-    <link href="https://cycxtit.ga/2021/09/08/tgagent/"/>
-    <id>https://cycxtit.ga/2021/09/08/tgagent/</id>
+    <link href="https://cycxtit.github.io/2021/09/08/tgagent/"/>
+    <id>https://cycxtit.github.io/2021/09/08/tgagent/</id>
     <published>2021-09-08T06:06:36.000Z</published>
     <updated>2021-09-08T06:35:49.308Z</updated>
     
@@ -374,20 +374,20 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="Telegram" scheme="https://cycxtit.ga/tags/Telegram/"/>
+    <category term="Telegram" scheme="https://cycxtit.github.io/tags/Telegram/"/>
     
-    <category term="节点" scheme="https://cycxtit.ga/tags/%E8%8A%82%E7%82%B9/"/>
+    <category term="节点" scheme="https://cycxtit.github.io/tags/%E8%8A%82%E7%82%B9/"/>
     
-    <category term="Telegram代理" scheme="https://cycxtit.ga/tags/Telegram%E4%BB%A3%E7%90%86/"/>
+    <category term="Telegram代理" scheme="https://cycxtit.github.io/tags/Telegram%E4%BB%A3%E7%90%86/"/>
     
   </entry>
   
   <entry>
     <title>【Telegram机器人】如何简单制作一个群管理机器人</title>
-    <link href="https://cycxtit.ga/2021/09/07/groupmagrbot/"/>
-    <id>https://cycxtit.ga/2021/09/07/groupmagrbot/</id>
+    <link href="https://cycxtit.github.io/2021/09/07/groupmagrbot/"/>
+    <id>https://cycxtit.github.io/2021/09/07/groupmagrbot/</id>
     <published>2021-09-07T09:24:15.000Z</published>
     <updated>2021-09-08T01:46:35.346Z</updated>
     
@@ -408,19 +408,19 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
     
     
     
-    <category term="IT" scheme="https://cycxtit.ga/tags/IT/"/>
+    <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="Telegram 教程" scheme="https://cycxtit.ga/tags/Telegram-%E6%95%99%E7%A8%8B/"/>
+    <category term="Telegram 教程" scheme="https://cycxtit.github.io/tags/Telegram-%E6%95%99%E7%A8%8B/"/>
     
-    <category term="Telegram 机器人" scheme="https://cycxtit.ga/tags/Telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <category term="Telegram 机器人" scheme="https://cycxtit.github.io/tags/Telegram-%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="电报" scheme="https://cycxtit.ga/tags/%E7%94%B5%E6%8A%A5/"/>
+    <category term="电报" scheme="https://cycxtit.github.io/tags/%E7%94%B5%E6%8A%A5/"/>
     
-    <category term="机器人" scheme="https://cycxtit.ga/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
+    <category term="机器人" scheme="https://cycxtit.github.io/tags/%E6%9C%BA%E5%99%A8%E4%BA%BA/"/>
     
-    <category term="群管理" scheme="https://cycxtit.ga/tags/%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
+    <category term="群管理" scheme="https://cycxtit.github.io/tags/%E7%BE%A4%E7%AE%A1%E7%90%86/"/>
     
-    <category term="随手笔记" scheme="https://cycxtit.ga/tags/%E9%9A%8F%E6%89%8B%E7%AC%94%E8%AE%B0/"/>
+    <category term="随手笔记" scheme="https://cycxtit.github.io/tags/%E9%9A%8F%E6%89%8B%E7%AC%94%E8%AE%B0/"/>
     
   </entry>
   
