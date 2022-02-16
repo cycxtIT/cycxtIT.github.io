@@ -692,4 +692,536 @@ terabox支持谷歌/脸书登录，登录了就会有1TB的容量。
         <tag>云盘</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Pagermaid--TG人形自走机器人</title>
+    <url>/2022/01/30/Pagermaid/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>1.hax续期脚本已更新博客也同步更新</p>
+<p>2.你是否在TG群里看见一些人形如机器人，能-s偷取你的贴纸还能-atll来@群里的全部程成员，这就是今天要介绍的内容，Pagermaid人形自走机器人</p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一台能上TG的VPS，系统最好是Ubuntu20.04，一台能上网的电脑，一个TG账号，还有ssh工具，我推荐FinalShell</p>
+<h2 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h2><p>Pagermaid项目托管在github，所以首先要检查VPS是否安装git软件包，且当git软件包版过低时，无法实现程序的自动更新，所以首先要安装/升级git软件包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install --upgrade git -y</span><br></pre></td></tr></table></figure>
+
+<p>安装完之后从仓库拉取项目</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /var/lib &amp;&amp; git clone https://github.com/Xtao-Labs/PagerMaid-Modify.git pagermaid &amp;&amp; cd pagermaid</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>拉取的项目在文件夹var/lib/pagermaid文件下（不在root文件夹下</p>
+<h2 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h2><h3 id="imagemagick"><a href="#imagemagick" class="headerlink" title="imagemagick"></a>imagemagick</h3><p>此软件包用于处理图片，如您没有图片处理需求，您可以无需安装此软件包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install imagemagick -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="neofetch"><a href="#neofetch" class="headerlink" title="neofetch"></a>neofetch</h3><p>此软件包用于显示系统信息，如您没有显示系统信息需求，您可以无需安装此软件包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install neofetch -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="zbar"><a href="#zbar" class="headerlink" title="zbar"></a>zbar</h3><p>此软件包用于处理二维码信息，如您没有处理二维码信息需求，您可以无需安装此软件包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install libzbar-dev -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="最大化安装"><a href="#最大化安装" class="headerlink" title="最大化安装"></a>最大化安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tesseract-ocr tesseract-ocr-all -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="最小化安装"><a href="#最小化安装" class="headerlink" title="最小化安装"></a>最小化安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>此软件包用于记录信息，以方便软件重启后仍然可以进行上一次未完成的任务，你也可以无需安装此软件包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install redis-server -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pip"><a href="#Pip" class="headerlink" title="Pip"></a>Pip</h3><p>此软件包为必须依赖包，用于安装 python 依赖。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install python3-pip -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>将配置 <code>config.gen.yml</code> 文件复制一份并且命名为 <code>config.yml</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp config.gen.yml config.yml</span><br></pre></td></tr></table></figure>
+
+<p>然后去<a href="https://my.telegram.org/">telegram官网</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130145720068.png" alt="image-20220130145720068">然后点击这个创建</p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130145807677.png" alt="image-20220130145807677"></p>
+<p>信息随便填<img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150030976.png" alt="image-20220130150030976">然后到这个界面，吧app spi_id和hash复制下来，填入api_key和hash</p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150049369.png" alt="image-20220130150049369"></p>
+<p>这是vim编辑器，如果你会你随便</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi config.yml</span><br></pre></td></tr></table></figure>
+
+<p>不会的话就用finalshell，/var/lib/pagermaid</p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150509610.png" alt="image-20220130150509610"></p>
+<p>然后在弹出的对话框修改相应值</p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150619167.png" alt="image-20220130150619167"></p>
+<h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 -m pagermaid</span><br></pre></td></tr></table></figure>
+
+<p>此步需要填入完整的电话号码（eg：<code>+12569986522</code>）然后 tg 会发给你的其他客户端发送验证码，填入验证码后，回车，如有两步验证密码，则再输入两步验证密码即可。现在你可以再任意对话发送  -help获取机器人运行情况</p>
+<h2 id="设置守护进程"><a href="#设置守护进程" class="headerlink" title="设置守护进程"></a>设置守护进程</h2><p>此步骤可以方便 <code>pagermaid</code> 的自动运行，您无需在 <code>pagermaid</code> 意外退出后重新登录主机进行操作。</p>
+<p>停止运行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ctrl + c</span><br></pre></td></tr></table></figure>
+
+<p>然后设置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat &lt;&lt;<span class="string">&#x27;TEXT&#x27;</span> &gt; /etc/systemd/system/pagermaid.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=PagerMaid-Modify telegram utility daemon</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">WorkingDirectory=/var/lib/pagermaid</span><br><span class="line">ExecStart=/usr/bin/python3 -m pagermaid</span><br><span class="line">Restart=always</span><br><span class="line">TEXT</span><br></pre></td></tr></table></figure>
+
+<p>复制以上代码，全部</p>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><p>启动程序：<code>systemctl start pagermaid</code></p>
+<p>设置为开机自启：<code>systemctl enable pagermaid</code></p>
+<p>停止程序：<code>systemctl stop pagermaid</code></p>
+<p>安装插件：<code>-apt install 插件名</code></p>
+<p>帮助：<code>-help</code></p>
+<p>带-的全在TG里输入</p>
+<p>这是插件列表：<a href="https://index.xtaolabs.com/">https://index.xtaolabs.com/</a></p>
+<br>
+<hr>
+转载于 [Imkcp的blog](https://blog.imkcp.xyz/2022/01/30/Pagermaid/)]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>Telegram</tag>
+        <tag>Pagermaid</tag>
+        <tag>好玩项目</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用hax，cf和x-ui搭建免费节点</title>
+    <url>/2022/01/28/haxjd/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我们申请到了hax免费的VPS，那么现在就教大家来搭建节点，如果没有ipv6的话就可以放弃了，估计是用不了</p>
+<h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一个域名，hax vps，一台能上网的设备</p>
+<h2 id="搭建节点"><a href="#搭建节点" class="headerlink" title="搭建节点"></a>搭建节点</h2><h3 id="配置cf"><a href="#配置cf" class="headerlink" title="配置cf"></a>配置cf</h3><p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151451860.png" alt="image-20220128151451860"></p>
+<p>ipv6地址填hax的，切记代理状态一定要打开，这是让cf来接管我们的流量，另外在进入SSL/TLS里的概述，将加密方式改为完全，如图所示<img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128151740935.png" alt="image-20220128151740935"></p>
+<p>然后申请证书，如图所示，然后点击创建就有了，切记要复制下来<img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152028348.png" alt="image-20220128152028348"></p>
+<h3 id="VPS操作"><a href="#VPS操作" class="headerlink" title="VPS操作"></a>VPS操作</h3><h4 id="搭建x-ui"><a href="#搭建x-ui" class="headerlink" title="搭建x-ui"></a>搭建x-ui</h4><p>输入以下命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152236501.png"></p>
+<p>这样就代表成功了</p>
+<p>接着在浏览器地址栏输入 [ipv6地址]:54321进入x-ui的界面ipv6地址替换自己hax的地址，切记，别开代理，默认用户名和密码都是admin，现在就进入了面板<img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128152744588.png" alt="image-20220128152744588"></p>
+<h4 id="配置节点"><a href="#配置节点" class="headerlink" title="配置节点"></a>配置节点</h4><p>进入x-ui面板后点击入站列表，点击蓝色的加号，协议选择vmess，操作如下，然后点击添加<img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153235656.png" alt="image-20220128153235656"></p>
+<p>然后点击查看复制链接，直接复制到v2ray客户端里<img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220128153355311.png"></p>
+<h3 id="测速图"><a href="#测速图" class="headerlink" title="测速图"></a>测速图</h3><p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/second2022-01-28-15-40-05.png" alt="2022-01-28-15-40-05"></p>
+<p>电信300M</p>
+<br>
+<hr>
+转载于 [Imkcp的Blog](https://blog.imkcp.xyz/2022/01/28/haxjd/)]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>节点</tag>
+        <tag>Hax</tag>
+        <tag>VPS</tag>
+        <tag>免费</tag>
+        <tag>Cloudflare</tag>
+        <tag>翻墙</tag>
+        <tag>梯子</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>学习/资源网站</title>
+    <url>/2022/02/14/studyresource/</url>
+    <content><![CDATA[<h2 id="学吧导航"><a href="#学吧导航" class="headerlink" title="学吧导航"></a>学吧导航</h2><p><a href="https://www.xue8nav.com/">https://www.xue8nav.com/</a></p>
+<h2 id="资源导航网站"><a href="#资源导航网站" class="headerlink" title="资源导航网站"></a>资源导航网站</h2><ol>
+<li><p>书享家（电子书资源网站导航）： <a href="http://shuxiangjia.cn/">http://shuxiangjia.cn/</a></p>
+</li>
+<li><p>学吧导航（自学资源网站导航）： <a href="https://www.xue8nav.com/">https://www.xue8nav.com/</a></p>
+</li>
+<li><p>科塔学术（学术资源网站导航）： <a href="https://site.sciping.com/">https://site.sciping.com/</a></p>
+</li>
+<li><p>HiPPTer（PPT资源网站导航）： <a href="http://www.hippter.com/">http://www.hippter.com/</a></p>
+</li>
+<li><p>Seeseed（设计素材资源导航）： <a href="https://www.seeseed.com/">https://www.seeseed.com/</a></p>
+</li>
+</ol>
+<h2 id="工具导航网站"><a href="#工具导航网站" class="headerlink" title="工具导航网站"></a>工具导航网站</h2><ol>
+<li><p>阿猫阿狗导航（互联网工具导航）： <a href="https://dh.woshipm.com/">https://dh.woshipm.com/</a></p>
+</li>
+<li><p>创造狮（互联网工具导航）： <a href="http://chuangzaoshi.com/index">http://chuangzaoshi.com/index</a></p>
+</li>
+<li><p>addog（广告营销工具导航）： <a href="https://www.addog.vip/">https://www.addog.vip/</a></p>
+</li>
+<li><p>199it（数据导航）： <a href="http://hao.199it.com/">http://hao.199it.com/</a></p>
+</li>
+<li><p>雪球导航（财经工具导航）： <a href="https://xueqiu.com/dh">https://xueqiu.com/dh</a></p>
+</li>
+<li><p>打假导航（国家部门导航）： <a href="http://www.dajiadaohang.com/">http://www.dajiadaohang.com/</a></p>
+</li>
+<li><p>搜狗网址导航（地方部门导航）： <a href="http://123.sogou.com/diqu/">http://123.sogou.com/diqu/</a></p>
+</li>
+</ol>
+<h2 id="聚合搜索平台"><a href="#聚合搜索平台" class="headerlink" title="聚合搜索平台"></a>聚合搜索平台</h2><ol>
+<li><p>一个开始： <a href="https://aur.one/">https://aur.one</a> </p>
+</li>
+<li><p>虫部落： <a href="https://search.chongbuluo.com/">https://search.chongbuluo.com/</a></p>
+</li>
+</ol>
+<h2 id="文件共享-一些有用的文件"><a href="#文件共享-一些有用的文件" class="headerlink" title="文件共享  一些有用的文件"></a>文件共享  一些有用的文件</h2><p><a href="https://www.wenshushu.cn/box/2yas6fh1x0n">https://www.wenshushu.cn/box/2yas6fh1x0n</a><br>共 270318 文件，总大小 6.9TB<br>这个好像也是最全的，有音乐，电影，还有一些杂七杂八的书。</p>
+<p><a href="https://www.wenshushu.cn/k/3s7sn4xv958">https://www.wenshushu.cn/k/3s7sn4xv958</a><br>钥匙串取文件 wss:1j7wmCbbQNC4c6zbIYI3rnTZ0bR<br>258662 文件，总大小 5.92TB<br>这个比上一个少了些文件，当一个备用吧。</p>
+<p><a href="https://www.wenshushu.cn/k/3r6nkwwznd8">https://www.wenshushu.cn/k/3r6nkwwznd8</a><br>钥匙串取文件 wss:1ixksTvCRlTD4NO0KUAXO5STuNn<br>共 36120 文件，总大小 1.62TB<br>软件，影视，音乐，教程，看了一下，应该都是免费的。</p>
+<p><a href="https://wwx.lanzoux.com/b0cdvkdfa">https://wwx.lanzoux.com/b0cdvkdfa</a><br>还是有些有用的东西的，有些压缩文件的解压密码是diyiziyuan.cn，他写在了文件夹的说明里，反正要给钱的最好三思一下。</p>
+<p><a href="https://www.wenshushu.cn/box/2ylgjpzumqw">https://www.wenshushu.cn/box/2ylgjpzumqw</a><br>共 17299 文件，总大小 922.05GB<br>依然是与影视，音乐，学习相关的网盘，只不过这个好像就与那个pua网站没什么关系了。</p>
+<p><a href="https://www.wenshushu.cn/box/31xl9pmenod">https://www.wenshushu.cn/box/31xl9pmenod</a><br>共 2035 文件，总大小：27.1GB<br>这个网盘比较偏向一些做文书工作的人，也是比较干净的。</p>
+<p><a href="https://www.wenshushu.cn/f/3yvoreh54ry">https://www.wenshushu.cn/f/3yvoreh54ry</a><br>共 69 文件，总大小 1.91GB<br>一些游戏和网站的源码。</p>
+<p><a href="https://www.wenshushu.cn/box/2y9xxjki7c8">https://www.wenshushu.cn/box/2y9xxjki7c8</a><br>共 2082 文件，总大小 617.53GB<br>大部分都是手机电脑的软件。</p>
+<p><a href="https://www.wenshushu.cn/box/3nwdym50ko8">https://www.wenshushu.cn/box/3nwdym50ko8</a><br>共 368 文件，总大小：102.36GB<br>虽然没分享多少，但也有有意思的东西。</p>
+<p><a href="https://www.wenshushu.cn/box/3jg6qpdm27c">https://www.wenshushu.cn/box/3jg6qpdm27c</a><br>共 36124 文件，总大小 1.62TB<br>这个跟上面那个很像，但是多了4个文件，可以当个备份用。</p>
+<p><a href="https://www.wenshushu.cn/f/4e032v9kjoo">https://www.wenshushu.cn/f/4e032v9kjoo</a><br>共 2851 文件，总大小：11.47GB<br>行业报告相关，随便下了一个压缩包，好像不需要密码，只不过又和那个pua网站有关，如果遇到要给钱的要先想一想。</p>
+<p><a href="https://www.wenshushu.cn/f/4e02wct3mdo">https://www.wenshushu.cn/f/4e02wct3mdo</a><br>共 1955 文件，总大小：2.04TB<br>电影电视剧相关，看看有没有想看的吧。</p>
+<p><a href="https://www.wenshushu.cn/f/4e022fovuoc">https://www.wenshushu.cn/f/4e022fovuoc</a><br>共 4764 文件，总大小：89.91GB<br>关于中国古代的一些事，不过好像有些东西上面那个总的pua网盘好像分享过了，当个备份吧。</p>
+<p><a href="https://ws28.cn/f/4e03rvczcb0">https://ws28.cn/f/4e03rvczcb0</a><br>共 7618 文件，总大小：872.06GB<br>终身学习，加一些影视，上面的总pua网盘分享过的，当备份。</p>
+<p><a href="https://ws28.cn/f/4e02humbs3w">https://ws28.cn/f/4e02humbs3w</a><br>共 370 文件，总大小：757.31MB<br>营销，上面的总pua网盘分享过的，当备份。</p>
+<p><a href="https://www.wenshushu.cn/box/42r86fv95ri">https://www.wenshushu.cn/box/42r86fv95ri</a><br>共 709 文件，总大小：22.01GB<br>一些手机软件的分类，可以看看。</p>
+<p><a href="https://www.wenshushu.cn/f/3kmmrpukz64">https://www.wenshushu.cn/f/3kmmrpukz64</a><br>共 9320 文件，总大小 11.04GB<br>书籍，而且好像没那个总网盘全，可以当备份。</p>
+<p>转载于<a href="https://ednovas.xyz/">Ednovas的小站</a></p>
+]]></content>
+      <categories>
+        <category>网站</category>
+      </categories>
+      <tags>
+        <tag>网站</tag>
+        <tag>学习</tag>
+        <tag>资源</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Yandex 免费域名邮箱和配置SMTP</title>
+    <url>/2022/02/16/yandexdomainmail/</url>
+    <content><![CDATA[<p>Outlook e5 a1 a1p等订阅可以自定义域名，但是比较复杂或者需要一些特殊手段，但是yandex mail提供免费的域名邮箱服务。这项服务叫做Yandex Connect，免费提供1000个子邮箱，每个子邮箱10G容量。查阅过官方文档，并没有找到明确解释，但是外网网友据说每个邮箱有每天3000封邮件的发件限制，相比QQ、Gmail这些只有每日500封的已经很厉害了。而且注册极其容易。此外还有SPF/DIKM配置能十分有效的防止邮件进入垃圾箱的概率。</p>
+<h2 id="注册主账号"><a href="#注册主账号" class="headerlink" title="注册主账号"></a>注册主账号</h2><p>就类似Office E5一样，需要一个主要的管理员账户，就是直接去yandex官网注册个即可 </p>
+<p><a href="https://passport.yandex.com/registration">https://passport.yandex.com/registration</a></p>
+<p>可以使用手机号或者安全问题两种方式注册，实测国内 +86 手机号可以验证。GV貌似也可行。</p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p><a href="https://connect.yandex.com/pdd/">https://connect.yandex.com/pdd/</a></p>
+<p>上述链接是原来的界面，但是现在yandex connect改版了，免费的yandex connect入口被藏起来了，需要去</p>
+<p><a href="https://connect.yandex.com/portal/admin/domains">https://connect.yandex.com/portal/admin/domains</a> 页面，然后就会提示你的账户还不是yandex connect计划，这样就可以选择直接加入免费的yandex connect计划（右上角账户那个地方确认加入yandex connect）。</p>
+<p><a href="https://admin.yandex.ru/">https://admin.yandex.ru/</a> 页面可以再次回到管理页面（类似Microsoft Admin一样）</p>
+<h2 id="验证域名"><a href="#验证域名" class="headerlink" title="验证域名"></a>验证域名</h2><p>你可以直接更改 ns 记录到yandex的（不推荐）</p>
+<p>或者</p>
+<p>使用dns验证，按照他的要求配置域名的MX记录、SPF 与 DKIM的TXT记录</p>
+<p>直到显示如下图所示的 Domain Configured 即全部完成了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-38-56.jpg"></p>
+<h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>Users内添加用户即可，Language记得选择English，除非你看的懂俄文。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-40-14.jpg"></p>
+<p>这样就可以设置为管理员用户了，下次就可以直接用这个账户登录<a href="https://admin.yandex.ru/">admin页面</a>了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-42-26.jpg"></p>
+<h2 id="配置SMTP"><a href="#配置SMTP" class="headerlink" title="配置SMTP"></a>配置SMTP</h2><p>转到Email中，选择设置，然后Email clients，把 <code>From the imap.yandex.com server via IMAP</code> 和 <code>App passwords and OAuth tokens</code> 打开并保存。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-44-50.jpg"></p>
+<p>右上角选择账户管理</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-46-17.jpg"></p>
+<p>往下拉，选择 <code>Passwords and authorization</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-47-54.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-48-15.jpg"></p>
+<p>创建APP 密钥，一定要保存下来。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-48-37.jpg"></p>
+<p>配置SMTP的话，就是</p>
+<p>SMTP服务器地址：smtp.yandex.com</p>
+<p>SMTP端口：465</p>
+<p>SMTP加密方式：SSL</p>
+<p>SMTP账户：你的yandex邮箱（确保mail的设置中开启了IMAP）</p>
+<p>SMTP密码：你刚刚设置的APP Passwords  </p>
+<p>转载于 <a href="https://ednovas.xyz/">Ednovas的博客</a></p>
+]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>Yandex</tag>
+        <tag>域名邮箱</tag>
+        <tag>邮箱</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Freenom 域名自动续期bot</title>
+    <url>/2022/02/16/freenomextend/</url>
+    <content><![CDATA[<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p><a href="https://github.com/luolongfei/next-freenom">https://github.com/luolongfei/next-freenom</a></p>
+<h2 id="docker部署（最方便）"><a href="#docker部署（最方便）" class="headerlink" title="docker部署（最方便）"></a>docker部署（最方便）</h2><h3 id="基础设置"><a href="#基础设置" class="headerlink" title="基础设置"></a>基础设置</h3><p>升级源和软件并安装wget和vim</p>
+<p>然后自动安装docker</p>
+<p>Debian/Ubunt:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt-get update &amp;&amp; apt-get install -y wget vim</span><br><span class="line">wget -qO- get.docker.com | bash</span><br></pre></td></tr></table></figure>
+
+<p>CentOS:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum update &amp;&amp; yum install -y wget vim</span><br></pre></td></tr></table></figure>
+
+<p>请使用 KVM 架构的 VPS，OpenVZ 架构的 VPS 不支持安装 Docker，另外 CentOS 8 不支持用此脚本来安装 Docker。 更多关于 Docker 安装的内容参考 <a href="https://docs.docker.com/engine/install/">Docker 官方安装指南</a> 。</p>
+<p>检查docker是否安装成功并已经添加环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker version</span><br></pre></td></tr></table></figure>
+
+<p>启动 Docker 服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+
+
+<p>查看 Docker 运行状态</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl status docker</span><br></pre></td></tr></table></figure>
+
+
+<p>将 Docker 服务加入开机自启动</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="用-Docker-创建并启动容器"><a href="#用-Docker-创建并启动容器" class="headerlink" title="用 Docker 创建并启动容器"></a>用 Docker 创建并启动容器</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d --name freenom --restart always -v $(pwd):/conf -v $(pwd)/logs:/app/logs luolongfei/freenom</span><br></pre></td></tr></table></figure>
+
+<p>或者，如果你想自定义脚本执行时间，则命令如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -d --name freenom --restart always -v $(pwd):/conf -v $(pwd)/logs:/app/logs -e RUN_AT=&quot;11:24&quot; luolongfei/freenom</span><br></pre></td></tr></table></figure>
+
+
+<p>上面这条命令只比上上条命令多了个 -e RUN_AT=”11:24”，其中11:24表示在北京时间每天的 11:24 执行续期任务，你可以自定义这个时间。 这里的RUN_AT参数同时也支持 CRON 命令里的时间形式，比如， -e RUN_AT=”9 11 * * *”，表示每天北京时间 11:09 执行续期任务， 如果你不想每天执行任务，只想隔几天执行，只用修改RUN_AT的值即可。</p>
+<p>注意：不推荐自定义脚本执行时间。因为你可能跟很多人定义的是同一个时间点，这样可能导致所有人都是同一时间向 Freenom 的服务器发起请求， 使得 Freenom 无法稳定提供服务。而如果你不自定义时间，程序会自动指定北京时间 06 ~ 23 点全时段随机的一个时间点作为执行时间， 每次重启容器都会自动重新指定。</p>
+<p>上方 Docker 命令的参数解释</p>
+<table>
+<thead>
+<tr>
+<th align="left">命令</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">docker run</td>
+<td align="left">开始运行一个容器</td>
+</tr>
+<tr>
+<td align="left">-d 参数</td>
+<td align="left">容器以后台运行并输出容器 ID</td>
+</tr>
+<tr>
+<td align="left">–name 参数</td>
+<td align="left">给容器分配一个识别符，方便将来的启动，停止，删除等操作</td>
+</tr>
+<tr>
+<td align="left">–restart 参数</td>
+<td align="left">配置容器启动类型，always 即为 docker 服务重新启动时自动启动本容器</td>
+</tr>
+<tr>
+<td align="left">-v 参数</td>
+<td align="left">挂载卷（volume），冒号后面是容器的路径，冒号前面是宿主机的路径（只支持绝对路径），$(pwd)表示当前目录</td>
+</tr>
+<tr>
+<td align="left">-e 参数</td>
+<td align="left">指定容器中的环境变量</td>
+</tr>
+<tr>
+<td align="left">luolongfei/freenom</td>
+<td align="left">这是从 docker hub 下载回来的镜像完整路径名</td>
+</tr>
+</tbody></table>
+<p>执行<code>ls -a</code>后你就可以看到在你的当前目录下，有一个.env文件和一个logs目录，logs目录里面存放的是程序日志， 而.env则是配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim .env</span><br></pre></td></tr></table></figure>
+
+<p>修改.env内的配置信息然后重启容器</p>
+<table>
+<thead>
+<tr>
+<th align="left">变量名</th>
+<th align="left">含义</th>
+<th align="left">默认值</th>
+<th align="left">是否必须</th>
+<th align="left">备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">FREENOM_USERNAME</td>
+<td align="left">Freenom 账户</td>
+<td align="left">-</td>
+<td align="left">是</td>
+<td align="left">只支持邮箱账户，如果你是使用第三方社交账户登录的用户，请在 Freenom 管理页面绑定邮箱，绑定后即可使用邮箱账户登录</td>
+</tr>
+<tr>
+<td align="left">FREENOM_PASSWORD</td>
+<td align="left">Freenom 密码</td>
+<td align="left">-</td>
+<td align="left">是</td>
+<td align="left">某些特殊字符可能需要转义，详见.env文件内注释</td>
+</tr>
+<tr>
+<td align="left">MULTIPLE_ACCOUNTS</td>
+<td align="left">多账户支持</td>
+<td align="left">-</td>
+<td align="left">否</td>
+<td align="left">多个账户和密码的格式必须是“&lt;账户1&gt;@&lt;密码1&gt;</td>
+</tr>
+<tr>
+<td align="left">MAIL_USERNAME</td>
+<td align="left">机器人邮箱账户</td>
+<td align="left">-</td>
+<td align="left">是</td>
+<td align="left">支持Gmail、QQ邮箱以及163邮箱，尽可能使用163邮箱或者QQ邮箱而非Gmail。因为谷歌的安全机制，每次在新设备登录 Gmail 都会先被限制，需要手动解除限制才行。具体的配置方法参考「 配置发信邮箱 」</td>
+</tr>
+<tr>
+<td align="left">MAIL_PASSWORD</td>
+<td align="left">机器人邮箱密码</td>
+<td align="left">-</td>
+<td align="left">是</td>
+<td align="left">Gmail填密码，QQ邮箱或163邮箱填授权码</td>
+</tr>
+<tr>
+<td align="left">TO</td>
+<td align="left">接收通知的邮箱</td>
+<td align="left">-</td>
+<td align="left">是</td>
+<td align="left">你自己最常用的邮箱，推荐使用QQ邮箱，用来接收机器人邮箱发出的域名相关邮件</td>
+</tr>
+<tr>
+<td align="left">MAIL_ENABLE</td>
+<td align="left">是否启用邮件推送功能</td>
+<td align="left">true</td>
+<td align="left">否</td>
+<td align="left">true：启用 false：不启用 默认启用，如果设为false，不启用邮件推送功能，则上面的MAIL_USERNAME、MAIL_PASSWORD、TO变量变为非必须，可不设置</td>
+</tr>
+<tr>
+<td align="left">TELEGRAM_CHAT_ID</td>
+<td align="left">你的chat_id</td>
+<td align="left">-</td>
+<td align="left">否</td>
+<td align="left">通过发送/start给@userinfobot可以获取自己的id</td>
+</tr>
+<tr>
+<td align="left">TELEGRAM_BOT_TOKEN</td>
+<td align="left">你的Telegram bot的token</td>
+<td align="left">-</td>
+<td align="left">否</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">TELEGRAM_BOT_ENABLE</td>
+<td align="left">是否启用Telegram Bot推送功能</td>
+<td align="left">false</td>
+<td align="left">否</td>
+<td align="left">true：启用 false：不启用 默认不启用，如果设为true，则必须设置上面的TELEGRAM_CHAT_ID和TELEGRAM_BOT_TOKEN变量</td>
+</tr>
+<tr>
+<td align="left">NOTICE_FREQ</td>
+<td align="left">通知频率</td>
+<td align="left">1</td>
+<td align="left">否</td>
+<td align="left">0：仅当有续期操作的时候 1：每次执行</td>
+</tr>
+</tbody></table>
+<p>修改并保存.env文件后，执行<code>docker restart freenom</code>重启容器，等待 5 秒钟左右</p>
+<p>然后执行<code>docker logs freenom</code>查看输出内容</p>
+<p>输出内容中有执行成功字样，则表示配置无误。</p>
+<h3 id="其他docker常用命令"><a href="#其他docker常用命令" class="headerlink" title="其他docker常用命令"></a>其他docker常用命令</h3><p>查看容器在线状态及大小</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker ps -as</span><br></pre></td></tr></table></figure>
+
+<p>查看容器的运行输出日志</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker logs freenom</span><br></pre></td></tr></table></figure>
+
+
+<p>重新启动容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker restart freenom</span><br></pre></td></tr></table></figure>
+
+<p>停止容器的运行</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker stop freenom</span><br></pre></td></tr></table></figure>
+
+<p>移除容器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker rm $name</span><br></pre></td></tr></table></figure>
+
+<p>查看 docker 容器占用 CPU，内存等信息</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker stats --no-stream</span><br></pre></td></tr></table></figure>
+
+<h2 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h2><p>@ednovas_freenom_bot  </p>
+<p>转载于 <a href="https://ednovas.xyz/">Ednovas的博客</a></p>
+]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>Freenom</tag>
+        <tag>免费域名</tag>
+        <tag>续期</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搜索引擎列表</title>
+    <url>/2022/02/15/search-engines-list/</url>
+    <content><![CDATA[<blockquote>
+<p>转载自 Aegisprogram <a href="https://aegisprogram.github.io/posts/3038875764.html">https://aegisprogram.github.io/posts/3038875764.html</a></p>
+</blockquote>
+<p>搜索引擎已经成为我们上网活动中必不可少的一部分，像大家熟知的国外的Google，中国的百度，这些都已经成为人们从网上获取信息的重要工具。很多人苦于百度的广告，但是又对国内无法使用Google搜索而感到无奈（科学上网有一定的门槛，所以只有少部分人才会的）。搜索引擎发展至今，到现在搜索引擎市场也诞生了不少的“优秀分子”，下面我将对这些搜索引擎进行盘点。</p>
+<p>提示：下面的搜索引擎盘点中并不会包含百度等其他的一些国内的乱七八糟的搜索引擎，国内百度并不是说不能用，只是觉得我要的信息是要在广告里面找出来的，这很耽误时间。其他的像360搜索之类的搜索服务做的还不如百度，也就没有列举的必要了。</p>
+<span id="more"></span>
+
+<h2 id="Magi"><a href="#Magi" class="headerlink" title="Magi"></a><a href="https://magi.com/">Magi</a></h2><p>Magi 是由 Peak Labs研发的基于机器学习的信息抽取和检索系统，它能将任何领域的自然语言文本中的知识提取成结构化的数据，通过终身学习持续聚合和纠错，进而为人类用户和其他人工智能提供<strong>可解析</strong>、<strong>可检索</strong>、<strong>可溯源</strong>的知识体系。</p>
+<p>总而言之一句话，基于机器学习的搜索引擎。提供结果的同时还会列举出自己的学习来源。在国内来说值得一试。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/magi.242eccywj7wg.png" alt="image"></p>
+<h2 id="Bing"><a href="#Bing" class="headerlink" title="Bing"></a>Bing</h2><p>国内版/大陆国际版：<a href="https://cn.bing.com/">https://cn.bing.com</a></p>
+<p>原生bing：<a href="https://www.bing.com/">https://www.bing.com</a></p>
+<p>相信你已经看出来了，是的，bing虽说有三个版本，但是上面两个版本是大陆的定制版，搜索页面下方是有公安备案的，海外原生bing是没有备案的，这是两者外观上很显著的差别。当大陆地区使用bing的时候，就会被强制重定向到cn.bing.com——也就是国内定制版bing。但是，虽说是大陆定制版，搜索的效率和结果比百度逊色不了多少，而且结果中广告更少。在国内不失为一个好用的搜索引擎。</p>
+<p>关于两者的域名问题可以查阅<a href="https://zh.wikipedia.org/zh-cn/Microsoft_Bing#%E5%9F%9F%E5%90%8D">这里</a></p>
+<p>两者之间的区别则可以查阅<a href="https://zh.wikipedia.org/zh-cn/Microsoft_Bing#%E7%BD%91%E7%BB%9C%E5%AE%A1%E6%9F%A5">这里</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/bing.72texs8qw440.png" alt="image"></p>
+<p>注意：下面的搜索引擎大多数国内都无法访问，如果点击链接没有打开页面，那就证明已经被GFW拦截了。</p>
+<h2 id="Google"><a href="#Google" class="headerlink" title="Google"></a><a href="https://www.google.com/">Google</a></h2><p>海外使用人数最大的搜索引擎，搜索引擎界的老大哥。搜索效率高，广告少，准确率高。但是国内大陆地区无法访问和使用。但是会追踪用户，分析用户行为，收集用户信息用于投放广告。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/google.247io1p259ds.png" alt="image"></p>
+<h2 id="DuckDuckgo"><a href="#DuckDuckgo" class="headerlink" title="DuckDuckgo"></a><a href="https://duckduckgo.com/">DuckDuckgo</a></h2><p>注重用户隐私，及避免<a href="https://zh.wikipedia.org/wiki/%E4%B8%AA%E6%80%A7%E5%8C%96%E6%A3%80%E7%B4%A2">个性化检索</a>所致的<a href="https://zh.wikipedia.org/wiki/%E9%81%8E%E6%BF%BE%E6%B0%A3%E6%B3%A1">过滤气泡</a>，它与其他搜索引擎不同的地方在于其不会分析自己的用户、对所有使用同一组关键词的用户显示同样的结果。它也强调返回最佳结果，而不是最多网站链接的结果。之前国内的多吉搜索也是这般倡导不打扰，不追踪，但是在今年两会期间就凉了，类似的还有秘迹搜索。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/duckduckgo.3n8bhbvjyjk0.png" alt="image"></p>
+<h2 id="Startpage"><a href="#Startpage" class="headerlink" title="Startpage"></a><a href="https://www.startpage.com/">Startpage</a></h2><p>Startpage为一荷兰公司Startpage B.V.所推出的搜寻引擎服务,Startpage后台使用Google搜索API，所以具有跟Google本身相同的搜索质量。但是它发给Google服务器的只有搜索关键字，Google不会获取到除此以外的<a href="https://zh.wikipedia.org/wiki/HTTP%E5%A4%B4%E5%AD%97%E6%AE%B5">头字段</a>和<a href="https://zh.wikipedia.org/wiki/Cookie">cookie</a>等信息。因此，startpage在用户隐私保护方面同样出色。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/startpage.43l4t8mgf140.png" alt="image"></p>
+<h2 id="Qwant"><a href="#Qwant" class="headerlink" title="Qwant"></a><a href="https://www.qwant.com/">Qwant</a></h2><p>Qwant是由法国打造专业搜索引擎的法国企业Pertimm和信息安全专家ÉricLeandri合作创建的一个搜索引擎，以15种语言面向35个国家开放。Qwant执行非常严格的隐私条例，保证绝不获取使用者的任何信息，也不会在用户浏览网站时，搭载任何可能泄露使用者身份及位置的Cookies（小型文本）文件。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/qwant.1wkib4tta1ds.png" alt="image"></p>
+<h2 id="Ecosia"><a href="#Ecosia" class="headerlink" title="Ecosia"></a><a href="https://www.ecosia.org/">Ecosia</a></h2><p>Ecosia是一个总部位于德国柏林的搜索引擎，他们将至少80%的利润捐赠给非营利利组织，用于种植树木。Ecosia致力于保护用户隐私。搜索会被加密，不会永久存储，Ecosia也不会将数据出售给第三方广告商。Ecosia在隐私政策中声明，它不创建基于搜索历史记录的个人配置文件，也不使用任何诸如<a href="https://zh.wikipedia.org/wiki/Google%E5%88%86%E6%9E%90">Google分析</a>的外部跟踪工具。截止2020年7月，Ecosia种植的树木总数已超过1亿株，每月从大气中吸收超过5万吨的二氧化碳。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/ecosia.14vmmg743oh.png" alt="image"></p>
+<h2 id="Metager"><a href="#Metager" class="headerlink" title="Metager"></a><a href="https://metager.org/">Metager</a></h2><p>MetaGer是基于德国的基于隐私的搜索引擎。与“startpage”一样，MetaGer也使用代理服务器技术在访问网站时隐藏用户的位置。在MetaGer上搜索字词时，用户会在每个结果下方看到一个名为“匿名打开”的附加选项。”单击后，MetaGer将设置代理服务器并通过它定向到你想要的网站。因为MetaGer是查询的来源，所以用户的访问仍然是匿名的,同时MetaGer是以捐赠为支持的非营利组织。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/metager.2q8xw6no3a80.png" alt="image"></p>
+<h2 id="peeker"><a href="#peeker" class="headerlink" title="peeker"></a><a href="https://peekier.com/">peeker</a></h2><p> Peeker 是一种搜索网页的新方法。 在尊重你隐私的搜索引擎上快速安全地查看搜索结果。与一般搜索引擎不同的是，peeker采用宫格图方式展现搜索结果，这样的方式有利于用户预览网页内容。同时也是具有严格的隐私政策。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/peeker.646yj12q8ao0.png" alt="image"></p>
+<h2 id="Searx"><a href="#Searx" class="headerlink" title="Searx"></a>Searx</h2><p>Searx，一个基于<code>Python</code>的完全开源免费搜索引擎平台，为你提供来自Google、Bing、Yahoo等<code>70</code>多种各大视频、图片、搜索、磁力等网站结果展示，并对搜索结果进行优化，同时不会存储你的任何搜索信息。支持用户自行<a href="https://searx.github.io/searx/">安装搭建</a>。如果自己暂时没有这个想法或者能力地话，那么这里有一份searx的<a href="https://searx.space/">公开站台</a>可以使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/Searx.2k6cnfg74du0.png" alt="image"></p>
+<h2 id="Yacy"><a href="#Yacy" class="headerlink" title="Yacy"></a><a href="https://yacy.net/">Yacy</a></h2><p>YaCy是一个基于<a href="https://zh.wikipedia.org/zh/%E5%B0%8D%E7%AD%89%E7%B6%B2%E8%B7%AF">p2p</a>的分布式开源免费的网页搜索引擎系统，任何人都可以用YaCy为自己建立个人的搜索门户，以实现信息的自由共享。YaCy采用多种机制保护用户的隐私，YaCy网络基于<a href="https://zh.wikipedia.org/wiki/%E7%82%B9%E5%AF%B9%E7%82%B9">点对点</a>连接，而不是通过中央服务器进行搜索查询，保证内容不被审查，而且所有的搜索请求都被加密，搜索结果不会被中央服务器记录和分析。由于该搜索引擎是基于Java语言进行开发的，所以安装Yacy程序之前必须保证自己的电脑已经安装了Java。总的来说，这个搜索引擎对于新手极为不友好，上手难度高，门槛高，但是搜索能力和隐私保护能力却是一流的。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/yacy.cam0rp26uls.png" alt="image"></p>
+<h2 id="Yandex"><a href="#Yandex" class="headerlink" title="Yandex"></a><a href="https://yandex.com/">Yandex</a></h2><p>Yandex搜索引擎是俄罗斯Yandex公司开发的一款搜索引擎，Yandex是目前世界第五大搜索引擎，在俄国内拥有逾60%的市场占有率，也是欧洲市场上较为流行的搜索引擎。由于搜索引擎结果经常会混杂大量的俄语，所以对于中文用户来说体验并不算太好。但是，国内似乎可以正常地访问。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/Yandex.6qn1wyl5n0c0.png" alt="image"></p>
+<h2 id="OneSearch"><a href="#OneSearch" class="headerlink" title="OneSearch"></a><a href="https://www.onesearch.com/">OneSearch</a></h2><p>OneSearch实际上并不是一款全新的搜索引擎，相反，它是一个基于微软Bing定制的搜索引擎。 这款引擎的主要亮点是它不会对用户进行追踪、储存他们的数据或跟广告商分享用户个人或搜索数据。换言之，用户的个人信息基本不会被出售第三方。但是OneSearch也依赖广告盈利。不过它不是根据cookie或用户浏览历史而是通过搜索关键字等因素显示情景广告。如果使用了高级隐私模式的用户，该搜索引擎的结果链接将会在一小时后失效。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/onesearch.2uuk33zgnu00.png" alt="image"></p>
+<h2 id="BraveSearch"><a href="#BraveSearch" class="headerlink" title="BraveSearch"></a><a href="https://search.brave.com/">BraveSearch</a></h2><p>这是brave公司刚推出不久的搜索引擎，目前还是beta阶段，对于中文的部分检索词不是很准确。但是界面美观，没有明显的广告，不分析用户行为，也不追踪用户，也是一款注重用户隐私的搜索引擎。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/brave.2d9fmzrypglc.png" alt="image"></p>
+<h2 id="Oscobo"><a href="#Oscobo" class="headerlink" title="Oscobo"></a><a href="https://www.oscobo.com/">Oscobo</a></h2><p>Oscobo是专门为了保护用户隐私而创立的搜索引擎，它不会跟踪用户信息。对用户的搜索字词完全加密，因此只有用户自己知道搜索的内容，对于中文搜索也算还可以，值得试试。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/oscobo.4kp4hbvgdsw0.png" alt="image"></p>
+<h2 id="Discrete-Search"><a href="#Discrete-Search" class="headerlink" title="Discrete Search "></a><a href="https://www.discretesearch.com/">Discrete Search </a></h2><p>Discrete Search 是一种元搜索引擎，不会跟踪任何可识别的信息。对于那些以干净和用户友好的形式寻求快速结果的人来说，这是一个不错的选择。它使用端到端加密来使您的搜索尽可能保密。但是对于中文搜索极为不友好，不适合用来检索中文关键词。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/discretes.9io5a2lowag.png" alt="image"></p>
+<h2 id="Swisscows"><a href="#Swisscows" class="headerlink" title="Swisscows"></a><a href="https://swisscows.com/">Swisscows</a></h2><p>这是一款由瑞士Hulbee AG 科技公司开发的语义搜索引擎，它使用人工智能和机器学习来评估用户搜索的上下文，同时与前面的隐私保护搜索引擎一样，它并不会收集用户的任何信息，对于中文关键词检索的支持也很友好。唯一的问题就是搜索引擎主页有广告。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/swisscows.gmhadb26sns.png" alt="image"></p>
+<h2 id="gibiru"><a href="#gibiru" class="headerlink" title="gibiru"></a><a href="https://gibiru.com/">gibiru</a></h2><p>Gibiru 是从改进的 Google 算法中获取搜索结果，为用户提供可靠的结果。它不会在您的系统上安装各种个性化和跟踪 cookie。同样也是注重用户隐私的搜索引擎。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/gibiru.37gkptk7mmu0.png" alt="image"></p>
+<h2 id="Search-Encrypt"><a href="#Search-Encrypt" class="headerlink" title="Search Encrypt"></a><a href="https://www.searchencrypt.com/home">Search Encrypt</a></h2><p>Search Encrypt 使用本地加密来保护您的搜索。它结合了 AES-256 加密和安全套接字层加密。搜索加密然后从其搜索合作伙伴网络中检索您的搜索结果。完成搜索后，即使其他人可以访问您的计算机，您的搜索字词也会过期，因此它们是私密的，用户无需担心自己的搜索内容被他人窥探。唯一的不足就是搜索引擎主页有广告存在。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/ilemonEllen/image_github@master/blog_image/search.264xomzokly8.png" alt="image"></p>
+<p>从效率上来说：在海量信息时代，一个优秀的搜索引擎总是能让我们事半功倍。</p>
+<p>从安全隐私上来说：在互联网公司虎视眈眈下，一个注重用户隐私的搜索引擎能在我们保护个人隐私时助我们一臂之力。</p>
+<p>我没法说哪一个搜索引擎是最优秀的，因为它们各有千秋，我们各取所需。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>相关词条参考于维基百科同名词条以及各自的官方说明文档/博客。  </p>
+<p>转载于 <a href="https://ednovas.xyz/">Ednovas的小站</a></p>
+]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>search</tag>
+        <tag>搜索</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>搭建度盘链接解析网站</title>
+    <url>/2022/01/30/pandownphp/</url>
+    <content><![CDATA[<h1 id="GitHub开源项目地址：https-github-com-yuantuo666-baiduwp-php-感谢大佬开源！"><a href="#GitHub开源项目地址：https-github-com-yuantuo666-baiduwp-php-感谢大佬开源！" class="headerlink" title="GitHub开源项目地址：https://github.com/yuantuo666/baiduwp-php 感谢大佬开源！"></a>GitHub开源项目地址：<a href="https://github.com/yuantuo666/baiduwp-php">https://github.com/yuantuo666/baiduwp-php</a> 感谢大佬开源！</h1><h2 id="安装宝塔"><a href="#安装宝塔" class="headerlink" title="安装宝塔"></a>安装宝塔</h2><p>Centos安装命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<p>试验性Centos/Ubuntu/Debian安装命令 独立运行环境（py3.7） 可能存在少量兼容性问题 不断优化中  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl -sSO http://download.bt.cn/install/install_panel.sh &amp;&amp; bash install_panel.sh</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu/Deepin安装命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>Debian安装命令：<br><code>wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh</code></p>
+<p>Fedora安装命令:<br><code>wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; bash install.sh</code></p>
+<p>安装网站配置相关（默认配置极速安装即可）</p>
+<h2 id="网站证书"><a href="#网站证书" class="headerlink" title="网站证书"></a>网站证书</h2><p>宝塔网站内添加已经解析了的域名，并申请SSL证书，强制启用https</p>
+<h2 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h2><p><a href="https://github.com/yuantuo666/baiduwp-php">https://github.com/yuantuo666/baiduwp-php</a></p>
+<p>前往release复制安装包地址，宝塔网站目录下远程下载，并解压</p>
+<p>或者在ssh中使用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/yuantuo666/baiduwp-php.git</span><br></pre></td></tr></table></figure>
+<p>下载源码到网站目录，并解压</p>
+<h2 id="获取SVIP-cookies"><a href="#获取SVIP-cookies" class="headerlink" title="获取SVIP cookies"></a>获取SVIP cookies</h2><p>登录百度网盘网页版，点击小锁，获取 cookie 中的 </p>
+<p>baidu.com 下的 BDUSS 和 pan.baidu.com 下的 STOKEN </p>
+<p>获取域名错误可能导致账号无法正常登录</p>
+<h2 id="修改源码配置文件"><a href="#修改源码配置文件" class="headerlink" title="修改源码配置文件"></a>修改源码配置文件</h2><p>config.php 中，按照要求把非SVIP账号的BDUSS和STOKEN输入进去（这里直接用SVIP账号也可以）</p>
+<p>SVIP_BDUSS 复制上SVIP的BUDSS</p>
+<p>可以设置解析密码</p>
+<h2 id="数据库​"><a href="#数据库​" class="headerlink" title="数据库​"></a>数据库​</h2><p>最新两个版本支持导入sql数据库，用于方便添加更多SVIP账号并且自动检测限速。</p>
+<h2 id="Demo（找网站的直接看这里）"><a href="#Demo（找网站的直接看这里）" class="headerlink" title="Demo（找网站的直接看这里）"></a>Demo（找网站的直接看这里）</h2><p>请勿分享，还请自用</p>
+<p><a href="https://pan.ednovas.xyz/">https://pan.ednovas.xyz/</a></p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>IDM 选项 -&gt; 下载 -&gt; 手动添加任务时使用的用户代理（UA） -&gt; 填入 <code>LogSta­tis­tic</code></p>
+<p><a href="/2020/12/21/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8B%E8%BD%BD%E3%80%81%E8%A7%86%E9%A2%91%E6%8A%93%E5%8F%96%E8%BD%AF%E4%BB%B6idm">IDM使用指南</a></p>
+<p>推荐直接使用Aria2下载</p>
+<p><a href="/2020/12/21/%E9%AB%98%E9%80%9F%E8%BD%BB%E9%87%8F%E4%B8%8B%E8%BD%BD%E5%99%A8aria2">aria2使用指南</a></p>
+<blockquote>
+<p>参考文章 <a href="https://github.com/yuantuo666/baiduwp-php">https://github.com/yuantuo666/baiduwp-php</a> <a href="https://betterman.xyz/455.html">https://betterman.xyz/455.html</a></p>
+</blockquote>
+<p>转载于 <a href="https://ednovas.xyz/">Ednovas的小站</a></p>
+]]></content>
+      <categories>
+        <category>下载</category>
+        <category>建站</category>
+      </categories>
+      <tags>
+        <tag>IT</tag>
+        <tag>网盘</tag>
+        <tag>百度</tag>
+        <tag>解析</tag>
+      </tags>
+  </entry>
 </search>
