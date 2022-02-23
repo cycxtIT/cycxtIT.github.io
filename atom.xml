@@ -6,7 +6,7 @@
   <link href="https://cycxtit.github.io/atom.xml" rel="self"/>
   
   <link href="https://cycxtit.github.io/"/>
-  <updated>2022-02-22T09:12:58.463Z</updated>
+  <updated>2022-02-23T08:25:10.855Z</updated>
   <id>https://cycxtit.github.io/</id>
   
   <author>
@@ -21,17 +21,14 @@
     <link href="https://cycxtit.github.io/2022/02/22/cmdssh/"/>
     <id>https://cycxtit.github.io/2022/02/22/cmdssh/</id>
     <published>2022-02-22T07:27:48.000Z</published>
-    <updated>2022-02-22T09:12:58.463Z</updated>
+    <updated>2022-02-23T08:25:10.855Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;虽然说使用命令提示符来连接SSH感觉有点辣鸡，因为命令提示符连接ssh没有其他出色的功能…  &lt;/p&gt;
-&lt;p&gt;但是有些人的电脑配置或者电脑空间或内存不足无法下载SSH连接VPS工具  &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;如果没有需要用到的话，建议大家使用</summary>
+    <summary type="html">&lt;h2 id=&quot;注意&quot;&gt;&lt;a href=&quot;#注意&quot; class=&quot;headerlink&quot; title=&quot;注意&quot;&gt;&lt;/a&gt;注意&lt;/h2&gt;&lt;p&gt;虽然说使用命令提示符来连接SSH感觉有点辣鸡，因为命令提示符连接ssh没有其他出色的功能… </summary>
         
       
     
@@ -39,8 +36,6 @@
     
     
     <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
-    
-    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
     <category term="Linux" scheme="https://cycxtit.github.io/tags/Linux/"/>
     
@@ -51,6 +46,8 @@
     <category term="微软" scheme="https://cycxtit.github.io/tags/%E5%BE%AE%E8%BD%AF/"/>
     
     <category term="SSH" scheme="https://cycxtit.github.io/tags/SSH/"/>
+    
+    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
   </entry>
   
@@ -190,11 +187,11 @@
     <category term="学习" scheme="https://cycxtit.github.io/categories/%E7%BD%91%E7%AB%99/%E5%AD%A6%E4%B9%A0/"/>
     
     
+    <category term="网站" scheme="https://cycxtit.github.io/tags/%E7%BD%91%E7%AB%99/"/>
+    
     <category term="学习" scheme="https://cycxtit.github.io/tags/%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="资源" scheme="https://cycxtit.github.io/tags/%E8%B5%84%E6%BA%90/"/>
-    
-    <category term="网站" scheme="https://cycxtit.github.io/tags/%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
@@ -321,8 +318,6 @@
     
     <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="网站" scheme="https://cycxtit.github.io/tags/%E7%BD%91%E7%AB%99/"/>
-    
     <category term="Termux" scheme="https://cycxtit.github.io/tags/Termux/"/>
     
     <category term="手机" scheme="https://cycxtit.github.io/tags/%E6%89%8B%E6%9C%BA/"/>
@@ -330,6 +325,8 @@
     <category term="建网" scheme="https://cycxtit.github.io/tags/%E5%BB%BA%E7%BD%91/"/>
     
     <category term="Github" scheme="https://cycxtit.github.io/tags/Github/"/>
+    
+    <category term="网站" scheme="https://cycxtit.github.io/tags/%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
@@ -382,11 +379,11 @@
     
     <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
+    <category term="微软" scheme="https://cycxtit.github.io/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
     <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
     <category term="随手笔记" scheme="https://cycxtit.github.io/tags/%E9%9A%8F%E6%89%8B%E7%AC%94%E8%AE%B0/"/>
-    
-    <category term="微软" scheme="https://cycxtit.github.io/tags/%E5%BE%AE%E8%BD%AF/"/>
     
     <category term="电脑" scheme="https://cycxtit.github.io/tags/%E7%94%B5%E8%84%91/"/>
     
@@ -413,9 +410,9 @@
     
     <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
-    
     <category term="微软" scheme="https://cycxtit.github.io/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
     <category term="密码" scheme="https://cycxtit.github.io/tags/%E5%AF%86%E7%A0%81/"/>
     
@@ -502,9 +499,9 @@
     
     <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
-    
     <category term="微软" scheme="https://cycxtit.github.io/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
     
     <category term="漏洞" scheme="https://cycxtit.github.io/tags/%E6%BC%8F%E6%B4%9E/"/>
     
@@ -532,9 +529,9 @@
     
     <category term="IT" scheme="https://cycxtit.github.io/tags/IT/"/>
     
-    <category term="软件" scheme="https://cycxtit.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
-    
     <category term="Windows" scheme="https://cycxtit.github.io/tags/Windows/"/>
+    
+    <category term="软件" scheme="https://cycxtit.github.io/tags/%E8%BD%AF%E4%BB%B6/"/>
     
     <category term="推荐" scheme="https://cycxtit.github.io/tags/%E6%8E%A8%E8%8D%90/"/>
     
