@@ -178,6 +178,48 @@
       </tags>
   </entry>
   <entry>
+    <title>IBM Linux One安装宝塔</title>
+    <url>/2022/03/05/bt-linux1/</url>
+    <content><![CDATA[<h2 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h2><ul>
+<li><mark class="hl-label blue">一台可以连接VPS的设备</mark> </li>
+<li><mark class="hl-label blue">一个可用的IBM Linux One VPS</mark> </li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1.安装宝塔面板（7.7.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://f.cccyun.cc/bt/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>此时无需进入</p>
+<p>2.解除宝塔绑定限制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://10g.biz/downloads/LinuxPanel.zip &amp;&amp; unzip LinuxPanel.zip &amp;&amp; bash /root/panel/update.sh &amp;&amp; rm -f /www/server/panel/data/bind.pl</span><br></pre></td></tr></table></figure>
+
+<p>3.安装宝塔面板（7.6.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://v7.hostcli.com/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>4.绿化（变为纯净版）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl http://v7.hostcli.com/install/update6.sh|bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="开放所有端口"><a href="#开放所有端口" class="headerlink" title="开放所有端口"></a>开放所有端口</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu镜像默认设置了Iptable规则，关闭它</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get purge netfilter-persistent</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>或者强制删除</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入宝塔面板"><a href="#进入宝塔面板" class="headerlink" title="进入宝塔面板"></a>进入宝塔面板</h3><blockquote>
+<p>VPS ip：8888</p>
+</blockquote>
+<hr>
+<p>如有问题请在下方评论区或者在 <mark class="hl-label blue">TG群组</mark> ： <a href="https://t.me/helpether">https://t.me/helpether</a> 进行反馈</p>
+]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>宝塔</tag>
+        <tag>IBM</tag>
+        <tag>建站</tag>
+        <tag>VPS</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用Cloudflare搭建一个短链接生成器网站</title>
     <url>/2022/02/21/cfshorturl/</url>
     <content><![CDATA[<p>如何免费搭建一个短链接生成器而且不需要服务器</p>
@@ -288,8 +330,8 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
       <tags>
         <tag>IT</tag>
         <tag>Windows</tag>
-        <tag>Linux</tag>
         <tag>VPS</tag>
+        <tag>Linux</tag>
         <tag>Microsoft</tag>
         <tag>微软</tag>
         <tag>SSH</tag>
@@ -561,9 +603,9 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
 ]]></content>
       <tags>
         <tag>IT</tag>
+        <tag>VPS</tag>
         <tag>免费</tag>
         <tag>Cloudflare</tag>
-        <tag>VPS</tag>
         <tag>节点</tag>
         <tag>Hax</tag>
         <tag>翻墙</tag>
