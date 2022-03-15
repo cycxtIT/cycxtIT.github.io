@@ -1,83 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Pagermaid--TG人形自走机器人</title>
-    <url>/2022/01/30/Pagermaid/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>1.hax续期脚本已更新博客也同步更新</p>
-<p>2.你是否在TG群里看见一些人形如机器人，能-s偷取你的贴纸还能-atll来@群里的全部程成员，这就是今天要介绍的内容，Pagermaid人形自走机器人</p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一台能上TG的VPS，系统最好是Ubuntu20.04，一台能上网的电脑，一个TG账号，还有ssh工具，我推荐FinalShell</p>
-<h2 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h2><p>Pagermaid项目托管在github，所以首先要检查VPS是否安装git软件包，且当git软件包版过低时，无法实现程序的自动更新，所以首先要安装/升级git软件包：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install --upgrade git -y</span><br></pre></td></tr></table></figure>
-
-<p>安装完之后从仓库拉取项目</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /var/lib &amp;&amp; git clone https://github.com/Xtao-Labs/PagerMaid-Modify.git pagermaid &amp;&amp; cd pagermaid</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>拉取的项目在文件夹var/lib/pagermaid文件下（不在root文件夹下</p>
-<h2 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h2><h3 id="imagemagick"><a href="#imagemagick" class="headerlink" title="imagemagick"></a>imagemagick</h3><p>此软件包用于处理图片，如您没有图片处理需求，您可以无需安装此软件包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install imagemagick -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="neofetch"><a href="#neofetch" class="headerlink" title="neofetch"></a>neofetch</h3><p>此软件包用于显示系统信息，如您没有显示系统信息需求，您可以无需安装此软件包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install neofetch -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="zbar"><a href="#zbar" class="headerlink" title="zbar"></a>zbar</h3><p>此软件包用于处理二维码信息，如您没有处理二维码信息需求，您可以无需安装此软件包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install libzbar-dev -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="最大化安装"><a href="#最大化安装" class="headerlink" title="最大化安装"></a>最大化安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tesseract-ocr tesseract-ocr-all -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="最小化安装"><a href="#最小化安装" class="headerlink" title="最小化安装"></a>最小化安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>此软件包用于记录信息，以方便软件重启后仍然可以进行上一次未完成的任务，你也可以无需安装此软件包。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install redis-server -y</span><br></pre></td></tr></table></figure>
-
-<h3 id="Pip"><a href="#Pip" class="headerlink" title="Pip"></a>Pip</h3><p>此软件包为必须依赖包，用于安装 python 依赖。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install python3-pip -y</span><br></pre></td></tr></table></figure>
-
-<h2 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure>
-
-<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>将配置 <code>config.gen.yml</code> 文件复制一份并且命名为 <code>config.yml</code></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp config.gen.yml config.yml</span><br></pre></td></tr></table></figure>
-
-<p>然后去<a href="https://my.telegram.org/">telegram官网</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130145720068.png" alt="image-20220130145720068">然后点击这个创建</p>
-<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130145807677.png" alt="image-20220130145807677"></p>
-<p>信息随便填<img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150030976.png" alt="image-20220130150030976">然后到这个界面，吧app spi_id和hash复制下来，填入api_key和hash</p>
-<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150049369.png" alt="image-20220130150049369"></p>
-<p>这是vim编辑器，如果你会你随便</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi config.yml</span><br></pre></td></tr></table></figure>
-
-<p>不会的话就用finalshell，/var/lib/pagermaid</p>
-<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150509610.png" alt="image-20220130150509610"></p>
-<p>然后在弹出的对话框修改相应值</p>
-<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150619167.png" alt="image-20220130150619167"></p>
-<h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 -m pagermaid</span><br></pre></td></tr></table></figure>
-
-<p>此步需要填入完整的电话号码（eg：<code>+12569986522</code>）然后 tg 会发给你的其他客户端发送验证码，填入验证码后，回车，如有两步验证密码，则再输入两步验证密码即可。现在你可以再任意对话发送  -help获取机器人运行情况</p>
-<h2 id="设置守护进程"><a href="#设置守护进程" class="headerlink" title="设置守护进程"></a>设置守护进程</h2><p>此步骤可以方便 <code>pagermaid</code> 的自动运行，您无需在 <code>pagermaid</code> 意外退出后重新登录主机进行操作。</p>
-<p>停止运行</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ctrl + c</span><br></pre></td></tr></table></figure>
-
-<p>然后设置</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat &lt;&lt;<span class="string">&#x27;TEXT&#x27;</span> &gt; /etc/systemd/system/pagermaid.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=PagerMaid-Modify telegram utility daemon</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">WorkingDirectory=/var/lib/pagermaid</span><br><span class="line">ExecStart=/usr/bin/python3 -m pagermaid</span><br><span class="line">Restart=always</span><br><span class="line">TEXT</span><br></pre></td></tr></table></figure>
-
-<p>复制以上代码，全部</p>
-<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><p>启动程序：<code>systemctl start pagermaid</code></p>
-<p>设置为开机自启：<code>systemctl enable pagermaid</code></p>
-<p>停止程序：<code>systemctl stop pagermaid</code></p>
-<p>安装插件：<code>-apt install 插件名</code></p>
-<p>帮助：<code>-help</code></p>
-<p>带-的全在TG里输入</p>
-<p>这是插件列表：<a href="https://index.xtaolabs.com/">https://index.xtaolabs.com/</a></p>
-<hr>
-<p>转载于 <a href="https://blog.imkcp.xyz/2022/01/30/Pagermaid/">Imkcp的blog</a></p>
-]]></content>
-      <tags>
-        <tag>IT</tag>
-        <tag>Telegram</tag>
-        <tag>Pagermaid</tag>
-        <tag>好玩项目</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>电脑越来越慢？电脑垃圾很多却不想下载流氓垃圾清理软件？此文章可能可以帮助到你！</title>
     <url>/2021/09/09/albs/</url>
     <content><![CDATA[<p>电脑使用久了之后，你会发现电脑速度变得越来越慢，不管是进入系统或是开启软件，这时候就会怀疑系统是不是中毒了？或是隐藏了木马程式？防毒软件扫了一轮，也找不到原因，这是什么原因呢？  </p>
@@ -170,112 +93,11 @@
 
 ]]></content>
       <tags>
-        <tag>IT</tag>
         <tag>软件</tag>
         <tag>Windows</tag>
         <tag>推荐</tag>
+        <tag>IT</tag>
         <tag>工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>IBM Linux One安装宝塔</title>
-    <url>/2022/03/05/bt-linux1/</url>
-    <content><![CDATA[<h2 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h2><ul>
-<li><mark class="hl-label blue">一台可以连接VPS的设备</mark> </li>
-<li><mark class="hl-label blue">一个可用的IBM Linux One VPS</mark> </li>
-</ul>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1.安装宝塔面板（7.7.0）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://f.cccyun.cc/bt/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
-
-<p>此时无需进入</p>
-<p>2.解除宝塔绑定限制</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://10g.biz/downloads/LinuxPanel.zip &amp;&amp; unzip LinuxPanel.zip &amp;&amp; bash /root/panel/update.sh &amp;&amp; rm -f /www/server/panel/data/bind.pl</span><br></pre></td></tr></table></figure>
-
-<p>3.安装宝塔面板（7.6.0）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://v7.hostcli.com/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>4.绿化（变为纯净版）</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl http://v7.hostcli.com/install/update6.sh|bash</span><br></pre></td></tr></table></figure>
-
-<h3 id="开放所有端口"><a href="#开放所有端口" class="headerlink" title="开放所有端口"></a>开放所有端口</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
-
-<p>Ubuntu镜像默认设置了Iptable规则，关闭它</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get purge netfilter-persistent</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-
-<p>或者强制删除</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
-
-<h3 id="进入宝塔面板"><a href="#进入宝塔面板" class="headerlink" title="进入宝塔面板"></a>进入宝塔面板</h3><blockquote>
-<p>VPS ip：8888</p>
-</blockquote>
-<hr>
-<p>如有问题请在下方评论区或者在 <mark class="hl-label blue">TG群组</mark> ： <a href="https://t.me/helpether">https://t.me/helpether</a> 进行反馈</p>
-]]></content>
-      <tags>
-        <tag>IT</tag>
-        <tag>宝塔</tag>
-        <tag>IBM</tag>
-        <tag>建站</tag>
-        <tag>VPS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Cloudflare搭建一个短链接生成器网站</title>
-    <url>/2022/02/21/cfshorturl/</url>
-    <content><![CDATA[<p>如何免费搭建一个短链接生成器而且不需要服务器</p>
-<h2 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h2><p><code>一个邮箱</code>  </p>
-<p><code>一个Cloudflare账号</code>  </p>
-<p><code>一个域名（可以是freenom的免费域名）</code>  </p>
-<h2 id="步骤大纲"><a href="#步骤大纲" class="headerlink" title="步骤大纲"></a>步骤大纲</h2><p><code>登录Cloudflare账号</code>  </p>
-<p><code>添加网站到Cloudflare</code>  </p>
-<p><code>创建KV空间</code>  </p>
-<p><code>创建Worker</code>  </p>
-<p><code>部署Worker</code>  </p>
-<p><code>完成</code>  </p>
-<hr>
-<blockquote>
-<p>登录账号的话我就不说了大家都会…</p>
-</blockquote>
-<h2 id="添加域名到Cloudflare"><a href="#添加域名到Cloudflare" class="headerlink" title="添加域名到Cloudflare"></a>添加域名到Cloudflare</h2><p>点击 “ <mark class="hl-label blue">添加站点</mark>  ”,之后输入freenom注册好的域名,点击 “ <mark class="hl-label blue">确定</mark>  ”,根据提示修改ns地址,添加完后等待大约2~4小时再继续下一步  </p>
-<h2 id="创建KV空间"><a href="#创建KV空间" class="headerlink" title="创建KV空间"></a>创建KV空间</h2><p>首先再侧边栏找到Workers点击 Workers旁边的小三角形，再点击 “ <mark class="hl-label default">KV</mark>  ”</p>
-<img src="https://cdn.jsdelivr.net/gh/cycxtIT/all/img/01.jpg" width="600">
-
-<p>之后再随机填写一个名称如图</p>
-<img src="https://cdn.jsdelivr.net/gh/cycxtIT/all/img/02.jpg" width="600">
-
-<p>最后点击 “ <mark class="hl-label blue">添加</mark>  ”</p>
-<h2 id="创建Worker"><a href="#创建Worker" class="headerlink" title="创建Worker"></a>创建Worker</h2><p>在侧边栏选择 <mark class="hl-label green">Workers</mark> </p>
-<p>点击 “ <mark class="hl-label blue">创建服务</mark>  ”  </p>
-<p>之后填写服务名称（随便填就行了）  </p>
-<p>启动器的话就默认选择 “ <mark class="hl-label blue">简介(HTTP处理程序)</mark>  “</p>
-<p>再点击 “ <mark class="hl-label blue">创建服务</mark>  ” 或者 “ <mark class="hl-label blue">确定</mark>  ”</p>
-<blockquote>
-<p>如果出现提示要求你设置子域名的话根据提示设置即可</p>
-</blockquote>
-<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>创建玩服务后,进入服务  </p>
-<p>点击 “ <mark class="hl-label blue">设置</mark>  ” 选项,再选择 “ <mark class="hl-label blue">变量</mark>  ” 找到 “ <mark class="hl-label blue">KV命名空间绑定</mark>  ”  </p>
-<p>点击编辑变量（KV 命名空间绑定的右上方）  </p>
-<p>VARIABLE_NAME那儿填写 <code>LINKS</code> ,等于后边的“ <mark class="hl-label blue">选择...</mark>  ”选择刚刚创建好的 KV命名空间  </p>
-<p>点击 “ <mark class="hl-label blue">保存</mark>  ”</p>
-<p>之后,在上方找到“ <mark class="hl-label blue">触发器</mark>  ”选项,点击“ <mark class="hl-label blue">添加路由</mark>  ”,路由填写刚刚申请Freenom域名 （以 /* 结尾）  </p>
-<p>最后点击“ <mark class="hl-label blue">添加路由</mark>  ” 或 “ <mark class="hl-label blue">确定</mark>  ”  </p>
-<h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><p>点击上方的 “<mark class="hl-label blue">资源</mark> ” 选项,点击“ <mark class="hl-label blue">快速部署</mark>  ”  </p>
-<p>把编辑器的内容清空,把以下代码粘贴到编辑器  </p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const config = &#123;</span><br><span class="line">no_ref: &quot;off&quot;, //Control the HTTP referrer header, if you want to create an anonymous link that will hide the HTTP Referer header, please set to &quot;on&quot; .</span><br><span class="line">theme:&quot;&quot;,//Homepage theme, use the empty value for default theme. To use urlcool theme, please fill with &quot;theme/urlcool&quot; .</span><br><span class="line">cors: &quot;on&quot;,//Allow Cross-origin resource sharing for API requests.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const html404 = `&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;h1&gt;404 Not Found.&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;`</span><br><span class="line"></span><br><span class="line">let response_header=&#123;</span><br><span class="line">  &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">if (config.cors==&quot;on&quot;)&#123;</span><br><span class="line">  response_header=&#123;</span><br><span class="line">  &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">  &quot;Access-Control-Allow-Origin&quot;:&quot;*&quot;,</span><br><span class="line">  &quot;Access-Control-Allow-Methods&quot;: &quot;POST&quot;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function randomString(len) &#123;</span><br><span class="line">　　len = len || 6;</span><br><span class="line">　　let $chars = &#x27;ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678&#x27;;    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/</span><br><span class="line">　　let maxPos = $chars.length;</span><br><span class="line">　　let result = &#x27;&#x27;;</span><br><span class="line">　　for (i = 0; i &lt; len; i++) &#123;</span><br><span class="line">　　　　result += $chars.charAt(Math.floor(Math.random() * maxPos));</span><br><span class="line">　　&#125;</span><br><span class="line">　　return result;</span><br><span class="line">&#125;</span><br><span class="line">async function checkURL(URL)&#123;</span><br><span class="line">    let str=URL;</span><br><span class="line">    let Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&amp;=]*)?/;</span><br><span class="line">    let objExp=new RegExp(Expression);</span><br><span class="line">    if(objExp.test(str)==true)&#123;</span><br><span class="line">      if (str[0] == &#x27;h&#x27;)</span><br><span class="line">        return true;</span><br><span class="line">      else</span><br><span class="line">        return false;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line">async function save_url(URL)&#123;</span><br><span class="line">    let random_key=await randomString()</span><br><span class="line">    let is_exist=await LINKS.get(random_key)</span><br><span class="line">    console.log(is_exist)</span><br><span class="line">    if (is_exist == null)</span><br><span class="line">        return await LINKS.put(random_key, URL),random_key</span><br><span class="line">    else</span><br><span class="line">        save_url(URL)</span><br><span class="line">&#125;</span><br><span class="line">async function handleRequest(request) &#123;</span><br><span class="line">  console.log(request)</span><br><span class="line">  if (request.method === &quot;POST&quot;) &#123;</span><br><span class="line">    let req=await request.json()</span><br><span class="line">    console.log(req[&quot;url&quot;])</span><br><span class="line">    if(!await checkURL(req[&quot;url&quot;]))&#123;</span><br><span class="line">    return new Response(`&#123;&quot;status&quot;:500,&quot;key&quot;:&quot;: Error: Url illegal.&quot;&#125;`, &#123;</span><br><span class="line">      headers: response_header,</span><br><span class="line">    &#125;)&#125;</span><br><span class="line">    let stat,random_key=await save_url(req[&quot;url&quot;])</span><br><span class="line">    console.log(stat)</span><br><span class="line">    if (typeof(stat) == &quot;undefined&quot;)&#123;</span><br><span class="line">      return new Response(`&#123;&quot;status&quot;:200,&quot;key&quot;:&quot;/`+random_key+`&quot;&#125;`, &#123;</span><br><span class="line">      headers: response_header,</span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      return new Response(`&#123;&quot;status&quot;:200,&quot;key&quot;:&quot;: Error:Reach the KV write limitation.&quot;&#125;`, &#123;</span><br><span class="line">      headers: response_header,</span><br><span class="line">    &#125;)&#125;</span><br><span class="line">  &#125;else if(request.method === &quot;OPTIONS&quot;)&#123;  </span><br><span class="line">      return new Response(``, &#123;</span><br><span class="line">      headers: response_header,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const requestURL = new URL(request.url)</span><br><span class="line">  const path = requestURL.pathname.split(&quot;/&quot;)[1]</span><br><span class="line">  console.log(path)</span><br><span class="line">  if(!path)&#123;</span><br><span class="line"></span><br><span class="line">    const html= await fetch(&quot;https://raw.githubusercontent.com/cycxtIT/shorturl/main/run4.html&quot;)</span><br><span class="line">    </span><br><span class="line">    return new Response(await html.text(), &#123;</span><br><span class="line">    headers: &#123;</span><br><span class="line">      &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  const value = await LINKS.get(path)</span><br><span class="line">  console.log(value)</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  const location = value</span><br><span class="line">  if (location) &#123;</span><br><span class="line">    if (config.no_ref==&quot;on&quot;)&#123;</span><br><span class="line">      let no_ref= await fetch(&quot;https://cycxtIT.github.io/shorturl/no-ref.html&quot;)</span><br><span class="line">      no_ref=await no_ref.text()</span><br><span class="line">      no_ref=no_ref.replace(/&#123;Replace&#125;/gm, location)</span><br><span class="line">      return new Response(no_ref, &#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">        &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      return Response.redirect(location, 302)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  // If request not in kv, return 404</span><br><span class="line">  return new Response(html404, &#123;</span><br><span class="line">    headers: &#123;</span><br><span class="line">      &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    status: 404</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">addEventListener(&quot;fetch&quot;, async event =&gt; &#123;</span><br><span class="line">  event.respondWith(handleRequest(event.request))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-
-<p>点击保存并部署,最后点击发送 如果提示 <code>200 OK</code> 就可以了  </p>
-<blockquote>
-<p>如果到了大约30分钟路由还没生效的话（添加路由的域名）,回到首页,点击你添加在Cloudflare的站点,点击 <code>DNS</code> ,点击添加记录,第一个格子填写 “ <mark class="hl-label orange">@</mark>  ”,之后在电脑cmd或者termux上输入 <code>ping &#123;你的服务子域名&#125;</code> 注意:{你的服务子域名可以在编辑器的发送按钮的左边有个url,这就是你的服务子域名,之后会出现一个ip地址把ip地址填写在Ipv4的格子内,点击 “ <mark class="hl-label blue">添加</mark>  ” 或 “ <mark class="hl-label blue">确定</mark>  ”</p>
-</blockquote>
-<hr>
-<p>如果有任何问题可以在评论区留言</p>
-]]></content>
-      <tags>
-        <tag>IT</tag>
-        <tag>免费</tag>
-        <tag>Cloudflare</tag>
-        <tag>短链接生成器</tag>
       </tags>
   </entry>
   <entry>
@@ -328,10 +150,10 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
 <p>如果有什么问题可以在评论区留言</p>
 ]]></content>
       <tags>
-        <tag>IT</tag>
         <tag>Windows</tag>
-        <tag>VPS</tag>
+        <tag>IT</tag>
         <tag>Linux</tag>
+        <tag>VPS</tag>
         <tag>Microsoft</tag>
         <tag>微软</tag>
         <tag>SSH</tag>
@@ -581,6 +403,65 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
       </tags>
   </entry>
   <entry>
+    <title>使用Cloudflare搭建一个短链接生成器网站</title>
+    <url>/2022/02/21/cfshorturl/</url>
+    <content><![CDATA[<p>如何免费搭建一个短链接生成器而且不需要服务器</p>
+<h2 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h2><p><code>一个邮箱</code>  </p>
+<p><code>一个Cloudflare账号</code>  </p>
+<p><code>一个域名（可以是freenom的免费域名）</code>  </p>
+<h2 id="步骤大纲"><a href="#步骤大纲" class="headerlink" title="步骤大纲"></a>步骤大纲</h2><p><code>登录Cloudflare账号</code>  </p>
+<p><code>添加网站到Cloudflare</code>  </p>
+<p><code>创建KV空间</code>  </p>
+<p><code>创建Worker</code>  </p>
+<p><code>部署Worker</code>  </p>
+<p><code>完成</code>  </p>
+<hr>
+<blockquote>
+<p>登录账号的话我就不说了大家都会…</p>
+</blockquote>
+<h2 id="添加域名到Cloudflare"><a href="#添加域名到Cloudflare" class="headerlink" title="添加域名到Cloudflare"></a>添加域名到Cloudflare</h2><p>点击 “ <mark class="hl-label blue">添加站点</mark>  ”,之后输入freenom注册好的域名,点击 “ <mark class="hl-label blue">确定</mark>  ”,根据提示修改ns地址,添加完后等待大约2~4小时再继续下一步  </p>
+<h2 id="创建KV空间"><a href="#创建KV空间" class="headerlink" title="创建KV空间"></a>创建KV空间</h2><p>首先再侧边栏找到Workers点击 Workers旁边的小三角形，再点击 “ <mark class="hl-label default">KV</mark>  ”</p>
+<img src="https://cdn.jsdelivr.net/gh/cycxtIT/all/img/01.jpg" width="600">
+
+<p>之后再随机填写一个名称如图</p>
+<img src="https://cdn.jsdelivr.net/gh/cycxtIT/all/img/02.jpg" width="600">
+
+<p>最后点击 “ <mark class="hl-label blue">添加</mark>  ”</p>
+<h2 id="创建Worker"><a href="#创建Worker" class="headerlink" title="创建Worker"></a>创建Worker</h2><p>在侧边栏选择 <mark class="hl-label green">Workers</mark> </p>
+<p>点击 “ <mark class="hl-label blue">创建服务</mark>  ”  </p>
+<p>之后填写服务名称（随便填就行了）  </p>
+<p>启动器的话就默认选择 “ <mark class="hl-label blue">简介(HTTP处理程序)</mark>  “</p>
+<p>再点击 “ <mark class="hl-label blue">创建服务</mark>  ” 或者 “ <mark class="hl-label blue">确定</mark>  ”</p>
+<blockquote>
+<p>如果出现提示要求你设置子域名的话根据提示设置即可</p>
+</blockquote>
+<h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>创建玩服务后,进入服务  </p>
+<p>点击 “ <mark class="hl-label blue">设置</mark>  ” 选项,再选择 “ <mark class="hl-label blue">变量</mark>  ” 找到 “ <mark class="hl-label blue">KV命名空间绑定</mark>  ”  </p>
+<p>点击编辑变量（KV 命名空间绑定的右上方）  </p>
+<p>VARIABLE_NAME那儿填写 <code>LINKS</code> ,等于后边的“ <mark class="hl-label blue">选择...</mark>  ”选择刚刚创建好的 KV命名空间  </p>
+<p>点击 “ <mark class="hl-label blue">保存</mark>  ”</p>
+<p>之后,在上方找到“ <mark class="hl-label blue">触发器</mark>  ”选项,点击“ <mark class="hl-label blue">添加路由</mark>  ”,路由填写刚刚申请Freenom域名 （以 /* 结尾）  </p>
+<p>最后点击“ <mark class="hl-label blue">添加路由</mark>  ” 或 “ <mark class="hl-label blue">确定</mark>  ”  </p>
+<h2 id="搭建"><a href="#搭建" class="headerlink" title="搭建"></a>搭建</h2><p>点击上方的 “<mark class="hl-label blue">资源</mark> ” 选项,点击“ <mark class="hl-label blue">快速部署</mark>  ”  </p>
+<p>把编辑器的内容清空,把以下代码粘贴到编辑器  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">const config = &#123;</span><br><span class="line">no_ref: &quot;off&quot;, //Control the HTTP referrer header, if you want to create an anonymous link that will hide the HTTP Referer header, please set to &quot;on&quot; .</span><br><span class="line">theme:&quot;&quot;,//Homepage theme, use the empty value for default theme. To use urlcool theme, please fill with &quot;theme/urlcool&quot; .</span><br><span class="line">cors: &quot;on&quot;,//Allow Cross-origin resource sharing for API requests.</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const html404 = `&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;h1&gt;404 Not Found.&lt;/h1&gt;</span><br><span class="line">&lt;/body&gt;`</span><br><span class="line"></span><br><span class="line">let response_header=&#123;</span><br><span class="line">  &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">if (config.cors==&quot;on&quot;)&#123;</span><br><span class="line">  response_header=&#123;</span><br><span class="line">  &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">  &quot;Access-Control-Allow-Origin&quot;:&quot;*&quot;,</span><br><span class="line">  &quot;Access-Control-Allow-Methods&quot;: &quot;POST&quot;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">async function randomString(len) &#123;</span><br><span class="line">　　len = len || 6;</span><br><span class="line">　　let $chars = &#x27;ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz2345678&#x27;;    /****默认去掉了容易混淆的字符oOLl,9gq,Vv,Uu,I1****/</span><br><span class="line">　　let maxPos = $chars.length;</span><br><span class="line">　　let result = &#x27;&#x27;;</span><br><span class="line">　　for (i = 0; i &lt; len; i++) &#123;</span><br><span class="line">　　　　result += $chars.charAt(Math.floor(Math.random() * maxPos));</span><br><span class="line">　　&#125;</span><br><span class="line">　　return result;</span><br><span class="line">&#125;</span><br><span class="line">async function checkURL(URL)&#123;</span><br><span class="line">    let str=URL;</span><br><span class="line">    let Expression=/http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&amp;=]*)?/;</span><br><span class="line">    let objExp=new RegExp(Expression);</span><br><span class="line">    if(objExp.test(str)==true)&#123;</span><br><span class="line">      if (str[0] == &#x27;h&#x27;)</span><br><span class="line">        return true;</span><br><span class="line">      else</span><br><span class="line">        return false;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br><span class="line">&#125; </span><br><span class="line">async function save_url(URL)&#123;</span><br><span class="line">    let random_key=await randomString()</span><br><span class="line">    let is_exist=await LINKS.get(random_key)</span><br><span class="line">    console.log(is_exist)</span><br><span class="line">    if (is_exist == null)</span><br><span class="line">        return await LINKS.put(random_key, URL),random_key</span><br><span class="line">    else</span><br><span class="line">        save_url(URL)</span><br><span class="line">&#125;</span><br><span class="line">async function handleRequest(request) &#123;</span><br><span class="line">  console.log(request)</span><br><span class="line">  if (request.method === &quot;POST&quot;) &#123;</span><br><span class="line">    let req=await request.json()</span><br><span class="line">    console.log(req[&quot;url&quot;])</span><br><span class="line">    if(!await checkURL(req[&quot;url&quot;]))&#123;</span><br><span class="line">    return new Response(`&#123;&quot;status&quot;:500,&quot;key&quot;:&quot;: Error: Url illegal.&quot;&#125;`, &#123;</span><br><span class="line">      headers: response_header,</span><br><span class="line">    &#125;)&#125;</span><br><span class="line">    let stat,random_key=await save_url(req[&quot;url&quot;])</span><br><span class="line">    console.log(stat)</span><br><span class="line">    if (typeof(stat) == &quot;undefined&quot;)&#123;</span><br><span class="line">      return new Response(`&#123;&quot;status&quot;:200,&quot;key&quot;:&quot;/`+random_key+`&quot;&#125;`, &#123;</span><br><span class="line">      headers: response_header,</span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      return new Response(`&#123;&quot;status&quot;:200,&quot;key&quot;:&quot;: Error:Reach the KV write limitation.&quot;&#125;`, &#123;</span><br><span class="line">      headers: response_header,</span><br><span class="line">    &#125;)&#125;</span><br><span class="line">  &#125;else if(request.method === &quot;OPTIONS&quot;)&#123;  </span><br><span class="line">      return new Response(``, &#123;</span><br><span class="line">      headers: response_header,</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  const requestURL = new URL(request.url)</span><br><span class="line">  const path = requestURL.pathname.split(&quot;/&quot;)[1]</span><br><span class="line">  console.log(path)</span><br><span class="line">  if(!path)&#123;</span><br><span class="line"></span><br><span class="line">    const html= await fetch(&quot;https://raw.githubusercontent.com/cycxtIT/shorturl/main/run4.html&quot;)</span><br><span class="line">    </span><br><span class="line">    return new Response(await html.text(), &#123;</span><br><span class="line">    headers: &#123;</span><br><span class="line">      &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  const value = await LINKS.get(path)</span><br><span class="line">  console.log(value)</span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  const location = value</span><br><span class="line">  if (location) &#123;</span><br><span class="line">    if (config.no_ref==&quot;on&quot;)&#123;</span><br><span class="line">      let no_ref= await fetch(&quot;https://cycxtIT.github.io/shorturl/no-ref.html&quot;)</span><br><span class="line">      no_ref=await no_ref.text()</span><br><span class="line">      no_ref=no_ref.replace(/&#123;Replace&#125;/gm, location)</span><br><span class="line">      return new Response(no_ref, &#123;</span><br><span class="line">      headers: &#123;</span><br><span class="line">        &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      return Response.redirect(location, 302)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  // If request not in kv, return 404</span><br><span class="line">  return new Response(html404, &#123;</span><br><span class="line">    headers: &#123;</span><br><span class="line">      &quot;content-type&quot;: &quot;text/html;charset=UTF-8&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    status: 404</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">addEventListener(&quot;fetch&quot;, async event =&gt; &#123;</span><br><span class="line">  event.respondWith(handleRequest(event.request))</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<p>点击保存并部署,最后点击发送 如果提示 <code>200 OK</code> 就可以了  </p>
+<blockquote>
+<p>如果到了大约30分钟路由还没生效的话（添加路由的域名）,回到首页,点击你添加在Cloudflare的站点,点击 <code>DNS</code> ,点击添加记录,第一个格子填写 “ <mark class="hl-label orange">@</mark>  ”,之后在电脑cmd或者termux上输入 <code>ping &#123;你的服务子域名&#125;</code> 注意:{你的服务子域名可以在编辑器的发送按钮的左边有个url,这就是你的服务子域名,之后会出现一个ip地址把ip地址填写在Ipv4的格子内,点击 “ <mark class="hl-label blue">添加</mark>  ” 或 “ <mark class="hl-label blue">确定</mark>  ”</p>
+</blockquote>
+<hr>
+<p>如果有任何问题可以在评论区留言</p>
+]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>免费</tag>
+        <tag>Cloudflare</tag>
+        <tag>短链接生成器</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用hax，cf和x-ui搭建免费节点</title>
     <url>/2022/01/28/haxjd/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上期我们申请到了hax免费的VPS，那么现在就教大家来搭建节点，如果没有ipv6的话就可以放弃了，估计是用不了</p>
@@ -613,119 +494,80 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
       </tags>
   </entry>
   <entry>
-    <title>简单制作一个图片API</title>
-    <url>/2022/02/24/imgapi/</url>
-    <content><![CDATA[<p>今天教程教大家怎么建一个简单的图片API</p>
-<h2 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h2><ul>
-<li><mark class="hl-label orange">Cloudflare账号</mark> </li>
-<li><mark class="hl-label orange">一个域名</mark>  （可以是Freenom免费域名）</li>
-<li><mark class="hl-label orange">一堆的图片连接</mark> </li>
-</ul>
-<h2 id="Cloudflare部分"><a href="#Cloudflare部分" class="headerlink" title="Cloudflare部分"></a>Cloudflare部分</h2><h3 id="登录Cloudflare"><a href="#登录Cloudflare" class="headerlink" title="登录Cloudflare"></a>登录Cloudflare</h3><blockquote>
-<p>登录Cloudflare应该不需要我写了吧…</p>
-</blockquote>
-<p>首先打开 <a href="https://dash.cloudflare.com/">Cloudflare</a> 网站 （Dashboard）  </p>
-<p>之后输入账号密码点击 <mark class="hl-label blue">登录</mark>  或者 <mark class="hl-label blue">Sign In</mark> </p>
-<p><strong><em>如果没有账号的话请注册一个</em></strong></p>
-<h3 id="添加域名"><a href="#添加域名" class="headerlink" title="添加域名"></a>添加域名</h3><p>首先点击 <mark class="hl-label blue">添加站点</mark>  ，输入要添加的域名，点击 <mark class="hl-label default">确定</mark>  ，之后根据Cloudflare的提示进行添加即可</p>
-<h2 id="准备搭建工作"><a href="#准备搭建工作" class="headerlink" title="准备搭建工作"></a>准备搭建工作</h2><h3 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h3><p>在首页中的左侧栏找到“<mark class="hl-label default">Workers</mark> ” 并点击进入Workers选择 ，点击 <mark class="hl-label blue">创建服务</mark> </p>
-<p><code>服务名称</code> 随意填写</p>
-<p><code>选择启动器</code> 选择 <mark class="hl-label green">简介（HTTP 处理程序）</mark> </p>
-<p>点击 <mark class="hl-label blue">创建服务</mark> </p>
-<h3 id="设置域名"><a href="#设置域名" class="headerlink" title="设置域名"></a>设置域名</h3><p>点击 <mark class="hl-label default">触发器</mark>  选项卡 ，点击 <mark class="hl-label blue">添加路由</mark> </p>
-<p>之后输入域名 （/*结尾）</p>
-<p>最后点击  <mark class="hl-label blue">添加路由</mark>  即可</p>
-<h2 id="正式搭建"><a href="#正式搭建" class="headerlink" title="正式搭建"></a>正式搭建</h2><h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><p>点击 <mark class="hl-label default">资源</mark>  选项卡，点击 <mark class="hl-label blue">快速编辑</mark> </p>
-<p>之后在左侧的编辑器清空 并贴上代码</p>
-<p>代码如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">addEventListener(&#x27;fetch&#x27;, event =&gt; &#123;</span><br><span class="line">    event.respondWith(handleRequest(event.request))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">async function handleRequest(request) &#123;</span><br><span class="line"></span><br><span class="line">	var background_urls = [</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt1.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt2.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt3.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt4.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt5.jpg&#x27;,</span><br><span class="line">&#x27;https://img.400511.net/2022/02/24/Ne5Wu0HV.jpg&#x27;</span><br><span class="line"> /*需要随机到的图片的链接*/</span><br><span class="line">    ]</span><br><span class="line">	var index = Math.floor((Math.random()*background_urls.length));</span><br><span class="line">	res = await fetch(background_urls[index])</span><br><span class="line">    return new Response(res.body, &#123;</span><br><span class="line">        headers: &#123; &#x27;content-type&#x27;: &#x27;image/jpeg&#x27; &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <title>Pagermaid--TG人形自走机器人</title>
+    <url>/2022/01/30/Pagermaid/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>1.hax续期脚本已更新博客也同步更新</p>
+<p>2.你是否在TG群里看见一些人形如机器人，能-s偷取你的贴纸还能-atll来@群里的全部程成员，这就是今天要介绍的内容，Pagermaid人形自走机器人</p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><h2 id="准备材料"><a href="#准备材料" class="headerlink" title="准备材料"></a>准备材料</h2><p>·一台能上TG的VPS，系统最好是Ubuntu20.04，一台能上网的电脑，一个TG账号，还有ssh工具，我推荐FinalShell</p>
+<h2 id="拉取项目"><a href="#拉取项目" class="headerlink" title="拉取项目"></a>拉取项目</h2><p>Pagermaid项目托管在github，所以首先要检查VPS是否安装git软件包，且当git软件包版过低时，无法实现程序的自动更新，所以首先要安装/升级git软件包：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install --upgrade git -y</span><br></pre></td></tr></table></figure>
 
-<p>最后点击<mark class="hl-label blue">保存并部署</mark>  即可</p>
-<blockquote>
-<p>如果要测试是否成功的话，点击 <mark class="hl-label blue">发送</mark> ，如果返回的是 <mark class="hl-label green">200 OK</mark>  就表示成功了</p>
-</blockquote>
-<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><p>如果你添加的路由（域名）还是无法访问的话，请在DNS添加 <code>A</code>记录,名称填写域名（路由），Ipv4填写Workers的IP</p>
-<blockquote>
-<p>Workers IP 获取方法：电脑打开命令提示符或手机打开termux 输入<code>ping workers的子域名</code>， <strong><em>Workers的子域名在发送按扭的左侧的那个域名</em></strong></p>
-</blockquote>
-<p>ping 出来的IP给复制起来 粘贴到 <code>A</code>记录的Ipv4的框框里点击添加即可</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">	var background_urls = [</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt1.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt2.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt3.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt4.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt5.jpg&#x27;,</span><br><span class="line">&#x27;https://img.400511.net/2022/02/24/Ne5Wu0HV.jpg&#x27;</span><br><span class="line"> /*需要随机到的图片的链接*/</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+<p>安装完之后从仓库拉取项目</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd /var/lib &amp;&amp; git clone https://github.com/Xtao-Labs/PagerMaid-Modify.git pagermaid &amp;&amp; cd pagermaid</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p>将 <code>var background_urls = [</code> 后面的改成需要的照片的链接</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-        <category>其他</category>
-      </categories>
-      <tags>
-        <tag>IT</tag>
-        <tag>Cloudflare</tag>
-        <tag>Workers</tag>
-        <tag>API</tag>
-        <tag>图片</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Windows快捷键</title>
-    <url>/2021/09/26/kjj/</url>
-    <content><![CDATA[<p>标准计算机键盘共104键，除了26个字母键、符号键、数字键外，其余按键功能如下：</p>
-<p>Windows快捷键大全主键盘区：<br>Esc 键：escape，退出键。<br>Tab 键：tabulator key，跳格键，在文本编辑软件中增加四个空格，Windows中可用于切换屏幕上的焦点。<br>Ctrl 键：control，控制键。<br>Shift 键：上档键。<br>Alt 键：换档键。<br>Caps Lock 键：大写锁定键，用于切换系统大写锁定。<br>Windows 键：键盘上画着一个Windows视窗图标的键。按这个键可以打开开始菜单。<br>BackSpace 键：退格键，用于删除当前光标前的字符；退格键 在Win资源管理器后退；打开、另存为界面表示返回上级。<br>Enter键：回车键，换行，在Windows资源管理器表示打开文件（夹）或选中菜单选项；在Cmd[DOS Mode]表执行命令。<br>Space：空格键 如果活动选项是单选或复选框，则选中或清除框中的√</p>
-<p>Windows快捷键大全功能键区：<br>F1 帮助<br>F2 重命名、部分主板开机时的BIOS快捷键<br>F3 查找<br>F4 地址栏<br>F5 刷新<br>F6 切换（到地址栏）<br>F9 部分主板开机引导<br>F7、8 自定义<br>F10 + Shift或Alt 右键菜单<br>F11全屏<br>F12 部分主板开机引导</p>
-<p>Windows快捷键大全系统键区：<br>PrintScreen键：印屏幕。按下该键后系统会自动全屏截图并保存至剪切板中（无任何提示可Ctrl+V贴至画图、QQ、Word等，BIOS中截的图可以在Windows等OS中查看），配合Alt键使用可以截取当前焦点所在的活动窗口。<br>ScrollLock键：滚动条锁定键，配合ScrollLock指示灯来控制和显示当前滚动条锁定状态。常见的软件中只有Excel支持此功能，使用频率极低。<br>Pause|Break键：暂停/中断键。当需要查看主板自检信息时，可以在自检时按下该键，自检结束后将不会自动进入下一步启动过程，而是等待用户操作。VBS（按键精灵等）、VBA编程中为暂停脚本。</p>
-<p>Windows快捷键大全编辑键区：<br>Insert键：插入/改写键。使用该键可以切换当前文本输入状态是插入状态还是改写状态。Word、写字板、记事本等文字处理和某些程序编译器支持该功能。<br>Delete键：删除键，文本编辑可以删除光标后而不是前的字符，文件浏览可以删除选中的文件。部分主板通过该键进入BIOS。<br>Delete+Shift删除被选中的项目，如果是文件，将被直接删除而不是放入回收站<br>Home键：起始键，用于将光标移至行开头。浏览网页时，可以返回网页最上端。<br>End键：结尾键，用于将光标移至结尾。浏览网页时，可以将页面滚至最下方。<br>Page Up键：向上翻页键。<br>PageDown键：向下翻页键。</p>
-<p>Windows快捷键大全数字键盘区：<br>NumLock键：数字锁定键，与NumLock指示灯对应，按下该键可以控制NumLock指示灯的状态。当NumLock指示灯点亮时，小键盘区用于输入数字；当NumLock指示灯熄灭时，小键盘区可代替编辑键区使用。</p>
-<p>Windows快捷键大全107键键盘附加按键：<br>WakeUp键：唤醒键<br>Sleep键：睡眠键<br>Power键：电源键</p>
-<p>Windows快捷键大全Fn在Win中<br>F1 显示帮助。<br>F2 重命名。<br>F3 焦点在桌面时打开“查找：所有文件” 对话框（WIN10不适用）；Win资源管理器中切至搜索栏。<br>F4+Alt关闭窗口【焦点在桌面时是关机界面，在网页则关闭当前标签或浏览器】。<br>F5 刷新。<br>F6切换。焦点切到任务栏或活动窗口中的地址栏。F6或TAB键在左右窗格、地址栏、搜索栏、间切换<br>F10+Shift =Alt+F10 Application键激活当前焦点的右键菜单。（word中Shift+F10出现右键快捷菜单）<br>F11全屏、Esc退出。【Windows Explorer（即“计算机”点开的窗口，下简称Win资源管理器）是隐藏地址栏和树状图；网页隐藏搜索、收藏、插件、侧边、状态栏；媒体播放界面同理】<br>F12在Excel 或Word文档是另存为；网页页面是打开调试环境（审查元素）。</p>
-<p>Windows快捷键大全Up、Down、Left、Right 方向键<br>方向键本键如果活动选项是选项按钮或文件则为移动焦点；<br>方向键 + Win键（简称Win键）使窗口全屏、最小化、靠左半边、靠右半边（部分版本不支持）；<br>方向键+Shift键将连续的文字或文件选中<br>方向键（左右）+Ctrl键 在英文单词或中文词语间跳跃<br>方向键（上下）+Ctrl键 在段落开头间跳跃</p>
-<p>Windows快捷键大全Ctrl键</p>
-<p>Windows快捷键大全系统类<br>Ctrl+Alt+Delete打开安全选项（XP及以下为任务管理器，DOS系统中为重启）<br>Ctrl+Shift+Esc打开任务管理器 （Win9x中打开开始菜单）<br>Ctrl+Shift+N 新建一个新的文件夹（Win XP不适用）<br>Ctrl+Shift切换中英文输入法。<br>Ctrl+Space（空格）的作用不一样，是切换输入法和非输入法<br>Ctrl+Tab焦点向下一项移动<br>Ctrl+Shift+Tab=Shift+Tab焦点向上一项移动<br>Ctrl+F4 Win资源管理器中切至地址栏；媒体播放中停止。</p>
-<p>Windows快捷键大全文字处理类<br>Ctrl+a 全选All<br>Ctrl+b 粗体 Black<br>Ctrl+c 或insert 拷贝 Copy<br>Ctrl+d 字体格式 Decorate<br>Ctrl+e 居中对齐 Encenter<br>Ctrl+f 查找 Find<br>Ctrl+g 定位 Get address<br>Ctrl+h 替换 Huan<br>Ctrl+i 斜体 italic<br>Ctrl+j 两端对齐 Justify<br>Ctrl+k 超级链接 King Link<br>Ctrl+l 左对齐 Left Ailgn<br>Ctrl+m 左缩进 M……<br>Ctrl+n 新建 New 或Ctrl+Shift+n<br>Ctrl+o 打开 Open<br>Ctrl+p 打印 Print<br>Ctrl+r 右对齐 Right Align<br>Ctrl+s 保存 Save<br>Ctrl+t 首行缩进 =Tab<br>Ctrl+u 下划线 Underline<br>Ctrl+v = Shift + Insert 粘贴 Paste （在c边上故随意赋键)<br>Ctrl+w关闭当前的窗口、标签页、工作、文件或停止媒体播放Work<br>Ctrl+x 剪切<br>Ctrl+y= Alt+Shift + Backspace重复 （反撤销）<br>Ctrl+z= Alt + Backspace撤销</p>
-<p>Ctrl+F4 Word中关闭当前应用程序中的当前文件。<br>Ctrl+F6 Word中切换到当前应用程序中的下一个文本。<br>Alt + 双击超链接执行匹配的命令（或选择选项）<br>Ctrl + 双击超链接打开链接<br>Shift word等Micro Office系列软件中按下不放，可以跳过自启动的宏</p>
-<p>Win键</p>
-<p>Win键+ 向上键最大化窗口<br>Win键+ 向左键将窗口右移或<br>Win键+ 向右键将窗口<br>Win键+ 向下键最小化窗口<br>Win键+ F1 显示“帮助”<br>Win键+PrintScreen键截取当前屏幕到剪贴板，并保存截屏图片文件到“图片”文件夹中。（WIN8/10）<br>Win键或Ctrl+Esc打开开始菜单<br>Win键+Break打开“系统属性”对话框<br>Win键+Pause显示“系统属性”对话框<br>Win键+Tab循环切换任务栏上的程序（win7、win8）（windowsXP不适用）<br>Win键 + Tab使用 Aero Flip 3-D 循环切换任务栏上的程（win7）（windowsxp不适用）<br>Win键 +Tab+ Ctrl通过 Aero Flip 3-D 使用方向键循环切换任务栏上的程序 （win7）<br>Win键 + Space如果开启了AERO效果，预览桌面 （win7）（在win10此项是小界面切换输入法）<br>Win键+ Home最小化除活动窗口之外的所有窗口（win7）（windowsXP不适用</p>
-<p>主键盘区上的数字<br>Win键+数字启动锁定到任务栏中的由该数字所表示位置处的程序。如果该程序已在运行，则切换到该程序<br>Win键+Shift+数字启动锁定到任务栏中的由该数字所表示位置处的程序的新实例<br>Win键+Alt+ 数字打开锁定到任务栏中的第该数字个程序的跳转列表(Jump List)）</p>
-<p>Win键+B 选中桌面右下方托盘栏或任务栏Progress Bar<br>Win键+D显示桌面Desktop<br>Win键+E打开Windows资源管理器Explorer【即我的电脑、计算机】<br>Win键+F 打开“查找：所有文件”对话框（win10中为打开反馈中心）（Win资源管理器中为切至查找栏）<br>Win键+F+Ctrl 搜索计算机（如果已连接到网络）<br>Win键+G 循环切换小工具（win7）（win10打开xbox菜单）（windowsXP不适用）<br>Win键+I 打开“设置”（win10）<br>Win键+L 锁定计算机或切换用户<br>Win键+M 最小化所有窗口<br>Win键+Shift+M 将最小化的窗口还原到桌面<br>WIN键+P 多荧幕\投影仪选项选择演示显示模式。（WIN7）出现菜单后再摁Win+P选择选项，放开Win即可 确定。也可摁一次然后方向键选择回车键确定。<br>Win键+R 打开“运行”对话框<br>WIN键+T 显示任务栏当前所用程序的任务栏缩略图，再按一次切换到其他缩略图。（QWIN7）<br>Win键+U 打开辅助工具管理器、轻松访问中心<br>Win键+X 打开 Windows 移动中心（win7）（win10唤起开始按钮右键菜单）（windowsXP不适用）</p>
-<p>Windows快捷键大全Alt键</p>
-<p>Alt+Space 打开活动窗口最左上角的菜单<br>Alt+Space+N 新窗口<br>Alt+Tab切换当前程序 （加Shift反向）<br>Alt+Esc 切换当前程序 （加Shift反向）<br>Alt+Ender 将windows下运行的MSDOS窗口在窗口和全屏幕状态间切换<br>Alt+Print Screen将当前活动程序窗口以图像方式拷贝到剪贴板（加shift 可以跳到前一个窗口）<br>向后移动到上一个视图 ALT+左箭头<br>向前移动到上一个视图 ALT+右箭头</p>
-<p>Windows快捷键大全Shift键</p>
-<p>关闭所选文件夹及其所有父文件夹<br>按住 Shift键再单击“关闭按钮（仅适用于“我的电脑”）</p>
-<p>Windows快捷键大全系统自带放大镜程序</p>
-<p>Windows快捷键大全旧版放大镜<br>Windows+PRINT SCREEN 将屏幕复制到剪贴板（包括鼠标光标）<br>Windows+SCROLL LOCK 将屏幕复制到剪贴板（不包括鼠标光标）<br>Windows+PAGE UP 切换反色。<br>Windows+ PAGE DOWN 切换跟随鼠标光标<br>Windows+向上箭头 增加放大率<br>Windows+向下箭头 减小放大率</p>
-<p>Windows给出的放大镜快捷键<br>Win+ 唤起放大镜；放大<br>Win- 缩小<br>（设置中单次按键倍率可调）</p>
-<p>Windows快捷键大全小键盘</p>
-<p>NUM LOCK+负号(-)折叠所选的文件夹<br>NUM LOCK+乘号(*)展开所选的文件夹下的所有文件及文件夹<br>NUM LOCK+加号(+) 展开所选的文件夹</p>
-<p>Windows快捷键大全IE浏览器</p>
-<p>显示前一页（前进键） ALT+RIGHT ARROW<br>显示后一页（后退键） ALT+LEFT ARROW<br>在页面上的各框架中切换 （加shift反向）Ctrl+TAB<br>这个键用来打开IE中的地址栏列表，要关闭IE窗口，可以用Alt+F4组合键 F4<br>刷新 F5<br>强行刷新 Ctrl+F5<br>可以快速在资源管理器及IE中定位到地址栏 F6<br>激活程序中的菜单栏 F10<br>可以使当前的资源管理器或IE变为全屏显示 F11<br>执行菜单上相应的命令 ALT+菜单上带下划线的字母<br>关闭多文档界面程序中的当前窗口 Ctrl+ F4<br>关闭当前窗口或退出程序 ALT+ F4<br>添加当前页面到收藏夹 Ctrl+ D<br>显示所选对话框项目的帮助 F1<br>显示当前窗口的系统菜单 ALT+空格键<br>显示所选项目的快捷菜单 Shift+ F10<br>显示“开始”菜单 Ctrl+ ESC<br>显示多文档界面程序的系统菜单 ALT+连字号(-)<br>切换到上次使用的窗口 按住ALT然后重复按TAB，<br>切换到另一个窗口 ALT+ TAB<br>在后台打开一个页面 Ctrl+ 鼠标左键单击<br>在新窗口中打开一个页面 Shift+ 鼠标左键单击</p>
-<p>Windows快捷键大全Windows资源管理器</p>
-<p>插入光盘时不用“自动播放”功能 按住 Shift插入 CD-ROM<br>复制文件 按住Ctrl拖动文件<br>创建快捷方式按住 Ctrl+Shift拖动文件 或按住 ALT拖动文件<br>立即删除某项目而不将其放入回收站 Shift+DELETE<br>显示“查找：所有文件” F3<br>显示项目的快捷菜单 APPLICATION键<br>刷新窗口的内容 F5<br>重命名项目 F2<br>重命名项目 F2 重命名时按Tab键可重命名下一文件，不用按回车+向下+F2<br>选择所有项目 Ctrl+ A<br>查看项目的属性 ALT+ ENTER或 ALT+双击</p>
-<p>Windows快捷键大全辅助选项</p>
-<p>切换筛选键开关 右Shift八秒<br>切换高对比度开关 左ALT+左Shift+PRINT SCREEN<br>切换鼠标键开关 左ALT+左Shift+NUM LOCK<br>切换切换键开关 NUM LOCK五秒<br>右侧 Shift 键八秒钟 切换“筛选键”的开和关。<br>左 ALT + 左 Shift + PRINT SCREEN 切换“高对比度”的开和关。<br>左 ALT + 左 Shift + NUM LOCK 切换“鼠标键”的开和关。<br>Shift 键五次 切换“粘滞键”的开和关。<br>Num Lock 键五秒钟 切换“切换键”的开和关。<br>WIN+ U 打开“辅助功能管理器”。</p>
-<p>Windows快捷键大全Win10</p>
-<p>Win键+字母<br>Win键+A：激活操作中心<br>Win键+B：聚焦于右下角托盘区<br>Win键+C：通过语音激活Cortana<br>Win键+D：显示桌面<br>Win键+E：打开文件管理器<br>Win键+G：打开Xbox游戏录制工具栏，供用户录制游戏视频或截屏激活截屏功能<br>Win键+H：激活Windows10应用的分享功能<br>Win键+I：打开Windows10设置<br>Win键+K：激活无线显示器连接或音频设备连接<br>Win键+L：锁定屏幕<br>Win键+P：投影屏幕<br>Win键+R：运行<br>Win键+S：搜索、激活Cortana（微软小娜）<br>Win键+T：快速切换任务栏程序<br>Win键+V：打开云剪贴板<br>Win键+X：打开高级用户功能</p>
-<p>　　Win键+非字母<br>Win+Break：看配置<br>Win键+Space：快速显示桌面<br>Win键+Tab：激活任务视图<br>Win键+分号：调出 Emoji 表情<br>Win键+1/2/3：打开任务栏中固定的程序，1代表任务栏中第一个应用图标<br>Win键+左/右/上/下：移动应用窗口<br>Win键+Shift+左箭头：移动到左边屏幕。<br>Win键+Shift+右箭头：移动到右边屏幕。<br>Win键+Shift+S：Windows自带截图<br>Win键+Ctrl+D：创建一个新的虚拟桌面<br>Win键+Ctrl+F4：关闭虚拟桌面<br>Win键+Ctrl+左/右：切换虚拟桌面</p>
-<p>　　Ctrl键<br>Ctrl+Shift+N：新建文件夹。<br>Ctrl+shift+左键：以管理员身份运行。<br>Ctrl+Shift+Esc：任务管理器<br>Ctrl+Shift+Del：安全选项列表<br>Ctrl+W：关闭当前窗口。<br>Ctrl+F：定位到搜索框。</p>
-<p>　　Alt键<br>Alt+D：定位到地址栏。<br>Alt+向左键：查看上一个文件夹。<br>Alt+向右键：查看下一个文件夹。<br>Alt+向上键：查看父文件夹。</p>
-<p>　　Shift键<br>Shift+右键点击目录：在此处打开命令行窗口选项。<br>Shift+右键点击文件：发送到菜单。<br>Shift+点击任务栏（已经打开的）图标打开新窗口</p>
-<p>　　鼠标<br>在同一分区目录间拖曳，默认执行剪切操作，按下Ctrl+拖曳，执行拷贝操作。<br>在不同分区间进行拖曳，默认执行拷贝操作，按下Shift+拖拽，执行剪切操作。<br>Alt+拖曳，创建快捷方式。</p>
-<p>Windows快捷键大全WinXP</p>
-<p>Ctrl + Shift + 任何箭头键 突出显示一块文本。<br>Shift + 任何箭头键 在窗口或桌面上选择多项，或者选中文档中的文本。<br>Ctrl + A 选中全部内容。<br>F3 搜索文件或文件夹。<br>Alt + Enter 查看所选项目的属性。<br>Alt + F4 关闭当前项目或者退出当前程序。<br>Alt + 空格键 为当前窗口打开快捷菜单。<br>Ctrl + F4 在允许同时打开多个文档的程序中关闭当前文档。<br>Alt + Tab 在打开的项目之间切换。<br>Alt + Esc 以项目打开的顺序循环切换。<br>F6 在窗口或桌面上循环切换屏幕元素。<br>F9+FN键是键盘锁定<br>F4 显示“我的电脑”和“Windows 资源管理器”中的“地址”栏列表。<br>Shift + F10 显示所选项的快捷菜单。<br>Alt + 空格键 显示当前窗口的“系统”菜单。<br>Ctrl + Esc 显示“开始”菜单。<br>ALT + 菜单名中带下划线的字母 显示相应的菜单。<br>在打开的菜单上显示的命令名称中带有下划线的字母 执行相应的命令。<br>F10 激活当前程序中的菜单条。<br>右箭头键 打开右边的下一菜单或者打开子菜单。<br>左箭头键 打开左边的下一菜单或者关闭子菜单。<br>F5 刷新当前窗口。<br>BackSpace 在“我的电脑”或“Windows 资源管理器”中查看上一层文件夹。<br>Esc 取消当前任务。<br>将光盘插入到 CD-ROM 驱动器时按 Shift 键 阻止光盘自动播放。</p>
-<p>Windows快捷键大全对话框</p>
-<p>取消当前任务 ESC<br>如果当前控件是个按钮，要单击该按钮。<br>如果当前控件是个复选框，要选择或清除该复选框<br>或者如果当前控件是个选项按钮，要单击该选项空格键<br>单击相应的命令 ALT+带下划线的字母<br>单击所选按钮 ENTER<br>在选项上向后移动 Shift+ TAB<br>在选项卡上向后移动 Ctrl+ Shift+ TAB<br>在选项上向前移动 TAB<br>在选项卡上向前移动 Ctrl+ TAB<br>如果在“另存为”或“打开”对话框中选择了某文件夹，要打开上一级文件夹<br>BACKSPACE<br>在“另存为”或“打开”对话框中打开“保存到”或“查阅” F4<br>刷新“另存为”或“打开”对话框 F5</p>
-<p>Windows快捷键大全自然键盘</p>
-<p>WIN 显示或隐藏”开始”菜单。<br>WIN+ BREAK 显示”系统属性”对话框。<br>WIN+ D 显示桌面。<br>WIN+ M 最小化所有窗口。<br>WIN+ Shift + M 还原最小化的窗口。<br>WIN+ E 打开”我的电脑”。<br>WIN+ F 打开windows反馈页面，F代表feedback。<br>Ctrl+WIN+ F 搜索计算机。<br>WIN+ F1 显示 Windows 帮助。<br>WIN+ L 如果连接到网络域，则锁定您的计算机，或者如果没有连接到网络域，则切换用户。<br>WIN+ R 打开”运行”对话框。<br>KEY 显示所选项的快捷菜单。<br>WIN+ U 打开”工具管理器”。</p>
-<p>Windows快捷键大全对话框</p>
-<p>Ctrl + Tab 在选项卡之间向前移动。<br>Ctrl + Shift +Tab 在选项卡之间向后移动。<br>Tab 在选项之间向前移动。<br>Shift + Tab 在选项之间向后移动。<br>ALT + 带下划线的字母 执行相应的命令或选中相应的选项。<br>Enter 执行活选项动或按钮所对应的命令。<br>空格键 如果活选项动是复选框，则选中或清除该复选框。<br>箭头键 活选项动是一组选项按钮时，请选中某个按钮。<br>F1 显示帮助。<br>F4 显示当前列表中的项目。</p>
-<p>Windows快捷键大全生僻快捷键</p>
-<p>Windows中的快捷键我们都很熟悉了，可是下面这些快捷键你平时用过吗？与普通的快捷键相比，它们的使用方法有些特别：这些键不能同时按下，而是要用两步或三步的连续操作，才能实现一项功能。虽然如此，使用这些快捷键也比使用鼠标方便。<br>Alt+空格→X 最大化当前窗口<br>Alt+空格→N 最小化当前窗口<br>提示：“Alt+空格→X”表示先按下“Alt+空格”组合键，然后松开组合键，再按下X键。下面“→”符号均表示先松开符号前按下的键，再按下符号后面的键。<br>在桌面或文件夹窗口中可使用以下快捷键（注意是文件夹窗口而不是具体的文件夹）：<br>右键→I→N 按名称排列图标<br>右键→I→T 按类型排列图标（呵呵，搞IT的应该记得住吧）<br>右键→I→Z 按大小排列图标<br>右键→I→D 按日期排列图标<br>右键→W→F 新建文件夹<br>右键→R 若在桌面则打开“显示属性”在文件夹则打开该文件夹的属性<br>右键→E 刷新当前窗口，效果等同F5<br>提示：这里的“右键”指的是主键盘区最下排右侧的Windows徽标键和Ctrl之间的那个键。<br>如果当前窗口是某个具体文件或文件夹：<br>右键→S 创建当前文件或目录的快捷方式<br>右键→R 查看当前文件或目录属性（相当于Alt+Enter）<br>右键→O 打开当前文件或目录（相当于回车）<br>右键→T→A 发送当前文件或目录到软盘<br>注意：有些软件可能会在右键里增加一些菜单，这些菜单的快捷键可能会与系统快捷键发生冲突。比如WinRAR会在文件或文件夹的右键菜单中增加一个“添加到”的菜单，该菜单的快捷键S会与系统右键菜单“创建快捷方式（S）”发生冲突。如果要去掉这些“外来”的右键菜单，我们可以打开WinRAR，在菜单栏上依次点击“选项→设置”，打开“设置”对话框，在“综合”选项卡中点击“选择关联菜单项目”按钮，在打开的对话框中清空所有选项前的复选框即可。<br>如果当前窗口是记事本：<br>右键→U 撤消操作，效果等同与Ctrl+Z<br>右键→P 粘贴，效果等同与Ctrl+V<br>右键→A 选中全部文字，效果等同于Ctrl+A<br>使用“我的电脑”和“Windows资源管理器”的快捷键<br>目的快捷键<br>关闭所选文件夹及其所有父<br>文件夹按住 Shift键再单击“关闭按钮（仅适用于“我的电脑”）<br>向后移动到上一个视图 ALT+左箭头<br>向前移动到上一个视图 ALT+右箭头<br>查看上一级文件夹 BACKSPACE<br>其实，这些快捷键大家都可以在相关程序的右键菜单中找到，在这里只是选择了几个比较实用的归纳了一下，你也可以自己研究。比如当前窗口是某个文件或文件夹，那么用“右键→M”就可以对该文件或文件夹进行重命名操作。不同的程序有不同的快捷键，大家可以自己研究试用，举一反三。</p>
-<p>Windows快捷键大全其他资料</p>
-<p>一、常见用法：<br>F1 显示当前程序或者windows的帮助内容。<br>F2 当你选中一个文件的话，这意味着“重命名”<br>F3 当你在桌面上的时候是打开“查找：所有文件” 对话框<br>F10或ALT 激活当前程序的菜单栏<br>Win键或Ctrl+ESC 打开开始菜单<br>Ctrl+ALT+DELETE 在win9x中打开关闭程序对话框<br>DELETE 删除被选择的选择项目，如果是文件，将被放入回收站<br>Shift+DELETE 删除被选择的选择项目，如果是文件，将被直接删除而不是放入回收站<br>Ctrl+N 新建一个新的文件<br>Ctrl+O 打开“打开文件”对话框<br>Ctrl+P 打开“打印”对话框<br>Ctrl+S 保存当前操作的文件<br>Ctrl+X 剪切被选择的项目到剪贴板<br>Ctrl+INSERT 或 Ctrl+C 复制被选择的项目到剪贴板<br>Shift+INSERT 或 Ctrl+V 粘贴剪贴板中的内容到当前位置<br>ALT+BACKSPACE 或 Ctrl+Z 撤销上一步的操作<br>Ctrl+Y 重做上一步被撤销的操作<br>ALT+Shift+BACKSPACE重做上一步被撤销的操作<br>Win键+M 最小化所有被打开的窗口。<br>Win键+Ctrl+M 重新将恢复上一项操作前窗口的大小和位置<br>Win键+E 打开资源管理器<br>Win键+F 打开“查找：所有文件”对话框<br>Win键+R 打开“运行”对话框<br>Win键+BREAK 打开“系统属性”对话框<br>Win键+Ctrl+F 打开“查找：计算机”对话框<br>Shift+F10或鼠标右击 打开当前活动项目的快捷菜单<br>Shift 在放入CD的时候按下不放，可以跳过自动播放CD。在打开word的时候按下不放，可以跳过自启动的宏<br>ALT+F4 关闭当前应用程序<br>ALT+SPACEBAR 打开程序最左上角的菜单<br>ALT+TAB 切换当前程序<br>ALT+ESC 切换当前程序<br>ALT+ENTER 将windows下运行的MSDOS窗口在窗口和全屏幕状态间切换<br>PRINT SCREEN 将当前屏幕以图象方式拷贝到剪贴板<br>ALT+PRINT SCREEN 将当前活动程序窗口以图象方式拷贝到剪贴板<br>Ctrl+F4 关闭当前应用程序中的当前文本（如word中）<br>Ctrl+F6 切换到当前应用程序中的下一个文本（加shift 可以跳到前一个窗口）<br>在IE中：<br>ALT+RIGHT ARROW 显示前一页（前进键）<br>ALT+LEFT ARROW 显示后一页（后退键）<br>Ctrl+TAB 在页面上的各框架中切换（加shift反向）<br>F5 刷新<br>Ctrl+F5 强行刷新<br>目的快捷键<br>激活程序中的菜单栏 F10<br>执行菜单上相应的命令 ALT+菜单上带下划线的字母<br>关闭多文档界面程序中的当<br>前窗口 Ctrl+ F4<br>关闭当前窗口或退出程序 ALT+ F4<br>复制 Ctrl+ C<br>剪切 Ctrl+ X<br>删除 DELETE<br>显示所选对话框项目的帮助 F1<br>显示当前窗口的系统菜单 ALT+空格键<br>显示所选项目的快捷菜单 Shift+ F10<br>显示“开始”菜单 Ctrl+ ESC<br>显示多文档界面程序的系统<br>菜单 ALT+连字号(-)<br>粘贴 CTR L+ V<br>切换到上次使用的窗口或者<br>按住 ALT然后重复按TAB，<br>切换到另一个窗口 ALT+ TAB<br>撤消 Ctrl+ Z<br>二、使用“Windows资源管理器”的快捷键<br>目的快捷键<br>如果当前选择展开了，要折<br>叠或者选择父文件夹左箭头<br>折叠所选的文件夹 NUM LOCK+负号(-)<br>如果当前选择折叠了，要展开<br>或者选择第一个子文件夹右箭头<br>展开当前选择下的所有文件夹 NUM LOCK+*<br>展开所选的文件夹 NUM LOCK+加号(+)<br>在左右窗格间切换 F6<br>三、使用 Win键<br>可以使用 Microsoft自然键盘或含有 Windows徽标键的其他任何兼容键盘的以下快捷键。<br>目的快捷键<br>在任务栏上的按钮间循环 WINDOWS+ TAB<br>显示“查找：所有文件” WINDOWS+ F<br>显示“查找：计算机” Ctrl+ WINDOWS+ F<br>显示“帮助” WINDOWS+ F1<br>显示“运行”命令 WINDOWS+ R<br>显示“开始”菜单 WINDOWS<br>显示“系统属性”对话框 WINDOWS+ BREAK<br>显示“Windows资源管理器” WINDOWS+ E<br>最小化或还原所有窗口 WINDOWS+ D<br>撤消最小化所有窗口 Shift+ WINDOWS+ M<br>四、使用“我的电脑”和“Windows资源管理器”的快捷键<br>目的快捷键<br>关闭所选文件夹及其所有父<br>文件夹按住 Shift键再单击“关闭按钮（仅适用于“我的电脑”）<br>向后移动到上一个视图 ALT+左箭头<br>向前移动到上一个视图 ALT+右箭头<br>查看上一级文件夹 BACKSPACE<br>五、使用对话框中的快捷键<br>目的快捷键<br>取消当前任务 ESC<br>如果当前控件是个按钮，要<br>单击该按钮或者如果当前控<br>件是个复选框，要选择或清<br>除该复选框或者如果当前控<br>件是个选项按钮，要单击该<br>选项空格键<br>单击相应的命令 ALT+带下划线的字母<br>单击所选按钮 ENTER<br>在选项上向后移动 Ctrl+ TAB<br>在选项卡上向后移动 Ctrl+ Shift+ TAB<br>在选项上向前移动 TAB<br>在选项卡上向前移动 Ctrl+ TAB<br>如果在“另存为”或“打开”<br>对话框中选择了某文件夹，<br>要打开上一级文件夹 BACKSPACE<br>在“另存为”或“打开”对<br>话框中打开“保存到”或<br>“查阅” F4<br>刷新“另存为”或“打开”<br>对话框 F5<br>六、使用“桌面”、“我的电脑”和“Windows资源管理器”快捷键<br>选择项目时，可以使用以下快捷键。<br>目的快捷键<br>插入光盘时不用“自动播放”<br>功能按住 Shift插入 CD-ROM<br>复制文件按住 Ctrl拖动文件<br>创建快捷方式按住 Ctrl+Shift拖动文件<br>立即删除某项目而不将其放入“回收站” Shift+DELETE<br>显示“查找：所有文件” F3<br>显示项目的快捷菜单 APPLICATION键<br>刷新窗口的内容 F5<br>重命名项目 F2<br>选择所有项目 Ctrl+ A<br>查看项目的属性 ALT+ ENTER或 ALT+双击<br>可将 APPLICATION键用于 Microsoft自然键盘或含有 APPLICATION键的其他兼容键<br>七、Microsoft放大程序的快捷键<br>这里运用Windows徽标键和其他键的组合。<br>快捷键目的<br>Windows徽标+PRINT SCREEN将屏幕复制到剪贴板（包括鼠标光标）<br>Windows徽标+SCROLL LOCK将屏幕复制到剪贴板（不包括鼠标光标）<br>Windows徽标+ PAGE UP切换反色。<br>Windows徽标+ PAGE DOWN切换跟随鼠标光标<br>Windows徽标+向上箭头增加放大率<br>Windows徽标+向下箭头减小放大率<br>八、使用辅助选项快捷键<br>目的快捷键<br>切换筛选键开关右Shift八秒<br>切换高对比度开关左ALT+左Shift+PRINT SCREEN<br>切换鼠标键开关左ALT+左Shift+NUM LOCK<br>切换粘滞键开关 Shift键五次<br>切换切换键开关 NUM LOC2000 快捷键<br>Windows 资源管理器”的快捷键<br>请按 目的<br>END 显示当前窗口的底端。<br>HOME 显示当前窗口的顶端。<br>NUM LOCK+ 数字键盘的星号 (*) 显示所选文件夹的所有子文件夹。<br>NUM LOCK+ 数字键盘的加号 (+) 显示所选文件夹的内容。<br>NUM LOCK+ 数字键盘的减号 (-) 折叠所选的文件夹<br>向左键 当前所选项处于展开状态时折叠该项，或选定其父文件夹。<br>向右键 当前所选项处于折叠状态时展开该项，或选定第一个子文件夹。<br>注意<br>如果在“辅助功能选项”中打开“粘滞键”，则有些快捷键可能不起作用。<br>如果您通过“Microsoft 终端服务客户”连接到 Windows 2000，则某些快捷键将会更改。详细信息，请参阅“Microsoft 终端服务客户”的联机文档。<br>f1－帮助<br>f2－重命名<br>f5－刷新<br>alt+f4－关闭窗口<br>ctrl+a=全部选中<br>ctrl+c=拷贝<br>ctrl+v=粘贴<br>ctrl+x=剪切<br>alt+enter(或ALT+双击鼠标左键)=属性</p>
+<p>拉取的项目在文件夹var/lib/pagermaid文件下（不在root文件夹下</p>
+<h2 id="安装软件包"><a href="#安装软件包" class="headerlink" title="安装软件包"></a>安装软件包</h2><h3 id="imagemagick"><a href="#imagemagick" class="headerlink" title="imagemagick"></a>imagemagick</h3><p>此软件包用于处理图片，如您没有图片处理需求，您可以无需安装此软件包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install imagemagick -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="neofetch"><a href="#neofetch" class="headerlink" title="neofetch"></a>neofetch</h3><p>此软件包用于显示系统信息，如您没有显示系统信息需求，您可以无需安装此软件包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install neofetch -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="zbar"><a href="#zbar" class="headerlink" title="zbar"></a>zbar</h3><p>此软件包用于处理二维码信息，如您没有处理二维码信息需求，您可以无需安装此软件包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install libzbar-dev -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="最大化安装"><a href="#最大化安装" class="headerlink" title="最大化安装"></a>最大化安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tesseract-ocr tesseract-ocr-all -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="最小化安装"><a href="#最小化安装" class="headerlink" title="最小化安装"></a>最小化安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h3><p>此软件包用于记录信息，以方便软件重启后仍然可以进行上一次未完成的任务，你也可以无需安装此软件包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install redis-server -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="Pip"><a href="#Pip" class="headerlink" title="Pip"></a>Pip</h3><p>此软件包为必须依赖包，用于安装 python 依赖。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install python3-pip -y</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">pip3 install -r requirements.txt</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改配置文件"><a href="#修改配置文件" class="headerlink" title="修改配置文件"></a>修改配置文件</h2><p>将配置 <code>config.gen.yml</code> 文件复制一份并且命名为 <code>config.yml</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp config.gen.yml config.yml</span><br></pre></td></tr></table></figure>
+
+<p>然后去<a href="https://my.telegram.org/">telegram官网</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130145720068.png" alt="image-20220130145720068">然后点击这个创建</p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130145807677.png" alt="image-20220130145807677"></p>
+<p>信息随便填<img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150030976.png" alt="image-20220130150030976">然后到这个界面，吧app spi_id和hash复制下来，填入api_key和hash</p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150049369.png" alt="image-20220130150049369"></p>
+<p>这是vim编辑器，如果你会你随便</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vi config.yml</span><br></pre></td></tr></table></figure>
+
+<p>不会的话就用finalshell，/var/lib/pagermaid</p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150509610.png" alt="image-20220130150509610"></p>
+<p>然后在弹出的对话框修改相应值</p>
+<p><img src="https://cdn.jsdelivr.net/gh/imkcpblog/chuang@main/secondimage-20220130150619167.png" alt="image-20220130150619167"></p>
+<h2 id="登录账号"><a href="#登录账号" class="headerlink" title="登录账号"></a>登录账号</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">python3 -m pagermaid</span><br></pre></td></tr></table></figure>
+
+<p>此步需要填入完整的电话号码（eg：<code>+12569986522</code>）然后 tg 会发给你的其他客户端发送验证码，填入验证码后，回车，如有两步验证密码，则再输入两步验证密码即可。现在你可以再任意对话发送  -help获取机器人运行情况</p>
+<h2 id="设置守护进程"><a href="#设置守护进程" class="headerlink" title="设置守护进程"></a>设置守护进程</h2><p>此步骤可以方便 <code>pagermaid</code> 的自动运行，您无需在 <code>pagermaid</code> 意外退出后重新登录主机进行操作。</p>
+<p>停止运行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ctrl + c</span><br></pre></td></tr></table></figure>
+
+<p>然后设置</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat &lt;&lt;<span class="string">&#x27;TEXT&#x27;</span> &gt; /etc/systemd/system/pagermaid.service</span><br><span class="line">[Unit]</span><br><span class="line">Description=PagerMaid-Modify telegram utility daemon</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">WorkingDirectory=/var/lib/pagermaid</span><br><span class="line">ExecStart=/usr/bin/python3 -m pagermaid</span><br><span class="line">Restart=always</span><br><span class="line">TEXT</span><br></pre></td></tr></table></figure>
+
+<p>复制以上代码，全部</p>
+<h2 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h2><p>启动程序：<code>systemctl start pagermaid</code></p>
+<p>设置为开机自启：<code>systemctl enable pagermaid</code></p>
+<p>停止程序：<code>systemctl stop pagermaid</code></p>
+<p>安装插件：<code>-apt install 插件名</code></p>
+<p>帮助：<code>-help</code></p>
+<p>带-的全在TG里输入</p>
+<p>这是插件列表：<a href="https://index.xtaolabs.com/">https://index.xtaolabs.com/</a></p>
+<hr>
+<p>转载于 <a href="https://blog.imkcp.xyz/2022/01/30/Pagermaid/">Imkcp的blog</a></p>
 ]]></content>
       <tags>
         <tag>IT</tag>
-        <tag>Windows</tag>
-        <tag>微软</tag>
-        <tag>随手笔记</tag>
-        <tag>电脑</tag>
+        <tag>Telegram</tag>
+        <tag>Pagermaid</tag>
+        <tag>好玩项目</tag>
       </tags>
   </entry>
   <entry>
@@ -745,8 +587,8 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
 </ol>
 ]]></content>
       <tags>
-        <tag>IT</tag>
         <tag>Windows</tag>
+        <tag>IT</tag>
         <tag>微软</tag>
         <tag>漏洞</tag>
       </tags>
@@ -782,8 +624,8 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
 <p>对于到底要不要删除密码，你觉得呢？</p>
 ]]></content>
       <tags>
-        <tag>IT</tag>
         <tag>Windows</tag>
+        <tag>IT</tag>
         <tag>微软</tag>
         <tag>密码</tag>
         <tag>资讯</tag>
@@ -1103,6 +945,208 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
       </tags>
   </entry>
   <entry>
+    <title>简单制作一个图片API</title>
+    <url>/2022/02/24/imgapi/</url>
+    <content><![CDATA[<p>今天教程教大家怎么建一个简单的图片API</p>
+<h2 id="提前准备"><a href="#提前准备" class="headerlink" title="提前准备"></a>提前准备</h2><ul>
+<li><mark class="hl-label orange">Cloudflare账号</mark> </li>
+<li><mark class="hl-label orange">一个域名</mark>  （可以是Freenom免费域名）</li>
+<li><mark class="hl-label orange">一堆的图片连接</mark> </li>
+</ul>
+<h2 id="Cloudflare部分"><a href="#Cloudflare部分" class="headerlink" title="Cloudflare部分"></a>Cloudflare部分</h2><h3 id="登录Cloudflare"><a href="#登录Cloudflare" class="headerlink" title="登录Cloudflare"></a>登录Cloudflare</h3><blockquote>
+<p>登录Cloudflare应该不需要我写了吧…</p>
+</blockquote>
+<p>首先打开 <a href="https://dash.cloudflare.com/">Cloudflare</a> 网站 （Dashboard）  </p>
+<p>之后输入账号密码点击 <mark class="hl-label blue">登录</mark>  或者 <mark class="hl-label blue">Sign In</mark> </p>
+<p><strong><em>如果没有账号的话请注册一个</em></strong></p>
+<h3 id="添加域名"><a href="#添加域名" class="headerlink" title="添加域名"></a>添加域名</h3><p>首先点击 <mark class="hl-label blue">添加站点</mark>  ，输入要添加的域名，点击 <mark class="hl-label default">确定</mark>  ，之后根据Cloudflare的提示进行添加即可</p>
+<h2 id="准备搭建工作"><a href="#准备搭建工作" class="headerlink" title="准备搭建工作"></a>准备搭建工作</h2><h3 id="创建服务"><a href="#创建服务" class="headerlink" title="创建服务"></a>创建服务</h3><p>在首页中的左侧栏找到“<mark class="hl-label default">Workers</mark> ” 并点击进入Workers选择 ，点击 <mark class="hl-label blue">创建服务</mark> </p>
+<p><code>服务名称</code> 随意填写</p>
+<p><code>选择启动器</code> 选择 <mark class="hl-label green">简介（HTTP 处理程序）</mark> </p>
+<p>点击 <mark class="hl-label blue">创建服务</mark> </p>
+<h3 id="设置域名"><a href="#设置域名" class="headerlink" title="设置域名"></a>设置域名</h3><p>点击 <mark class="hl-label default">触发器</mark>  选项卡 ，点击 <mark class="hl-label blue">添加路由</mark> </p>
+<p>之后输入域名 （/*结尾）</p>
+<p>最后点击  <mark class="hl-label blue">添加路由</mark>  即可</p>
+<h2 id="正式搭建"><a href="#正式搭建" class="headerlink" title="正式搭建"></a>正式搭建</h2><h2 id="上代码"><a href="#上代码" class="headerlink" title="上代码"></a>上代码</h2><p>点击 <mark class="hl-label default">资源</mark>  选项卡，点击 <mark class="hl-label blue">快速编辑</mark> </p>
+<p>之后在左侧的编辑器清空 并贴上代码</p>
+<p>代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">addEventListener(&#x27;fetch&#x27;, event =&gt; &#123;</span><br><span class="line">    event.respondWith(handleRequest(event.request))</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">async function handleRequest(request) &#123;</span><br><span class="line"></span><br><span class="line">	var background_urls = [</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt1.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt2.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt3.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt4.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt5.jpg&#x27;,</span><br><span class="line">&#x27;https://img.400511.net/2022/02/24/Ne5Wu0HV.jpg&#x27;</span><br><span class="line"> /*需要随机到的图片的链接*/</span><br><span class="line">    ]</span><br><span class="line">	var index = Math.floor((Math.random()*background_urls.length));</span><br><span class="line">	res = await fetch(background_urls[index])</span><br><span class="line">    return new Response(res.body, &#123;</span><br><span class="line">        headers: &#123; &#x27;content-type&#x27;: &#x27;image/jpeg&#x27; &#125;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后点击<mark class="hl-label blue">保存并部署</mark>  即可</p>
+<blockquote>
+<p>如果要测试是否成功的话，点击 <mark class="hl-label blue">发送</mark> ，如果返回的是 <mark class="hl-label green">200 OK</mark>  就表示成功了</p>
+</blockquote>
+<h3 id="其他问题"><a href="#其他问题" class="headerlink" title="其他问题"></a>其他问题</h3><p>如果你添加的路由（域名）还是无法访问的话，请在DNS添加 <code>A</code>记录,名称填写域名（路由），Ipv4填写Workers的IP</p>
+<blockquote>
+<p>Workers IP 获取方法：电脑打开命令提示符或手机打开termux 输入<code>ping workers的子域名</code>， <strong><em>Workers的子域名在发送按扭的左侧的那个域名</em></strong></p>
+</blockquote>
+<p>ping 出来的IP给复制起来 粘贴到 <code>A</code>记录的Ipv4的框框里点击添加即可</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">	var background_urls = [</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt1.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt2.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt3.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt4.jpg&#x27;,</span><br><span class="line">&#x27;https://cdn.jsdelivr.net/gh/cypicbed/cypic@master/img/mt5.jpg&#x27;,</span><br><span class="line">&#x27;https://img.400511.net/2022/02/24/Ne5Wu0HV.jpg&#x27;</span><br><span class="line"> /*需要随机到的图片的链接*/</span><br><span class="line">    ]</span><br></pre></td></tr></table></figure>
+
+<p>将 <code>var background_urls = [</code> 后面的改成需要的照片的链接</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+        <category>其他</category>
+      </categories>
+      <tags>
+        <tag>IT</tag>
+        <tag>Cloudflare</tag>
+        <tag>Workers</tag>
+        <tag>API</tag>
+        <tag>图片</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>IBM Linux One安装宝塔</title>
+    <url>/2022/03/05/bt-linux1/</url>
+    <content><![CDATA[<h2 id="搭建准备"><a href="#搭建准备" class="headerlink" title="搭建准备"></a>搭建准备</h2><ul>
+<li><mark class="hl-label blue">一台可以连接VPS的设备</mark> </li>
+<li><mark class="hl-label blue">一个可用的IBM Linux One VPS</mark> </li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1.安装宝塔面板（7.7.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://f.cccyun.cc/bt/install_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>此时无需进入</p>
+<p>2.解除宝塔绑定限制</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget --no-check-certificate https://10g.biz/downloads/LinuxPanel.zip &amp;&amp; unzip LinuxPanel.zip &amp;&amp; bash /root/panel/update.sh &amp;&amp; rm -f /www/server/panel/data/bind.pl</span><br></pre></td></tr></table></figure>
+
+<p>3.安装宝塔面板（7.6.0）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">wget -O install.sh http://v7.hostcli.com/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>4.绿化（变为纯净版）</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">curl http://v7.hostcli.com/install/update6.sh|bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="开放所有端口"><a href="#开放所有端口" class="headerlink" title="开放所有端口"></a>开放所有端口</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">iptables -P INPUT ACCEPT</span><br><span class="line">iptables -P FORWARD ACCEPT</span><br><span class="line">iptables -P OUTPUT ACCEPT</span><br><span class="line">iptables -F</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu镜像默认设置了Iptable规则，关闭它</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">apt-get purge netfilter-persistent</span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+
+<p>或者强制删除</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">rm -rf /etc/iptables &amp;&amp; reboot</span><br></pre></td></tr></table></figure>
+
+<h3 id="进入宝塔面板"><a href="#进入宝塔面板" class="headerlink" title="进入宝塔面板"></a>进入宝塔面板</h3><blockquote>
+<p>VPS ip：8888</p>
+</blockquote>
+<hr>
+<p>如有问题请在下方评论区或者在 <mark class="hl-label blue">TG群组</mark> ： <a href="https://t.me/helpether">https://t.me/helpether</a> 进行反馈</p>
+]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>VPS</tag>
+        <tag>宝塔</tag>
+        <tag>IBM</tag>
+        <tag>建站</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Windows快捷键</title>
+    <url>/2021/09/26/kjj/</url>
+    <content><![CDATA[<p>标准计算机键盘共104键，除了26个字母键、符号键、数字键外，其余按键功能如下：</p>
+<p>Windows快捷键大全主键盘区：<br>Esc 键：escape，退出键。<br>Tab 键：tabulator key，跳格键，在文本编辑软件中增加四个空格，Windows中可用于切换屏幕上的焦点。<br>Ctrl 键：control，控制键。<br>Shift 键：上档键。<br>Alt 键：换档键。<br>Caps Lock 键：大写锁定键，用于切换系统大写锁定。<br>Windows 键：键盘上画着一个Windows视窗图标的键。按这个键可以打开开始菜单。<br>BackSpace 键：退格键，用于删除当前光标前的字符；退格键 在Win资源管理器后退；打开、另存为界面表示返回上级。<br>Enter键：回车键，换行，在Windows资源管理器表示打开文件（夹）或选中菜单选项；在Cmd[DOS Mode]表执行命令。<br>Space：空格键 如果活动选项是单选或复选框，则选中或清除框中的√</p>
+<p>Windows快捷键大全功能键区：<br>F1 帮助<br>F2 重命名、部分主板开机时的BIOS快捷键<br>F3 查找<br>F4 地址栏<br>F5 刷新<br>F6 切换（到地址栏）<br>F9 部分主板开机引导<br>F7、8 自定义<br>F10 + Shift或Alt 右键菜单<br>F11全屏<br>F12 部分主板开机引导</p>
+<p>Windows快捷键大全系统键区：<br>PrintScreen键：印屏幕。按下该键后系统会自动全屏截图并保存至剪切板中（无任何提示可Ctrl+V贴至画图、QQ、Word等，BIOS中截的图可以在Windows等OS中查看），配合Alt键使用可以截取当前焦点所在的活动窗口。<br>ScrollLock键：滚动条锁定键，配合ScrollLock指示灯来控制和显示当前滚动条锁定状态。常见的软件中只有Excel支持此功能，使用频率极低。<br>Pause|Break键：暂停/中断键。当需要查看主板自检信息时，可以在自检时按下该键，自检结束后将不会自动进入下一步启动过程，而是等待用户操作。VBS（按键精灵等）、VBA编程中为暂停脚本。</p>
+<p>Windows快捷键大全编辑键区：<br>Insert键：插入/改写键。使用该键可以切换当前文本输入状态是插入状态还是改写状态。Word、写字板、记事本等文字处理和某些程序编译器支持该功能。<br>Delete键：删除键，文本编辑可以删除光标后而不是前的字符，文件浏览可以删除选中的文件。部分主板通过该键进入BIOS。<br>Delete+Shift删除被选中的项目，如果是文件，将被直接删除而不是放入回收站<br>Home键：起始键，用于将光标移至行开头。浏览网页时，可以返回网页最上端。<br>End键：结尾键，用于将光标移至结尾。浏览网页时，可以将页面滚至最下方。<br>Page Up键：向上翻页键。<br>PageDown键：向下翻页键。</p>
+<p>Windows快捷键大全数字键盘区：<br>NumLock键：数字锁定键，与NumLock指示灯对应，按下该键可以控制NumLock指示灯的状态。当NumLock指示灯点亮时，小键盘区用于输入数字；当NumLock指示灯熄灭时，小键盘区可代替编辑键区使用。</p>
+<p>Windows快捷键大全107键键盘附加按键：<br>WakeUp键：唤醒键<br>Sleep键：睡眠键<br>Power键：电源键</p>
+<p>Windows快捷键大全Fn在Win中<br>F1 显示帮助。<br>F2 重命名。<br>F3 焦点在桌面时打开“查找：所有文件” 对话框（WIN10不适用）；Win资源管理器中切至搜索栏。<br>F4+Alt关闭窗口【焦点在桌面时是关机界面，在网页则关闭当前标签或浏览器】。<br>F5 刷新。<br>F6切换。焦点切到任务栏或活动窗口中的地址栏。F6或TAB键在左右窗格、地址栏、搜索栏、间切换<br>F10+Shift =Alt+F10 Application键激活当前焦点的右键菜单。（word中Shift+F10出现右键快捷菜单）<br>F11全屏、Esc退出。【Windows Explorer（即“计算机”点开的窗口，下简称Win资源管理器）是隐藏地址栏和树状图；网页隐藏搜索、收藏、插件、侧边、状态栏；媒体播放界面同理】<br>F12在Excel 或Word文档是另存为；网页页面是打开调试环境（审查元素）。</p>
+<p>Windows快捷键大全Up、Down、Left、Right 方向键<br>方向键本键如果活动选项是选项按钮或文件则为移动焦点；<br>方向键 + Win键（简称Win键）使窗口全屏、最小化、靠左半边、靠右半边（部分版本不支持）；<br>方向键+Shift键将连续的文字或文件选中<br>方向键（左右）+Ctrl键 在英文单词或中文词语间跳跃<br>方向键（上下）+Ctrl键 在段落开头间跳跃</p>
+<p>Windows快捷键大全Ctrl键</p>
+<p>Windows快捷键大全系统类<br>Ctrl+Alt+Delete打开安全选项（XP及以下为任务管理器，DOS系统中为重启）<br>Ctrl+Shift+Esc打开任务管理器 （Win9x中打开开始菜单）<br>Ctrl+Shift+N 新建一个新的文件夹（Win XP不适用）<br>Ctrl+Shift切换中英文输入法。<br>Ctrl+Space（空格）的作用不一样，是切换输入法和非输入法<br>Ctrl+Tab焦点向下一项移动<br>Ctrl+Shift+Tab=Shift+Tab焦点向上一项移动<br>Ctrl+F4 Win资源管理器中切至地址栏；媒体播放中停止。</p>
+<p>Windows快捷键大全文字处理类<br>Ctrl+a 全选All<br>Ctrl+b 粗体 Black<br>Ctrl+c 或insert 拷贝 Copy<br>Ctrl+d 字体格式 Decorate<br>Ctrl+e 居中对齐 Encenter<br>Ctrl+f 查找 Find<br>Ctrl+g 定位 Get address<br>Ctrl+h 替换 Huan<br>Ctrl+i 斜体 italic<br>Ctrl+j 两端对齐 Justify<br>Ctrl+k 超级链接 King Link<br>Ctrl+l 左对齐 Left Ailgn<br>Ctrl+m 左缩进 M……<br>Ctrl+n 新建 New 或Ctrl+Shift+n<br>Ctrl+o 打开 Open<br>Ctrl+p 打印 Print<br>Ctrl+r 右对齐 Right Align<br>Ctrl+s 保存 Save<br>Ctrl+t 首行缩进 =Tab<br>Ctrl+u 下划线 Underline<br>Ctrl+v = Shift + Insert 粘贴 Paste （在c边上故随意赋键)<br>Ctrl+w关闭当前的窗口、标签页、工作、文件或停止媒体播放Work<br>Ctrl+x 剪切<br>Ctrl+y= Alt+Shift + Backspace重复 （反撤销）<br>Ctrl+z= Alt + Backspace撤销</p>
+<p>Ctrl+F4 Word中关闭当前应用程序中的当前文件。<br>Ctrl+F6 Word中切换到当前应用程序中的下一个文本。<br>Alt + 双击超链接执行匹配的命令（或选择选项）<br>Ctrl + 双击超链接打开链接<br>Shift word等Micro Office系列软件中按下不放，可以跳过自启动的宏</p>
+<p>Win键</p>
+<p>Win键+ 向上键最大化窗口<br>Win键+ 向左键将窗口右移或<br>Win键+ 向右键将窗口<br>Win键+ 向下键最小化窗口<br>Win键+ F1 显示“帮助”<br>Win键+PrintScreen键截取当前屏幕到剪贴板，并保存截屏图片文件到“图片”文件夹中。（WIN8/10）<br>Win键或Ctrl+Esc打开开始菜单<br>Win键+Break打开“系统属性”对话框<br>Win键+Pause显示“系统属性”对话框<br>Win键+Tab循环切换任务栏上的程序（win7、win8）（windowsXP不适用）<br>Win键 + Tab使用 Aero Flip 3-D 循环切换任务栏上的程（win7）（windowsxp不适用）<br>Win键 +Tab+ Ctrl通过 Aero Flip 3-D 使用方向键循环切换任务栏上的程序 （win7）<br>Win键 + Space如果开启了AERO效果，预览桌面 （win7）（在win10此项是小界面切换输入法）<br>Win键+ Home最小化除活动窗口之外的所有窗口（win7）（windowsXP不适用</p>
+<p>主键盘区上的数字<br>Win键+数字启动锁定到任务栏中的由该数字所表示位置处的程序。如果该程序已在运行，则切换到该程序<br>Win键+Shift+数字启动锁定到任务栏中的由该数字所表示位置处的程序的新实例<br>Win键+Alt+ 数字打开锁定到任务栏中的第该数字个程序的跳转列表(Jump List)）</p>
+<p>Win键+B 选中桌面右下方托盘栏或任务栏Progress Bar<br>Win键+D显示桌面Desktop<br>Win键+E打开Windows资源管理器Explorer【即我的电脑、计算机】<br>Win键+F 打开“查找：所有文件”对话框（win10中为打开反馈中心）（Win资源管理器中为切至查找栏）<br>Win键+F+Ctrl 搜索计算机（如果已连接到网络）<br>Win键+G 循环切换小工具（win7）（win10打开xbox菜单）（windowsXP不适用）<br>Win键+I 打开“设置”（win10）<br>Win键+L 锁定计算机或切换用户<br>Win键+M 最小化所有窗口<br>Win键+Shift+M 将最小化的窗口还原到桌面<br>WIN键+P 多荧幕\投影仪选项选择演示显示模式。（WIN7）出现菜单后再摁Win+P选择选项，放开Win即可 确定。也可摁一次然后方向键选择回车键确定。<br>Win键+R 打开“运行”对话框<br>WIN键+T 显示任务栏当前所用程序的任务栏缩略图，再按一次切换到其他缩略图。（QWIN7）<br>Win键+U 打开辅助工具管理器、轻松访问中心<br>Win键+X 打开 Windows 移动中心（win7）（win10唤起开始按钮右键菜单）（windowsXP不适用）</p>
+<p>Windows快捷键大全Alt键</p>
+<p>Alt+Space 打开活动窗口最左上角的菜单<br>Alt+Space+N 新窗口<br>Alt+Tab切换当前程序 （加Shift反向）<br>Alt+Esc 切换当前程序 （加Shift反向）<br>Alt+Ender 将windows下运行的MSDOS窗口在窗口和全屏幕状态间切换<br>Alt+Print Screen将当前活动程序窗口以图像方式拷贝到剪贴板（加shift 可以跳到前一个窗口）<br>向后移动到上一个视图 ALT+左箭头<br>向前移动到上一个视图 ALT+右箭头</p>
+<p>Windows快捷键大全Shift键</p>
+<p>关闭所选文件夹及其所有父文件夹<br>按住 Shift键再单击“关闭按钮（仅适用于“我的电脑”）</p>
+<p>Windows快捷键大全系统自带放大镜程序</p>
+<p>Windows快捷键大全旧版放大镜<br>Windows+PRINT SCREEN 将屏幕复制到剪贴板（包括鼠标光标）<br>Windows+SCROLL LOCK 将屏幕复制到剪贴板（不包括鼠标光标）<br>Windows+PAGE UP 切换反色。<br>Windows+ PAGE DOWN 切换跟随鼠标光标<br>Windows+向上箭头 增加放大率<br>Windows+向下箭头 减小放大率</p>
+<p>Windows给出的放大镜快捷键<br>Win+ 唤起放大镜；放大<br>Win- 缩小<br>（设置中单次按键倍率可调）</p>
+<p>Windows快捷键大全小键盘</p>
+<p>NUM LOCK+负号(-)折叠所选的文件夹<br>NUM LOCK+乘号(*)展开所选的文件夹下的所有文件及文件夹<br>NUM LOCK+加号(+) 展开所选的文件夹</p>
+<p>Windows快捷键大全IE浏览器</p>
+<p>显示前一页（前进键） ALT+RIGHT ARROW<br>显示后一页（后退键） ALT+LEFT ARROW<br>在页面上的各框架中切换 （加shift反向）Ctrl+TAB<br>这个键用来打开IE中的地址栏列表，要关闭IE窗口，可以用Alt+F4组合键 F4<br>刷新 F5<br>强行刷新 Ctrl+F5<br>可以快速在资源管理器及IE中定位到地址栏 F6<br>激活程序中的菜单栏 F10<br>可以使当前的资源管理器或IE变为全屏显示 F11<br>执行菜单上相应的命令 ALT+菜单上带下划线的字母<br>关闭多文档界面程序中的当前窗口 Ctrl+ F4<br>关闭当前窗口或退出程序 ALT+ F4<br>添加当前页面到收藏夹 Ctrl+ D<br>显示所选对话框项目的帮助 F1<br>显示当前窗口的系统菜单 ALT+空格键<br>显示所选项目的快捷菜单 Shift+ F10<br>显示“开始”菜单 Ctrl+ ESC<br>显示多文档界面程序的系统菜单 ALT+连字号(-)<br>切换到上次使用的窗口 按住ALT然后重复按TAB，<br>切换到另一个窗口 ALT+ TAB<br>在后台打开一个页面 Ctrl+ 鼠标左键单击<br>在新窗口中打开一个页面 Shift+ 鼠标左键单击</p>
+<p>Windows快捷键大全Windows资源管理器</p>
+<p>插入光盘时不用“自动播放”功能 按住 Shift插入 CD-ROM<br>复制文件 按住Ctrl拖动文件<br>创建快捷方式按住 Ctrl+Shift拖动文件 或按住 ALT拖动文件<br>立即删除某项目而不将其放入回收站 Shift+DELETE<br>显示“查找：所有文件” F3<br>显示项目的快捷菜单 APPLICATION键<br>刷新窗口的内容 F5<br>重命名项目 F2<br>重命名项目 F2 重命名时按Tab键可重命名下一文件，不用按回车+向下+F2<br>选择所有项目 Ctrl+ A<br>查看项目的属性 ALT+ ENTER或 ALT+双击</p>
+<p>Windows快捷键大全辅助选项</p>
+<p>切换筛选键开关 右Shift八秒<br>切换高对比度开关 左ALT+左Shift+PRINT SCREEN<br>切换鼠标键开关 左ALT+左Shift+NUM LOCK<br>切换切换键开关 NUM LOCK五秒<br>右侧 Shift 键八秒钟 切换“筛选键”的开和关。<br>左 ALT + 左 Shift + PRINT SCREEN 切换“高对比度”的开和关。<br>左 ALT + 左 Shift + NUM LOCK 切换“鼠标键”的开和关。<br>Shift 键五次 切换“粘滞键”的开和关。<br>Num Lock 键五秒钟 切换“切换键”的开和关。<br>WIN+ U 打开“辅助功能管理器”。</p>
+<p>Windows快捷键大全Win10</p>
+<p>Win键+字母<br>Win键+A：激活操作中心<br>Win键+B：聚焦于右下角托盘区<br>Win键+C：通过语音激活Cortana<br>Win键+D：显示桌面<br>Win键+E：打开文件管理器<br>Win键+G：打开Xbox游戏录制工具栏，供用户录制游戏视频或截屏激活截屏功能<br>Win键+H：激活Windows10应用的分享功能<br>Win键+I：打开Windows10设置<br>Win键+K：激活无线显示器连接或音频设备连接<br>Win键+L：锁定屏幕<br>Win键+P：投影屏幕<br>Win键+R：运行<br>Win键+S：搜索、激活Cortana（微软小娜）<br>Win键+T：快速切换任务栏程序<br>Win键+V：打开云剪贴板<br>Win键+X：打开高级用户功能</p>
+<p>　　Win键+非字母<br>Win+Break：看配置<br>Win键+Space：快速显示桌面<br>Win键+Tab：激活任务视图<br>Win键+分号：调出 Emoji 表情<br>Win键+1/2/3：打开任务栏中固定的程序，1代表任务栏中第一个应用图标<br>Win键+左/右/上/下：移动应用窗口<br>Win键+Shift+左箭头：移动到左边屏幕。<br>Win键+Shift+右箭头：移动到右边屏幕。<br>Win键+Shift+S：Windows自带截图<br>Win键+Ctrl+D：创建一个新的虚拟桌面<br>Win键+Ctrl+F4：关闭虚拟桌面<br>Win键+Ctrl+左/右：切换虚拟桌面</p>
+<p>　　Ctrl键<br>Ctrl+Shift+N：新建文件夹。<br>Ctrl+shift+左键：以管理员身份运行。<br>Ctrl+Shift+Esc：任务管理器<br>Ctrl+Shift+Del：安全选项列表<br>Ctrl+W：关闭当前窗口。<br>Ctrl+F：定位到搜索框。</p>
+<p>　　Alt键<br>Alt+D：定位到地址栏。<br>Alt+向左键：查看上一个文件夹。<br>Alt+向右键：查看下一个文件夹。<br>Alt+向上键：查看父文件夹。</p>
+<p>　　Shift键<br>Shift+右键点击目录：在此处打开命令行窗口选项。<br>Shift+右键点击文件：发送到菜单。<br>Shift+点击任务栏（已经打开的）图标打开新窗口</p>
+<p>　　鼠标<br>在同一分区目录间拖曳，默认执行剪切操作，按下Ctrl+拖曳，执行拷贝操作。<br>在不同分区间进行拖曳，默认执行拷贝操作，按下Shift+拖拽，执行剪切操作。<br>Alt+拖曳，创建快捷方式。</p>
+<p>Windows快捷键大全WinXP</p>
+<p>Ctrl + Shift + 任何箭头键 突出显示一块文本。<br>Shift + 任何箭头键 在窗口或桌面上选择多项，或者选中文档中的文本。<br>Ctrl + A 选中全部内容。<br>F3 搜索文件或文件夹。<br>Alt + Enter 查看所选项目的属性。<br>Alt + F4 关闭当前项目或者退出当前程序。<br>Alt + 空格键 为当前窗口打开快捷菜单。<br>Ctrl + F4 在允许同时打开多个文档的程序中关闭当前文档。<br>Alt + Tab 在打开的项目之间切换。<br>Alt + Esc 以项目打开的顺序循环切换。<br>F6 在窗口或桌面上循环切换屏幕元素。<br>F9+FN键是键盘锁定<br>F4 显示“我的电脑”和“Windows 资源管理器”中的“地址”栏列表。<br>Shift + F10 显示所选项的快捷菜单。<br>Alt + 空格键 显示当前窗口的“系统”菜单。<br>Ctrl + Esc 显示“开始”菜单。<br>ALT + 菜单名中带下划线的字母 显示相应的菜单。<br>在打开的菜单上显示的命令名称中带有下划线的字母 执行相应的命令。<br>F10 激活当前程序中的菜单条。<br>右箭头键 打开右边的下一菜单或者打开子菜单。<br>左箭头键 打开左边的下一菜单或者关闭子菜单。<br>F5 刷新当前窗口。<br>BackSpace 在“我的电脑”或“Windows 资源管理器”中查看上一层文件夹。<br>Esc 取消当前任务。<br>将光盘插入到 CD-ROM 驱动器时按 Shift 键 阻止光盘自动播放。</p>
+<p>Windows快捷键大全对话框</p>
+<p>取消当前任务 ESC<br>如果当前控件是个按钮，要单击该按钮。<br>如果当前控件是个复选框，要选择或清除该复选框<br>或者如果当前控件是个选项按钮，要单击该选项空格键<br>单击相应的命令 ALT+带下划线的字母<br>单击所选按钮 ENTER<br>在选项上向后移动 Shift+ TAB<br>在选项卡上向后移动 Ctrl+ Shift+ TAB<br>在选项上向前移动 TAB<br>在选项卡上向前移动 Ctrl+ TAB<br>如果在“另存为”或“打开”对话框中选择了某文件夹，要打开上一级文件夹<br>BACKSPACE<br>在“另存为”或“打开”对话框中打开“保存到”或“查阅” F4<br>刷新“另存为”或“打开”对话框 F5</p>
+<p>Windows快捷键大全自然键盘</p>
+<p>WIN 显示或隐藏”开始”菜单。<br>WIN+ BREAK 显示”系统属性”对话框。<br>WIN+ D 显示桌面。<br>WIN+ M 最小化所有窗口。<br>WIN+ Shift + M 还原最小化的窗口。<br>WIN+ E 打开”我的电脑”。<br>WIN+ F 打开windows反馈页面，F代表feedback。<br>Ctrl+WIN+ F 搜索计算机。<br>WIN+ F1 显示 Windows 帮助。<br>WIN+ L 如果连接到网络域，则锁定您的计算机，或者如果没有连接到网络域，则切换用户。<br>WIN+ R 打开”运行”对话框。<br>KEY 显示所选项的快捷菜单。<br>WIN+ U 打开”工具管理器”。</p>
+<p>Windows快捷键大全对话框</p>
+<p>Ctrl + Tab 在选项卡之间向前移动。<br>Ctrl + Shift +Tab 在选项卡之间向后移动。<br>Tab 在选项之间向前移动。<br>Shift + Tab 在选项之间向后移动。<br>ALT + 带下划线的字母 执行相应的命令或选中相应的选项。<br>Enter 执行活选项动或按钮所对应的命令。<br>空格键 如果活选项动是复选框，则选中或清除该复选框。<br>箭头键 活选项动是一组选项按钮时，请选中某个按钮。<br>F1 显示帮助。<br>F4 显示当前列表中的项目。</p>
+<p>Windows快捷键大全生僻快捷键</p>
+<p>Windows中的快捷键我们都很熟悉了，可是下面这些快捷键你平时用过吗？与普通的快捷键相比，它们的使用方法有些特别：这些键不能同时按下，而是要用两步或三步的连续操作，才能实现一项功能。虽然如此，使用这些快捷键也比使用鼠标方便。<br>Alt+空格→X 最大化当前窗口<br>Alt+空格→N 最小化当前窗口<br>提示：“Alt+空格→X”表示先按下“Alt+空格”组合键，然后松开组合键，再按下X键。下面“→”符号均表示先松开符号前按下的键，再按下符号后面的键。<br>在桌面或文件夹窗口中可使用以下快捷键（注意是文件夹窗口而不是具体的文件夹）：<br>右键→I→N 按名称排列图标<br>右键→I→T 按类型排列图标（呵呵，搞IT的应该记得住吧）<br>右键→I→Z 按大小排列图标<br>右键→I→D 按日期排列图标<br>右键→W→F 新建文件夹<br>右键→R 若在桌面则打开“显示属性”在文件夹则打开该文件夹的属性<br>右键→E 刷新当前窗口，效果等同F5<br>提示：这里的“右键”指的是主键盘区最下排右侧的Windows徽标键和Ctrl之间的那个键。<br>如果当前窗口是某个具体文件或文件夹：<br>右键→S 创建当前文件或目录的快捷方式<br>右键→R 查看当前文件或目录属性（相当于Alt+Enter）<br>右键→O 打开当前文件或目录（相当于回车）<br>右键→T→A 发送当前文件或目录到软盘<br>注意：有些软件可能会在右键里增加一些菜单，这些菜单的快捷键可能会与系统快捷键发生冲突。比如WinRAR会在文件或文件夹的右键菜单中增加一个“添加到”的菜单，该菜单的快捷键S会与系统右键菜单“创建快捷方式（S）”发生冲突。如果要去掉这些“外来”的右键菜单，我们可以打开WinRAR，在菜单栏上依次点击“选项→设置”，打开“设置”对话框，在“综合”选项卡中点击“选择关联菜单项目”按钮，在打开的对话框中清空所有选项前的复选框即可。<br>如果当前窗口是记事本：<br>右键→U 撤消操作，效果等同与Ctrl+Z<br>右键→P 粘贴，效果等同与Ctrl+V<br>右键→A 选中全部文字，效果等同于Ctrl+A<br>使用“我的电脑”和“Windows资源管理器”的快捷键<br>目的快捷键<br>关闭所选文件夹及其所有父<br>文件夹按住 Shift键再单击“关闭按钮（仅适用于“我的电脑”）<br>向后移动到上一个视图 ALT+左箭头<br>向前移动到上一个视图 ALT+右箭头<br>查看上一级文件夹 BACKSPACE<br>其实，这些快捷键大家都可以在相关程序的右键菜单中找到，在这里只是选择了几个比较实用的归纳了一下，你也可以自己研究。比如当前窗口是某个文件或文件夹，那么用“右键→M”就可以对该文件或文件夹进行重命名操作。不同的程序有不同的快捷键，大家可以自己研究试用，举一反三。</p>
+<p>Windows快捷键大全其他资料</p>
+<p>一、常见用法：<br>F1 显示当前程序或者windows的帮助内容。<br>F2 当你选中一个文件的话，这意味着“重命名”<br>F3 当你在桌面上的时候是打开“查找：所有文件” 对话框<br>F10或ALT 激活当前程序的菜单栏<br>Win键或Ctrl+ESC 打开开始菜单<br>Ctrl+ALT+DELETE 在win9x中打开关闭程序对话框<br>DELETE 删除被选择的选择项目，如果是文件，将被放入回收站<br>Shift+DELETE 删除被选择的选择项目，如果是文件，将被直接删除而不是放入回收站<br>Ctrl+N 新建一个新的文件<br>Ctrl+O 打开“打开文件”对话框<br>Ctrl+P 打开“打印”对话框<br>Ctrl+S 保存当前操作的文件<br>Ctrl+X 剪切被选择的项目到剪贴板<br>Ctrl+INSERT 或 Ctrl+C 复制被选择的项目到剪贴板<br>Shift+INSERT 或 Ctrl+V 粘贴剪贴板中的内容到当前位置<br>ALT+BACKSPACE 或 Ctrl+Z 撤销上一步的操作<br>Ctrl+Y 重做上一步被撤销的操作<br>ALT+Shift+BACKSPACE重做上一步被撤销的操作<br>Win键+M 最小化所有被打开的窗口。<br>Win键+Ctrl+M 重新将恢复上一项操作前窗口的大小和位置<br>Win键+E 打开资源管理器<br>Win键+F 打开“查找：所有文件”对话框<br>Win键+R 打开“运行”对话框<br>Win键+BREAK 打开“系统属性”对话框<br>Win键+Ctrl+F 打开“查找：计算机”对话框<br>Shift+F10或鼠标右击 打开当前活动项目的快捷菜单<br>Shift 在放入CD的时候按下不放，可以跳过自动播放CD。在打开word的时候按下不放，可以跳过自启动的宏<br>ALT+F4 关闭当前应用程序<br>ALT+SPACEBAR 打开程序最左上角的菜单<br>ALT+TAB 切换当前程序<br>ALT+ESC 切换当前程序<br>ALT+ENTER 将windows下运行的MSDOS窗口在窗口和全屏幕状态间切换<br>PRINT SCREEN 将当前屏幕以图象方式拷贝到剪贴板<br>ALT+PRINT SCREEN 将当前活动程序窗口以图象方式拷贝到剪贴板<br>Ctrl+F4 关闭当前应用程序中的当前文本（如word中）<br>Ctrl+F6 切换到当前应用程序中的下一个文本（加shift 可以跳到前一个窗口）<br>在IE中：<br>ALT+RIGHT ARROW 显示前一页（前进键）<br>ALT+LEFT ARROW 显示后一页（后退键）<br>Ctrl+TAB 在页面上的各框架中切换（加shift反向）<br>F5 刷新<br>Ctrl+F5 强行刷新<br>目的快捷键<br>激活程序中的菜单栏 F10<br>执行菜单上相应的命令 ALT+菜单上带下划线的字母<br>关闭多文档界面程序中的当<br>前窗口 Ctrl+ F4<br>关闭当前窗口或退出程序 ALT+ F4<br>复制 Ctrl+ C<br>剪切 Ctrl+ X<br>删除 DELETE<br>显示所选对话框项目的帮助 F1<br>显示当前窗口的系统菜单 ALT+空格键<br>显示所选项目的快捷菜单 Shift+ F10<br>显示“开始”菜单 Ctrl+ ESC<br>显示多文档界面程序的系统<br>菜单 ALT+连字号(-)<br>粘贴 CTR L+ V<br>切换到上次使用的窗口或者<br>按住 ALT然后重复按TAB，<br>切换到另一个窗口 ALT+ TAB<br>撤消 Ctrl+ Z<br>二、使用“Windows资源管理器”的快捷键<br>目的快捷键<br>如果当前选择展开了，要折<br>叠或者选择父文件夹左箭头<br>折叠所选的文件夹 NUM LOCK+负号(-)<br>如果当前选择折叠了，要展开<br>或者选择第一个子文件夹右箭头<br>展开当前选择下的所有文件夹 NUM LOCK+*<br>展开所选的文件夹 NUM LOCK+加号(+)<br>在左右窗格间切换 F6<br>三、使用 Win键<br>可以使用 Microsoft自然键盘或含有 Windows徽标键的其他任何兼容键盘的以下快捷键。<br>目的快捷键<br>在任务栏上的按钮间循环 WINDOWS+ TAB<br>显示“查找：所有文件” WINDOWS+ F<br>显示“查找：计算机” Ctrl+ WINDOWS+ F<br>显示“帮助” WINDOWS+ F1<br>显示“运行”命令 WINDOWS+ R<br>显示“开始”菜单 WINDOWS<br>显示“系统属性”对话框 WINDOWS+ BREAK<br>显示“Windows资源管理器” WINDOWS+ E<br>最小化或还原所有窗口 WINDOWS+ D<br>撤消最小化所有窗口 Shift+ WINDOWS+ M<br>四、使用“我的电脑”和“Windows资源管理器”的快捷键<br>目的快捷键<br>关闭所选文件夹及其所有父<br>文件夹按住 Shift键再单击“关闭按钮（仅适用于“我的电脑”）<br>向后移动到上一个视图 ALT+左箭头<br>向前移动到上一个视图 ALT+右箭头<br>查看上一级文件夹 BACKSPACE<br>五、使用对话框中的快捷键<br>目的快捷键<br>取消当前任务 ESC<br>如果当前控件是个按钮，要<br>单击该按钮或者如果当前控<br>件是个复选框，要选择或清<br>除该复选框或者如果当前控<br>件是个选项按钮，要单击该<br>选项空格键<br>单击相应的命令 ALT+带下划线的字母<br>单击所选按钮 ENTER<br>在选项上向后移动 Ctrl+ TAB<br>在选项卡上向后移动 Ctrl+ Shift+ TAB<br>在选项上向前移动 TAB<br>在选项卡上向前移动 Ctrl+ TAB<br>如果在“另存为”或“打开”<br>对话框中选择了某文件夹，<br>要打开上一级文件夹 BACKSPACE<br>在“另存为”或“打开”对<br>话框中打开“保存到”或<br>“查阅” F4<br>刷新“另存为”或“打开”<br>对话框 F5<br>六、使用“桌面”、“我的电脑”和“Windows资源管理器”快捷键<br>选择项目时，可以使用以下快捷键。<br>目的快捷键<br>插入光盘时不用“自动播放”<br>功能按住 Shift插入 CD-ROM<br>复制文件按住 Ctrl拖动文件<br>创建快捷方式按住 Ctrl+Shift拖动文件<br>立即删除某项目而不将其放入“回收站” Shift+DELETE<br>显示“查找：所有文件” F3<br>显示项目的快捷菜单 APPLICATION键<br>刷新窗口的内容 F5<br>重命名项目 F2<br>选择所有项目 Ctrl+ A<br>查看项目的属性 ALT+ ENTER或 ALT+双击<br>可将 APPLICATION键用于 Microsoft自然键盘或含有 APPLICATION键的其他兼容键<br>七、Microsoft放大程序的快捷键<br>这里运用Windows徽标键和其他键的组合。<br>快捷键目的<br>Windows徽标+PRINT SCREEN将屏幕复制到剪贴板（包括鼠标光标）<br>Windows徽标+SCROLL LOCK将屏幕复制到剪贴板（不包括鼠标光标）<br>Windows徽标+ PAGE UP切换反色。<br>Windows徽标+ PAGE DOWN切换跟随鼠标光标<br>Windows徽标+向上箭头增加放大率<br>Windows徽标+向下箭头减小放大率<br>八、使用辅助选项快捷键<br>目的快捷键<br>切换筛选键开关右Shift八秒<br>切换高对比度开关左ALT+左Shift+PRINT SCREEN<br>切换鼠标键开关左ALT+左Shift+NUM LOCK<br>切换粘滞键开关 Shift键五次<br>切换切换键开关 NUM LOC2000 快捷键<br>Windows 资源管理器”的快捷键<br>请按 目的<br>END 显示当前窗口的底端。<br>HOME 显示当前窗口的顶端。<br>NUM LOCK+ 数字键盘的星号 (*) 显示所选文件夹的所有子文件夹。<br>NUM LOCK+ 数字键盘的加号 (+) 显示所选文件夹的内容。<br>NUM LOCK+ 数字键盘的减号 (-) 折叠所选的文件夹<br>向左键 当前所选项处于展开状态时折叠该项，或选定其父文件夹。<br>向右键 当前所选项处于折叠状态时展开该项，或选定第一个子文件夹。<br>注意<br>如果在“辅助功能选项”中打开“粘滞键”，则有些快捷键可能不起作用。<br>如果您通过“Microsoft 终端服务客户”连接到 Windows 2000，则某些快捷键将会更改。详细信息，请参阅“Microsoft 终端服务客户”的联机文档。<br>f1－帮助<br>f2－重命名<br>f5－刷新<br>alt+f4－关闭窗口<br>ctrl+a=全部选中<br>ctrl+c=拷贝<br>ctrl+v=粘贴<br>ctrl+x=剪切<br>alt+enter(或ALT+双击鼠标左键)=属性</p>
+]]></content>
+      <tags>
+        <tag>Windows</tag>
+        <tag>IT</tag>
+        <tag>微软</tag>
+        <tag>随手笔记</tag>
+        <tag>电脑</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Yandex 免费域名邮箱和配置SMTP</title>
+    <url>/2022/02/16/yandexdomainmail/</url>
+    <content><![CDATA[<p>Outlook e5 a1 a1p等订阅可以自定义域名，但是比较复杂或者需要一些特殊手段，但是yandex mail提供免费的域名邮箱服务。这项服务叫做Yandex Connect，免费提供1000个子邮箱，每个子邮箱10G容量。查阅过官方文档，并没有找到明确解释，但是外网网友据说每个邮箱有每天3000封邮件的发件限制，相比QQ、Gmail这些只有每日500封的已经很厉害了。而且注册极其容易。此外还有SPF/DIKM配置能十分有效的防止邮件进入垃圾箱的概率。</p>
+<h2 id="注册主账号"><a href="#注册主账号" class="headerlink" title="注册主账号"></a>注册主账号</h2><p>就类似Office E5一样，需要一个主要的管理员账户，就是直接去yandex官网注册个即可 </p>
+<p><a href="https://passport.yandex.com/registration">https://passport.yandex.com/registration</a></p>
+<p>可以使用手机号或者安全问题两种方式注册，实测国内 +86 手机号可以验证。GV貌似也可行。</p>
+<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p><a href="https://connect.yandex.com/pdd/">https://connect.yandex.com/pdd/</a></p>
+<p>上述链接是原来的界面，但是现在yandex connect改版了，免费的yandex connect入口被藏起来了，需要去</p>
+<p><a href="https://connect.yandex.com/portal/admin/domains">https://connect.yandex.com/portal/admin/domains</a> 页面，然后就会提示你的账户还不是yandex connect计划，这样就可以选择直接加入免费的yandex connect计划（右上角账户那个地方确认加入yandex connect）。</p>
+<p><a href="https://admin.yandex.ru/">https://admin.yandex.ru/</a> 页面可以再次回到管理页面（类似Microsoft Admin一样）</p>
+<h2 id="验证域名"><a href="#验证域名" class="headerlink" title="验证域名"></a>验证域名</h2><p>你可以直接更改 ns 记录到yandex的（不推荐）</p>
+<p>或者</p>
+<p>使用dns验证，按照他的要求配置域名的MX记录、SPF 与 DKIM的TXT记录</p>
+<p>直到显示如下图所示的 Domain Configured 即全部完成了</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-38-56.jpg"></p>
+<h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>Users内添加用户即可，Language记得选择English，除非你看的懂俄文。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-40-14.jpg"></p>
+<p>这样就可以设置为管理员用户了，下次就可以直接用这个账户登录<a href="https://admin.yandex.ru/">admin页面</a>了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-42-26.jpg"></p>
+<h2 id="配置SMTP"><a href="#配置SMTP" class="headerlink" title="配置SMTP"></a>配置SMTP</h2><p>转到Email中，选择设置，然后Email clients，把 <code>From the imap.yandex.com server via IMAP</code> 和 <code>App passwords and OAuth tokens</code> 打开并保存。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-44-50.jpg"></p>
+<p>右上角选择账户管理</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-46-17.jpg"></p>
+<p>往下拉，选择 <code>Passwords and authorization</code></p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-47-54.jpg"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-48-15.jpg"></p>
+<p>创建APP 密钥，一定要保存下来。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-48-37.jpg"></p>
+<p>配置SMTP的话，就是</p>
+<p>SMTP服务器地址：smtp.yandex.com</p>
+<p>SMTP端口：465</p>
+<p>SMTP加密方式：SSL</p>
+<p>SMTP账户：你的yandex邮箱（确保mail的设置中开启了IMAP）</p>
+<p>SMTP密码：你刚刚设置的APP Passwords  </p>
+<p>转载于 <a href="https://ednovas.xyz/">Ednovas的博客</a></p>
+]]></content>
+      <tags>
+        <tag>IT</tag>
+        <tag>Yandex</tag>
+        <tag>域名邮箱</tag>
+        <tag>邮箱</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【建网】Termux部署Hexo</title>
     <url>/2021/10/07/tm-hexo/</url>
     <content><![CDATA[<p>今天呢，废话不多直接进入主题</p>
@@ -1294,50 +1338,6 @@ https://img.400511.net/2022/02/22/4JqkXAzp.png" width="550"></p>
         <tag>IT</tag>
         <tag>域名</tag>
         <tag>博客</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Yandex 免费域名邮箱和配置SMTP</title>
-    <url>/2022/02/16/yandexdomainmail/</url>
-    <content><![CDATA[<p>Outlook e5 a1 a1p等订阅可以自定义域名，但是比较复杂或者需要一些特殊手段，但是yandex mail提供免费的域名邮箱服务。这项服务叫做Yandex Connect，免费提供1000个子邮箱，每个子邮箱10G容量。查阅过官方文档，并没有找到明确解释，但是外网网友据说每个邮箱有每天3000封邮件的发件限制，相比QQ、Gmail这些只有每日500封的已经很厉害了。而且注册极其容易。此外还有SPF/DIKM配置能十分有效的防止邮件进入垃圾箱的概率。</p>
-<h2 id="注册主账号"><a href="#注册主账号" class="headerlink" title="注册主账号"></a>注册主账号</h2><p>就类似Office E5一样，需要一个主要的管理员账户，就是直接去yandex官网注册个即可 </p>
-<p><a href="https://passport.yandex.com/registration">https://passport.yandex.com/registration</a></p>
-<p>可以使用手机号或者安全问题两种方式注册，实测国内 +86 手机号可以验证。GV貌似也可行。</p>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a>绑定域名</h2><p><a href="https://connect.yandex.com/pdd/">https://connect.yandex.com/pdd/</a></p>
-<p>上述链接是原来的界面，但是现在yandex connect改版了，免费的yandex connect入口被藏起来了，需要去</p>
-<p><a href="https://connect.yandex.com/portal/admin/domains">https://connect.yandex.com/portal/admin/domains</a> 页面，然后就会提示你的账户还不是yandex connect计划，这样就可以选择直接加入免费的yandex connect计划（右上角账户那个地方确认加入yandex connect）。</p>
-<p><a href="https://admin.yandex.ru/">https://admin.yandex.ru/</a> 页面可以再次回到管理页面（类似Microsoft Admin一样）</p>
-<h2 id="验证域名"><a href="#验证域名" class="headerlink" title="验证域名"></a>验证域名</h2><p>你可以直接更改 ns 记录到yandex的（不推荐）</p>
-<p>或者</p>
-<p>使用dns验证，按照他的要求配置域名的MX记录、SPF 与 DKIM的TXT记录</p>
-<p>直到显示如下图所示的 Domain Configured 即全部完成了</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-38-56.jpg"></p>
-<h2 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h2><p>Users内添加用户即可，Language记得选择English，除非你看的懂俄文。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-40-14.jpg"></p>
-<p>这样就可以设置为管理员用户了，下次就可以直接用这个账户登录<a href="https://admin.yandex.ru/">admin页面</a>了。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-42-26.jpg"></p>
-<h2 id="配置SMTP"><a href="#配置SMTP" class="headerlink" title="配置SMTP"></a>配置SMTP</h2><p>转到Email中，选择设置，然后Email clients，把 <code>From the imap.yandex.com server via IMAP</code> 和 <code>App passwords and OAuth tokens</code> 打开并保存。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-44-50.jpg"></p>
-<p>右上角选择账户管理</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-46-17.jpg"></p>
-<p>往下拉，选择 <code>Passwords and authorization</code></p>
-<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-47-54.jpg"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-48-15.jpg"></p>
-<p>创建APP 密钥，一定要保存下来。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/wdm1732418365/CDN/New%20folder/Snipaste_2022-02-08_17-48-37.jpg"></p>
-<p>配置SMTP的话，就是</p>
-<p>SMTP服务器地址：smtp.yandex.com</p>
-<p>SMTP端口：465</p>
-<p>SMTP加密方式：SSL</p>
-<p>SMTP账户：你的yandex邮箱（确保mail的设置中开启了IMAP）</p>
-<p>SMTP密码：你刚刚设置的APP Passwords  </p>
-<p>转载于 <a href="https://ednovas.xyz/">Ednovas的博客</a></p>
-]]></content>
-      <tags>
-        <tag>IT</tag>
-        <tag>Yandex</tag>
-        <tag>域名邮箱</tag>
-        <tag>邮箱</tag>
       </tags>
   </entry>
 </search>
