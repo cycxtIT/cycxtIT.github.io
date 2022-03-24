@@ -38,13 +38,13 @@
     
     <category term="IT" scheme="https://blog.cycxtit.top/tags/IT/"/>
     
+    <category term="VPS" scheme="https://blog.cycxtit.top/tags/VPS/"/>
+    
     <category term="宝塔" scheme="https://blog.cycxtit.top/tags/%E5%AE%9D%E5%A1%94/"/>
     
     <category term="IBM" scheme="https://blog.cycxtit.top/tags/IBM/"/>
     
     <category term="建站" scheme="https://blog.cycxtit.top/tags/%E5%BB%BA%E7%AB%99/"/>
-    
-    <category term="VPS" scheme="https://blog.cycxtit.top/tags/VPS/"/>
     
   </entry>
   
@@ -106,17 +106,17 @@
     
     <category term="IT" scheme="https://blog.cycxtit.top/tags/IT/"/>
     
-    <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
+    <category term="Linux" scheme="https://blog.cycxtit.top/tags/Linux/"/>
     
     <category term="VPS" scheme="https://blog.cycxtit.top/tags/VPS/"/>
-    
-    <category term="Linux" scheme="https://blog.cycxtit.top/tags/Linux/"/>
     
     <category term="Microsoft" scheme="https://blog.cycxtit.top/tags/Microsoft/"/>
     
     <category term="微软" scheme="https://blog.cycxtit.top/tags/%E5%BE%AE%E8%BD%AF/"/>
     
     <category term="SSH" scheme="https://blog.cycxtit.top/tags/SSH/"/>
+    
+    <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
     
   </entry>
   
@@ -256,11 +256,11 @@
     <category term="学习" scheme="https://blog.cycxtit.top/categories/%E7%BD%91%E7%AB%99/%E5%AD%A6%E4%B9%A0/"/>
     
     
+    <category term="网站" scheme="https://blog.cycxtit.top/tags/%E7%BD%91%E7%AB%99/"/>
+    
     <category term="学习" scheme="https://blog.cycxtit.top/tags/%E5%AD%A6%E4%B9%A0/"/>
     
     <category term="资源" scheme="https://blog.cycxtit.top/tags/%E8%B5%84%E6%BA%90/"/>
-    
-    <category term="网站" scheme="https://blog.cycxtit.top/tags/%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
@@ -387,8 +387,6 @@
     
     <category term="IT" scheme="https://blog.cycxtit.top/tags/IT/"/>
     
-    <category term="网站" scheme="https://blog.cycxtit.top/tags/%E7%BD%91%E7%AB%99/"/>
-    
     <category term="Termux" scheme="https://blog.cycxtit.top/tags/Termux/"/>
     
     <category term="手机" scheme="https://blog.cycxtit.top/tags/%E6%89%8B%E6%9C%BA/"/>
@@ -396,6 +394,8 @@
     <category term="建网" scheme="https://blog.cycxtit.top/tags/%E5%BB%BA%E7%BD%91/"/>
     
     <category term="Github" scheme="https://blog.cycxtit.top/tags/Github/"/>
+    
+    <category term="网站" scheme="https://blog.cycxtit.top/tags/%E7%BD%91%E7%AB%99/"/>
     
   </entry>
   
@@ -448,9 +448,9 @@
     
     <category term="IT" scheme="https://blog.cycxtit.top/tags/IT/"/>
     
-    <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
-    
     <category term="微软" scheme="https://blog.cycxtit.top/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
     
     <category term="随手笔记" scheme="https://blog.cycxtit.top/tags/%E9%9A%8F%E6%89%8B%E7%AC%94%E8%AE%B0/"/>
     
@@ -479,9 +479,9 @@
     
     <category term="IT" scheme="https://blog.cycxtit.top/tags/IT/"/>
     
-    <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
-    
     <category term="微软" scheme="https://blog.cycxtit.top/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
     
     <category term="密码" scheme="https://blog.cycxtit.top/tags/%E5%AF%86%E7%A0%81/"/>
     
@@ -568,9 +568,9 @@
     
     <category term="IT" scheme="https://blog.cycxtit.top/tags/IT/"/>
     
-    <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
-    
     <category term="微软" scheme="https://blog.cycxtit.top/tags/%E5%BE%AE%E8%BD%AF/"/>
+    
+    <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
     
     <category term="漏洞" scheme="https://blog.cycxtit.top/tags/%E6%BC%8F%E6%B4%9E/"/>
     
@@ -598,9 +598,9 @@
     
     <category term="IT" scheme="https://blog.cycxtit.top/tags/IT/"/>
     
-    <category term="软件" scheme="https://blog.cycxtit.top/tags/%E8%BD%AF%E4%BB%B6/"/>
-    
     <category term="Windows" scheme="https://blog.cycxtit.top/tags/Windows/"/>
+    
+    <category term="软件" scheme="https://blog.cycxtit.top/tags/%E8%BD%AF%E4%BB%B6/"/>
     
     <category term="推荐" scheme="https://blog.cycxtit.top/tags/%E6%8E%A8%E8%8D%90/"/>
     
